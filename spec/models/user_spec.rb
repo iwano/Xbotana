@@ -56,6 +56,26 @@ describe User do
     it { should_not be_valid }
   end
   
+  describe "when phone format is invalid" do
+    it "should be invalid" do
+      addresses = %w[hola x123456 123456x 123x907]
+      addresses.each do |invalid_phone|
+        @user.phone_number = invalid_phone
+        @user.should_not be_valid
+      end      
+    end
+  end
+  
+  describe "when phone format is valid" do
+     it "should be valid" do
+       addresses = %w[(312)1439445 3121439445 312-1439445 (312)14-39445]
+       addresses.each do |valid_phone|
+         @user.phone_number = valid_phone
+         @user.should be_valid
+       end      
+     end
+   end
+  
   describe "when address is not present" do
     before { @user.address = " " }
     it { should_not be_valid }

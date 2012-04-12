@@ -23,7 +23,8 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
   validates :city, presence: true, length: { maximum: 20 }
   validates :state, presence: true, length: { maximum: 20 }
-  validates :phone_number, presence: true
+  VALID_PHONE_REGEX = /\A[\d+\-.+\()+\s]+\z/
+  validates :phone_number, presence: true, format: { with: VALID_PHONE_REGEX }
   validates :address, presence: true
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
