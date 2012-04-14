@@ -4,12 +4,7 @@ class UsersController < ApplicationController
   before_filter :admin_user,     only: :destroy
   
   def new
-    if signed_in?
-      flash[:alert] = "You're already loged in"
-      redirect_to root_path
-    else
       @user = User.new
-    end
   end
   
   def show

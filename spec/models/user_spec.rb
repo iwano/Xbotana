@@ -10,8 +10,12 @@
 #  phone_number    :string(255)
 #  address         :string(255)
 #  password_digest :string(255)
-#  state           :string(255)
-#  city            :string(255)
+#  remember_token  :string(255)
+#  admin           :boolean         default(FALSE)
+#  state_id        :integer
+#  city_id         :integer
+#  mobile_phone    :string(255)
+#  rfc             :string(255)
 #
 
 require 'spec_helper'
@@ -20,9 +24,9 @@ describe User do
 
   before do
     @user = User.new(name: "Example User", email: "user@example.com", 
-                    phone_number: "312-1439445", 
+                    phone_number: "312-1439445", mobile_phone: "312-1439445",
                     address: "Joaquin Fernandez de lizardi 580",
-                    state: "Colima", city: "Colima",
+                    state_id: "1", city_id: "1", rfc: "1er64gr8fns9",
                     password: "foobar", password_confirmation: "foobar")
   end
 
@@ -31,9 +35,11 @@ describe User do
   it { should respond_to(:name) }
   it { should respond_to(:email) }
   it { should respond_to(:phone_number) }
+  it { should respond_to(:mobile_phone) }
   it { should respond_to(:address) }
-  it { should respond_to(:state) }
-  it { should respond_to(:city) }
+  it { should respond_to(:rfc) }
+  it { should respond_to(:state_id) }
+  it { should respond_to(:city_id) }
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
@@ -65,11 +71,26 @@ describe User do
     it { should_not be_valid }
   end
   
+  describe "when mobile phone is not present" do
+    before { @user.mobile_phone = " " }
+    it { should_not be_valid }
+  end
+  
   describe "when phone format is invalid" do
     it "should be invalid" do
       addresses = %w[hola x123456 123456x 123x907]
       addresses.each do |invalid_phone|
         @user.phone_number = invalid_phone
+        @user.should_not be_valid
+      end      
+    end
+  end
+  
+  describe "when mobile phone format is invalid" do
+    it "should be invalid" do
+      addresses = %w[hola x123456 123456x 123x907]
+      addresses.each do |invalid_phone|
+        @user.mobile_phone = invalid_phone
         @user.should_not be_valid
       end      
     end
@@ -84,19 +105,34 @@ describe User do
        end      
      end
    end
+   
+   describe "when mobile phone format is valid" do
+      it "should be valid" do
+        addresses = %w[(312)1439445 3121439445 312-1439445 (312)14-39445]
+        addresses.each do |valid_phone|
+          @user.mobile_phone = valid_phone
+          @user.should be_valid
+        end      
+      end
+    end
   
   describe "when address is not present" do
     before { @user.address = " " }
     it { should_not be_valid }
   end
   
-  describe "when state is not present" do
-    before { @user.state = " " }
+  describe "when rfc is not present" do
+    before { @user.rfc = " " }
     it { should_not be_valid }
   end
   
-  describe "when city is not present" do
-    before { @user.city = " " }
+  describe "when state id is not present" do
+    before { @user.state_id = " " }
+    it { should_not be_valid }
+  end
+  
+  describe "when city id is not present" do
+    before { @user.city_id = " " }
     it { should_not be_valid }
   end
   

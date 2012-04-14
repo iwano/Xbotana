@@ -1,0 +1,10 @@
+<%= form_for(@city) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+	  <%= f.label :state_id %>
+	  <%= f.collection_select :state_id, State.all, :id , :name %>
+	  <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.submit "Add", class: "btn btn-large btn-primary" %>
+<% end %>

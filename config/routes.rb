@@ -1,5 +1,7 @@
 Xbotana::Application.routes.draw do
   resources :users
+  resources :states
+  resources :cities
   resources :sessions, only: [:new, :create, :destroy]
   
   match '/signin',  to: 'sessions#new'
