@@ -18,7 +18,7 @@ FactoryGirl.define do
     password "foobar"
     password_confirmation "foobar"
     state 
-    city
+    city 
     
     factory :admin do
       admin true

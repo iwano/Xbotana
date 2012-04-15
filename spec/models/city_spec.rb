@@ -12,5 +12,24 @@
 require 'spec_helper'
 
 describe City do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    @city = City.new(name: "Colima", state_id: "1")
+  end
+  
+  subject { @city }
+
+  it { should respond_to(:name) }
+  it { should respond_to(:state_id) }
+  
+  it { should be_valid }
+  
+  describe "when name is not present" do
+    before { @city.name = " " }
+    it { should_not be_valid }
+  end
+  
+  describe "when email is not present" do
+    before { @city.state_id = " " }
+    it { should_not be_valid }
+  end
 end

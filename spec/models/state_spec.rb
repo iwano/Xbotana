@@ -11,5 +11,18 @@
 require 'spec_helper'
 
 describe State do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    @state = State.new(name: "Colima")
+  end
+  
+  subject { @state }
+
+  it { should respond_to(:name) }
+  
+  it { should be_valid }
+  
+  describe "when name is not present" do
+    before { @state.name = " " }
+    it { should_not be_valid }
+  end
 end
