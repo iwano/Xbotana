@@ -1,7 +1,12 @@
 <%= provide(:title, 'New State') %>
 <h1>New State </h1>
 
-<%= render 'form' %> 
+<div class="row">
+  <div class="span6 offset3">
+    <%= render 'form' %> 
+  </div>
+</div>
+
 
 <%= link_to "Back",   states_path %>
 

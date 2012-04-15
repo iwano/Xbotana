@@ -5,9 +5,11 @@ describe "User pages" do
   subject { page }
   
   describe "index" do
-
+    let(:state) { FactoryGirl.create(:state) }
+    let(:city) { FactoryGirl.create(:city) }
     let(:user) { FactoryGirl.create(:user) }
-
+    State.delete_all
+    City.delete_all
     before do
       sign_in user
       visit users_path
@@ -16,6 +18,8 @@ describe "User pages" do
     it { should have_selector('title', text: 'All users') }
 
     describe "pagination" do
+      let(:state) { FactoryGirl.create(:state) }
+      let(:city) { FactoryGirl.create(:city) }
       before(:all) { 30.times { FactoryGirl.create(:user) } }
       after(:all)  { User.delete_all }
       
@@ -116,8 +120,10 @@ describe "User pages" do
         fill_in "Email",        with: "user@example.com"
         fill_in "Address",      with: "Fernandez de lizardi 580"
         fill_in "Phone number", with: "(312) 14 39 445"
-        fill_in "State",        with: "Colima"
-        fill_in "City",         with: "Colima" 
+        fill_in "Mobile phone", with: "(312) 14 39 445"
+        fill_in "State",        with: "1"
+        fill_in "City",         with: "1" 
+        fill_in "Rfc", with: "fjheiuf49r7"
         fill_in "Password",     with: "foobar"
         fill_in "Confirm Password", with: "foobar"
       end
@@ -163,8 +169,10 @@ describe "User pages" do
         fill_in "Name",             with: new_name
         fill_in "Email",            with: new_email
         fill_in "Phone number",     with: user.phone_number
+        fill_in "Mobile phone",     with: user.phone_number
         fill_in "Address",          with: user.address
         fill_in "State",            with: user.state
+        fill_in "Rfc",              with: user.rfc
         fill_in "City",             with: user.city
         fill_in "Password",         with: user.password
         fill_in "Confirm Password", with: user.password

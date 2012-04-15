@@ -7,14 +7,27 @@ class CitiesController < ApplicationController
   end
   
   def show
+    @city = City.find(params[:id])
+  end
+  
+  def index
+    @cities = City.paginate(page: params[:page])
   end
   
   def create
     @city = City.new(params[:city])
-    render  "new"
+     if @city.save
+       flash[:success] = "The city has been added to the database."
+       redirect_to cities_path
+     else
+       render 'new'
+     end
   end
   
   def destroy
+    City.find(params[:id]).destroy
+    flash[:success] = "The city has been removed from the database."
+    redirect_to cities_path
   end
   
 end

@@ -1,0 +1,11 @@
+<% provide(:title, 'All cities') %>
+<%= link_to '+ Add', 'cities/new', class: 'btn btn-success', style: 'float:left'%>
+<h1>All cities</h1>
+
+<%= will_paginate %>
+
+<ul class="not-users">
+    <%= render "cities" %>
+</ul>
+
+<%= will_paginate %>

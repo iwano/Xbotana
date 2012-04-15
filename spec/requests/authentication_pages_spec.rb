@@ -3,7 +3,8 @@ require 'spec_helper'
 describe "Authentication" do
 
   subject { page }
-
+  State.delete_all
+  City.delete_all
   describe "signin page" do
     before { visit signin_path }
 
@@ -29,6 +30,8 @@ describe "Authentication" do
     end
     
     describe "with valid information" do
+      let(:state) { FactoryGirl.create(:state) }
+      let(:city) { FactoryGirl.create(:city) }
       let(:user) { FactoryGirl.create(:user) }
       before do
         fill_in "Email",    with: user.email

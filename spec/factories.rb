@@ -1,4 +1,13 @@
 FactoryGirl.define do
+  factory :state do
+    sequence(:name)  { |n| "state-#{n}" }
+  end
+  
+  factory :city do
+    sequence(:state_id)  { |n| n }
+    sequence(:name)  { |n| "city-#{n}" }
+  end
+  
   factory :user do
     sequence(:name)  { |n| "Person #{n}" }
     sequence(:email) { |n| "person_#{n}@example.com"}   
@@ -8,8 +17,8 @@ FactoryGirl.define do
     rfc "12u4y359g4"
     password "foobar"
     password_confirmation "foobar"
-    state "1"
-    city "1"
+    state 
+    city
     
     factory :admin do
       admin true

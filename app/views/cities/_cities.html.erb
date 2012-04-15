@@ -1,0 +1,16 @@
+<% @cities.each do |city| %>
+    <li>
+		<div class="row-fluid">
+		  <div class="span2">
+		  	<%= city.name%>
+		  </div>
+		  <div class="span1">
+		  	<%= link_to 'Show', city, class: 'btn btn-primary' %>
+		  </div>
+		  <div class="span1">
+		  	<%= link_to 'Delete', city, method: :delete, confirm: 'Are you sure?', class: 'btn btn-danger'%>
+		  </div>
+		</div>
+    </li>
+ <% end %>
+

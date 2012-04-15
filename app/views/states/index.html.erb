@@ -1,0 +1,11 @@
+<% provide(:title, 'All states') %>
+<%= link_to '+ Add', 'states/new', class: 'btn btn-success', style: 'float:left'%>
+<h1>All states</h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+    <%= render "states" %>
+</ul>
+
+<%= will_paginate %>

@@ -156,11 +156,15 @@ aside {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
+  width: 80%;
   padding: 10px;
   height: auto;
   margin-bottom: 15px;
   @include box_sizing;
+}
+
+select, .uneditable-input{
+	height: 3em;
 }
 
 #error_explanation {
@@ -190,3 +194,29 @@ input, textarea, select, .uneditable-input {
     }
   }
 }
+
+/* not-users index */
+
+.not-users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:last-child {
+      border-bottom: 1px solid $grayLighter
+    }
+  }
+}
+
+.not-users, .btn{
+	margin-left:2em;
+}
+
+.catalogsSidebar{
+	li{
+		margin:.7em;
+	}
+}
+

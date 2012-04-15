@@ -35,12 +35,12 @@ namespace :db do
                    password_confirmation: password)
     end
     
-    20.times do |n|
+    40.times do |n|
       name = "State-#{n+1}"
       State.create!(name:name)
     end
     
-    20.times do |n|
+    40.times do |n|
       state_id = n,
       name = "City-#{n+1}"
       City.create!(name:name, state_id: state_id)

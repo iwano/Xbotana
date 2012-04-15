@@ -2,7 +2,6 @@
 <h1>Update your profile</h1>
 
 <div class="row">
-  <div class="span6 offset3">
   <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
@@ -17,7 +16,10 @@
 
 	  <%= f.label :mobile_phone %>
 	  <%= f.text_field :mobile_phone %>
-
+	
+	  <%= f.label :address %>
+	  <%= f.text_field :address %>
+	
 	  <%= f.label :state_id %>
 	  <%= f.text_field :state_id %>
 
@@ -38,5 +40,5 @@
 
     <%= gravatar_for @user %>
     <a target="_blank" href="http://gravatar.com/emails">change</a>
-  </div>
+
 </div>
