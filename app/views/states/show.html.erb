@@ -1,11 +1,26 @@
 <% provide(:title, @state.name) %>
-<div class="row">
-  <aside class="span4">
+<div class="row-fluid">
+  <aside class="span9">
     <section>
       <h1>
         <%= @state.name %>
 		
       </h1>
     </section>
+	<ul class="users">
+		<% if @state.cities.any? %>
+      		<div class="span4">
+				<h3>Cities (<%= @state.cities.count %>)</h3>			
+			</div>
+			<div class="span6">
+				<%= will_paginate @cities %>
+        		<%= render @cities %>
+				<%= will_paginate @cities %>
+			</div>
+      		
+    	<% end %>
+	</ul>	
   </aside>
 </div>
+
+<%= link_to "All states",   states_path %>

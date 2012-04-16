@@ -22,6 +22,7 @@ class StatesController < ApplicationController
   
   def show
     @state = State.find(params[:id])
+    @cities = @state.cities.paginate(page: params[:page])
   end
   
   def destroy
