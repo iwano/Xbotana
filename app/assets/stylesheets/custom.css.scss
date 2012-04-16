@@ -63,6 +63,13 @@ h3 {
   font-weight: normal;
   color: $grayLight;
 }
+h4 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
+  font-weight: normal;
+  color: $grayLight;
+}
 
 p {
   font-size: 1.1em;
@@ -227,3 +234,7 @@ select, .uneditable-input{
 	}
 }
 
+.cmb_quantity{
+	height: 1.5em;
+	width: 30%;
+}

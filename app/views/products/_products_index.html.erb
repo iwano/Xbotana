@@ -2,23 +2,30 @@
     <li>
 		<div class="row-fluid">
 		  <div class="span2">
-		  	<%= product.name%>
+		  <h4>	<%= product.name%> </h4>
 		  </div>
+		
 		  <div class="span2">
-		  	<%= product.category.name%>
+		  	<h4><%= product.category.name%></h4>
 		  </div>
-		<div class="span4">
-		  	<%= product.description%>
+		
+		  <div class="span4">
+		  	<h4><%= product.description%></h4>
 		  </div>
+		
 		  <div class="span1">
 		  	<%= link_to 'Show', product, class: 'btn btn-primary' %>
 		  </div>
-		  <div class="span1">
-		  	<%= link_to 'Edit', edit_product_path(product), class: 'btn btn-warning'%>
-		  </div>
-		  <div class="span1">
-		  	<%= link_to 'Delete', product, method: :delete, confirm: 'Are you sure?', class: 'btn btn-danger'%>
-		  </div>
+			
+			<% if current_user.admin?%>
+			  <div class="span1">
+			  	<%= link_to 'Edit', edit_product_path(product), class: 'btn btn-warning'%>
+			  </div>
+
+			  <div class="span1">
+			  	<%= link_to 'Delete', product, method: :delete, confirm: 'Are you sure?', class: 'btn btn-danger'%>
+			  </div>
+			<%end%>	  
 		</div>
     </li>
  <% end %>
