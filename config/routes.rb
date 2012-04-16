@@ -1,5 +1,7 @@
 Xbotana::Application.routes.draw do
   resources :users
+  resources :products
+  resources :categories
   resources :states
   resources :cities
   resources :sessions, only: [:new, :create, :destroy]

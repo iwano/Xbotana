@@ -29,4 +29,19 @@ class StatesController < ApplicationController
     flash[:success] = "The state has been removed from the database."
     redirect_to states_path
   end
+  
+  def edit
+    @state = State.find(params[:id])
+  end
+  
+  def update
+     @state = State.find(params[:id])
+     if @state.update_attributes(params[:state])
+       flash[:success] = "State updated"
+       redirect_to states_path
+     else
+       render 'edit'
+     end
+   end
+  
 end

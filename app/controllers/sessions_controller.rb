@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_filter :already_signedin, only: :new
   def new
   end
   
@@ -16,5 +17,5 @@ class SessionsController < ApplicationController
   def destroy
     sign_out
     redirect_to root_path
-  end
+  end 
 end

@@ -30,4 +30,18 @@ class CitiesController < ApplicationController
     redirect_to cities_path
   end
   
+  def edit
+    @city = City.find(params[:id])
+  end
+  
+  def update
+    @city = City.find(params[:id])
+    if @city.update_attributes(params[:city])
+      flash[:success] = "City updated"
+      redirect_to cities_path
+    else
+      render 'edit'
+    end
+  end
+  
 end

@@ -6,14 +6,17 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
-	<h2><%= @user.email %></h2>
-	<h2><%= @user.phone_number %></h2>
-	<h2><%= @user.mobile_phone %></h2>
-	<h2><%= @user.address %></h2>
-	<h2><%= @user.rfc %></h2>
-	<h2><%= @user.state_id %></h2>
-	<h2><%= @user.city_id %></h2>
-    </section>
-  </aside>
+	</section>
+
+	<div class="span4">
+	<h3><%= @user.email %></h3>
+	<h3><%= @user.phone_number %></h3>
+	<h3><%= @user.mobile_phone %></h3>
+	<h3><%= @user.address %></h3>
+	<h3><%= @user.rfc %></h3>
+	<h3><%= @user.state.name %></h3>
+	<h3><%= @user.city.name %></h3>
+    </div>
+	</aside>
 </div>
 

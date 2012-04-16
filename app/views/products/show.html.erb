@@ -1,0 +1,16 @@
+<% provide(:title, @product.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= @product.name %>
+      </h1>
+    </section>
+	<div class="span4">
+	<h3><%= @product.category.name %></h3>
+	<h3>$<%= @product.price %></h3>
+	<h3><%= @product.lot %></h3>
+	<h3><%= @product.description %></h3>
+    </div>
+  </aside>
+</div>

@@ -1,0 +1,12 @@
+<% provide(:title, @category.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= @category.name %>
+      </h1>
+    </section>
+  </aside>
+</div>
+
+<%= link_to "All categories",   categories_path %>

@@ -56,4 +56,12 @@ module SessionsHelper
     def admin_user
       redirect_to(root_path) unless current_user.admin?
     end
+    
+    def already_signedin
+      if signed_in?
+        redirect_to(root_path)
+      else
+        render 'new'
+      end
+    end
 end
