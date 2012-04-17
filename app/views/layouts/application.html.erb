@@ -14,9 +14,7 @@
 		        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
 		<% end %>
 	<% if signed_in? %>
-	<div class="span9">
 		<%= yield %>
-	</div>
 	<div class="span2">
 	  <%= render 'layouts/catalogs' %>
 	</div>

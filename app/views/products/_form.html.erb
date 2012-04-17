@@ -13,8 +13,14 @@
 	  <%= f.label :price %>
       <%= f.text_field :price %>
 
- 	  <%= f.label :lot %>
-      <%= f.text_field :lot %>
+ 	  <%= f.label :lot_id %>
+      <%= f.collection_select :lot_id, Lot.all, :id , :number %>
+
+	  <%= f.label :presentation_id %>
+      <%= f.collection_select :presentation_id, Presentation.all, :id , :name %>
+
+	  <%= f.label :quantity %>
+      <%= f.text_field :quantity %>
 
       <%= f.submit "Add", class: "btn btn-large btn-primary" %>
 <% end %>

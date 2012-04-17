@@ -1,5 +1,7 @@
 Xbotana::Application.routes.draw do
   resources :users
+  resources :lots
+  resources :presentations
   resources :products
   resources :categories
   resources :states

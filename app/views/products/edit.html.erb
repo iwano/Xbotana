@@ -1,7 +1,8 @@
 <% provide(:title, "Edit product") %> 
+<div class="span9">
 <h1>Edit Product</h1>
 
-<div class="row">
+<div class="row offset2">
   <%= form_for(@product) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
@@ -17,10 +18,17 @@
 	  <%= f.label :price %>
       <%= f.text_field :price %>
 
- 	  <%= f.label :lot %>
-      <%= f.text_field :lot %>
+ 	  <%= f.label :lot_id %>
+      <%= f.collection_select :lot_id, Lot.all, :id , :number %>
+
+	  <%= f.label :presentation_id %>
+      <%= f.collection_select :presentation_id, Presentation.all, :id , :name %>
+
+	  <%= f.label :quantity %>
+      <%= f.text_field :quantity %>
 
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>
 
+</div>
 </div>

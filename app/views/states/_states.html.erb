@@ -1,8 +1,8 @@
 <% @states.each do |state| %>
     <li>
-		<div class="row-fluid">
+		<div class="row">
 		  <div class="span2">
-		  	<h4><%= state.name%></h4>
+		  	<h4><%= link_to state.name, state%></h4>
 		  </div>
 		
 		  <div class="span1">

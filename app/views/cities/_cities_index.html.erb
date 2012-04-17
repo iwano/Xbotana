@@ -1,8 +1,8 @@
 <% @cities.each do |city| %>
     <li>
-		<div class="row-fluid">
+		<div class="row">
 		  <div class="span2">
-		  	<h4><%= city.name%></h4>
+		  	<h4><%= link_to city.name, city%></h4>
 		  </div>
 		  <div class="span1">
 		  	<%= link_to 'Show', city, class: 'btn btn-primary' %>
@@ -16,4 +16,3 @@
 		</div>
     </li>
  <% end %>
-
