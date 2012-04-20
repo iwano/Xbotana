@@ -1,23 +1,18 @@
-<% @categories.each do |category| %>
-    <li>
-		<div class="row">
-			
-		  <div class="span2">
-		  	<h4><%= link_to category.name, category%></h4>
-		  </div>
-		
-		  <div class="span1">
-		  	<%= link_to 'Show', category, class: 'btn btn-primary' %>
-		  </div>
-		
-		  <div class="span1">
-		  	<%= link_to 'Edit', edit_category_path(category), class: 'btn btn-warning'%>
-		  </div>
-		
-		  <div class="span1">
-		  	<%= link_to 'Delete', category, method: :delete, confirm: 'Are you sure?', class: 'btn btn-danger'%>
-		  </div>
-		
-		</div>
-    </li>
- <% end %>
+<table class='table-striped table'>  
+	<tr>
+		<th>Name</th>
+		    <th></th>
+		    <th></th>
+		    <th></th>
+		 </tr>
+
+	<% @categories.each do |category| %>
+		<tr>
+			<td><h4><%= link_to category.name, category%></h4></td>
+			<td><%= link_to 'Show', category, class: 'btn btn-primary' %></td>
+			<td><%= link_to 'Edit', edit_category_path(category), class: 'btn btn-warning'%></td>
+			<td><%= link_to 'Delete', category, method: :delete, confirm: 'Are you sure?', class: 'btn btn-danger'%></td>
+		</tr>
+	<% end %>
+</table>  
+<br />

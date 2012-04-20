@@ -71,6 +71,13 @@ h4 {
   color: $grayLight;
 }
 
+h5 {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  font-weight: normal;
+  color: $grayLight;
+}
+
 p {
   font-size: 1.1em;
   line-height: 1.7em;
@@ -84,7 +91,6 @@ p {
   margin-right: 10px;
   font-size: 1.7em;
   color: white;
-  text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;

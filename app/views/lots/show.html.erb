@@ -1,0 +1,26 @@
+<% provide(:title, @lot.number.to_s) %>
+<div class="span8">
+<div class="row-fluid">
+  <aside class="span9">
+    <section>
+      <h1>
+        <%= @lot.number %>
+      </h1>
+    </section>
+	<ul class="users">
+		<% if @lot.products.any? %>
+      		<div class="span4">
+				<h3>Products (<%= @lot.products.count %>)</h3>			
+			</div>
+			<div class="span6">
+				<%= will_paginate @products %>
+        		<%= render @products %>
+				<%= will_paginate @products %>
+			</div>		
+    	<% end %>
+	</ul>
+  </aside>
+</div>
+
+<%= link_to "All lots",   lots_path %>
+</div>

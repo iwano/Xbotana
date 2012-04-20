@@ -64,4 +64,10 @@ module SessionsHelper
         render 'new'
       end
     end
+    
+    def non_admin_user
+      if current_user.admin?
+        redirect_to(root_path)
+      end
+    end
 end

@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   has_secure_password
   before_save :create_remember_token
   
+  has_many :cart_products
   belongs_to :state
   belongs_to :city
   

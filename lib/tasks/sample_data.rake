@@ -22,7 +22,7 @@ namespace :db do
       address = Faker::Address.street_address
       rfc = "ufydjhfv#{n+1}"
       state = "1"
-      city = n
+      city = n+1
       User.create!(name: name,
                    email: email,
                    phone_number: phone,
@@ -44,7 +44,7 @@ namespace :db do
         address = Faker::Address.street_address
         rfc = "ufydjhfv#{n+1}"
         state = "2"
-        city = n
+        city = n+1
         User.create!(name: name,
                      email: email,
                      phone_number: phone,
@@ -66,7 +66,7 @@ namespace :db do
           address = Faker::Address.street_address
           rfc = "ufydjhfv#{n+1}"
           state = "3"
-          city = n
+          city = n+1
           User.create!(name: name,
                        email: email,
                        phone_number: phone,
@@ -88,7 +88,7 @@ namespace :db do
             address = Faker::Address.street_address
             rfc = "ufydjhfv#{n+1}"
             state = "4"
-            city = n
+            city = n+1
             User.create!(name: name,
                          email: email,
                          phone_number: phone,
@@ -110,7 +110,7 @@ namespace :db do
               address = Faker::Address.street_address
               rfc = "ufydjhfv#{n+1}"
               state = "5"
-              city = n
+              city = n+1
               User.create!(name: name,
                            email: email,
                            phone_number: phone,
@@ -132,7 +132,7 @@ namespace :db do
                 address = Faker::Address.street_address
                 rfc = "ufydjhfv#{n+1}"
                 state = "6"
-                city = n
+                city = n+1
                 User.create!(name: name,
                              email: email,
                              phone_number: phone,
@@ -154,7 +154,7 @@ namespace :db do
                   address = Faker::Address.street_address
                   rfc = "ufydjhfv#{n+1}"
                   state = "7"
-                  city = n
+                  city = n+1
                   User.create!(name: name,
                                email: email,
                                phone_number: phone,
@@ -330,7 +330,7 @@ namespace :db do
       name = "Chips"
       Category.create!(name:name)  
       
-      name = "Soda drink"
+      name = "Popcorn"
       Category.create!(name:name)
       
       name = "Peanuts"
@@ -360,5 +360,32 @@ namespace :db do
       
       name = "250gr"
       Presentation.create!(name:name)
+      
+      name = "Doritos"
+      category = "1"
+      lot = "1"
+      quantity = "150"
+      description = "Crunchy chili cheese nachos"
+      price = "7.50"
+      presentation = "1"
+      Product.create!(name:name, category_id:category, lot_id:lot, quantity:quantity, description:description, price:price, presentation_id:presentation)
+      
+      name = "japanese peanuts"
+      category = "3"
+      lot = "2"
+      quantity = "320"
+      description = "Salty and amazing"
+      price = "12.50"
+      presentation = "2"
+      Product.create!(name:name, category_id:category, lot_id:lot, quantity:quantity, description:description, price:price, presentation_id:presentation)
+      
+      name = "Extra butter popcorn"
+      category = "2"
+      lot = "3"
+      quantity = "300"
+      description = "A flavor explosion"
+      price = "10"
+      presentation = "3"
+      Product.create!(name:name, category_id:category, lot_id:lot, quantity:quantity, description:description, price:price, presentation_id:presentation)
   end
 end

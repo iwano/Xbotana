@@ -1,0 +1,22 @@
+<%= provide(:title, 'New Lot') %>
+<div class="span9">
+<h1>New Lot </h1>
+
+<div class="row">
+  <div class="span6 offset2">
+    <%= form_for(@lot) do |f| %>
+	      <%= render 'shared/error_messages', object: f.object %>
+
+		  <%= f.label :number %>
+	      <%= f.text_field :number %>
+	
+		  <%= f.label :expiry_date %>
+	      <%= f.text_field :expiry_date %>
+
+	      <%= f.submit "Add", class: "btn btn-large btn-primary" %>
+	<% end %>
+  </div>
+</div>
+
+<%= link_to "All lots",   lots_path %>
+</div>

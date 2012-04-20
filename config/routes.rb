@@ -1,4 +1,5 @@
 Xbotana::Application.routes.draw do
+  resources :cart_products
   resources :users
   resources :lots
   resources :presentations
@@ -8,6 +9,7 @@ Xbotana::Application.routes.draw do
   resources :cities
   resources :sessions, only: [:new, :create, :destroy]
   
+  match '/cart', to: 'cart_products#index'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   match '/signup',  to: 'users#new'

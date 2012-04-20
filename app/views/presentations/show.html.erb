@@ -1,0 +1,26 @@
+<% provide(:title, @presentation.name) %>
+<div class="span8">
+<div class="row-fluid">
+  <aside class="span9">
+    <section>
+      <h1>
+        <%= @presentation.name %>
+      </h1>
+    </section>
+	<ul class="users">
+		<% if @presentation.products.any? %>
+      		<div class="span4">
+				<h3>Products (<%= @presentation.products.count %>)</h3>			
+			</div>
+			<div class="span6">
+				<%= will_paginate @products %>
+        		<%= render @products %>
+				<%= will_paginate @products %>
+			</div>		
+    	<% end %>
+	</ul>
+  </aside>
+</div>
+
+<%= link_to "All presentations",   presentations_path %>
+</div>

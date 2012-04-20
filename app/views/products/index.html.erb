@@ -1,13 +1,10 @@
 <% provide(:title, 'All Products') %>
 <div class="span9">
-<%= link_to '+ Add', 'products/new', class: 'btn btn-success', style: 'float:left'%>
-<h1>All Products</h1>
-
-<%= will_paginate %>
-
-<ul class="not-users">
-    <%= render "products_index" %>
-</ul>
-
-<%= will_paginate %>
+	<% if current_user.admin?%>
+		<%= link_to '+ Add', 'products/new', class: 'btn btn-success', style: 'float:left'%>
+	<%end%>
+	<h1>All Products</h1>
+	<%= will_paginate %>
+    	<%= render "products_index" %>
+	<%= will_paginate %>
 </div>
