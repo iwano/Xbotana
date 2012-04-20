@@ -62,7 +62,7 @@
 <%else%>
 	<div class="span3">	
 	<div class="well catalogsSidebar add_form">
-		<%= form_for(:cart_product, :url => cart_products_path, remote: true) do |f| %>
+		<%= form_for(@cart_product, remote: true) do |f| %>
 			  <%= f.hidden_field :product_id, :value => @product.id %>
 			  <%= f.hidden_field :price, :value => @product.price %>
 			<ul>

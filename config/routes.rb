@@ -1,5 +1,5 @@
 Xbotana::Application.routes.draw do
-  resources :cart_products
+  resources :cart_products, only: [:create, :index, :destroy]
   resources :users
   resources :lots
   resources :presentations

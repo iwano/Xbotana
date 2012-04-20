@@ -1,4 +1,5 @@
 <tr>
 	<td><h4><%= cart_product.product.name %></h4></td>
+	<td><h4><%= cart_product.quantity %></h4></td>
 	<td><%= link_to 'Delete', cart_product, method: :delete, confirm: 'Are you sure?', class: 'btn btn-danger'%></td>
 </tr>

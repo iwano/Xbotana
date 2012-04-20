@@ -18,10 +18,21 @@ class PresentationsController < ApplicationController
   def show
     @presentation = Presentation.find(params[:id])
     @products = @presentation.products.paginate(page: params[:page])
+    
+    respond_to do |format|
+       format.html #show.html.erb
+       format.json {render json: @presentation}
+     end
   end
 
   def index
     @presentations = Presentation.paginate(page: params[:page])
+    presentations = Presentation.all
+    
+    respond_to do |format|
+       format.html #presentations.html.erb
+       format.json {render json: @presentations}
+     end
   end
 
   def destroy

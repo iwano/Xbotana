@@ -10,7 +10,8 @@
 
 class State < ActiveRecord::Base
   attr_accessible :name 
-  has_many :cities
+  has_many :cities, dependent: :destroy
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   
+  default_scope order: 'states.name ASC'
 end

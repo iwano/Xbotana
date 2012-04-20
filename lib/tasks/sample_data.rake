@@ -15,7 +15,7 @@ namespace :db do
       
     5.times do |n|
       name  = Faker::Name.name
-      email = "example#{n+1}@railstutorial.org"
+      email = "example#{n+1}@client.org"
       password  = "password"
       phone = "(355) 35 55 555"
       mobile_phone = "(355) 35 55 555"
@@ -37,7 +37,7 @@ namespace :db do
     
      4.times do |n|
         name  = Faker::Name.name
-        email = "example#{n+6}@railstutorial.org"
+        email = "example#{n+6}@client.org"
         password  = "password"
         phone = "(355) 35 55 555"
         mobile_phone = "(355) 35 55 555"
@@ -59,7 +59,7 @@ namespace :db do
       
        5.times do |n|
           name  = Faker::Name.name
-          email = "example#{n+11}@railstutorial.org"
+          email = "example#{n+11}@client.org"
           password  = "password"
           phone = "(355) 35 55 555"
           mobile_phone = "(355) 35 55 555"
@@ -81,7 +81,7 @@ namespace :db do
         
          5.times do |n|
             name  = Faker::Name.name
-            email = "example#{n+20}@railstutorial.org"
+            email = "example#{n+20}@client.org"
             password  = "password"
             phone = "(355) 35 55 555"
             mobile_phone = "(355) 35 55 555"
@@ -103,7 +103,7 @@ namespace :db do
           
            4.times do |n|
               name  = Faker::Name.name
-              email = "example#{n+30}@railstutorial.org"
+              email = "example#{n+30}@client.org"
               password  = "password"
               phone = "(355) 35 55 555"
               mobile_phone = "(355) 35 55 555"
@@ -125,7 +125,7 @@ namespace :db do
             
              5.times do |n|
                 name  = Faker::Name.name
-                email = "example#{n+40}@railstutorial.org"
+                email = "example#{n+40}@client.org"
                 password  = "password"
                 phone = "(355) 35 55 555"
                 mobile_phone = "(355) 35 55 555"
@@ -147,7 +147,7 @@ namespace :db do
               
                5.times do |n|
                   name  = Faker::Name.name
-                  email = "example#{n+50}@railstutorial.org"
+                  email = "example#{n+50}@client.org"
                   password  = "password"
                   phone = "(355) 35 55 555"
                   mobile_phone = "(355) 35 55 555"

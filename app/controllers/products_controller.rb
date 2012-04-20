@@ -18,11 +18,22 @@ class ProductsController < ApplicationController
 
  def show
    @product = Product.find(params[:id])
-   @cart_product = CartProduct.new
+   @cart_product = current_user.cart_products.build
+   
+   respond_to do |format|
+     format.html #show.html.erb
+     format.json {render json: @product}
+   end
  end
 
  def index
    @products = Product.paginate(page: params[:page])
+   products = Product.all
+   
+   respond_to do |format|
+     format.html #products.html.erb
+     format.json {render json: products}
+   end
  end
 
  def edit

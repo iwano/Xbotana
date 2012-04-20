@@ -8,10 +8,21 @@ class CitiesController < ApplicationController
   
   def show
     @city = City.find(params[:id])
+    
+    respond_to do |format|
+      format.html #show.html.erb
+      format.json {render json: @city}
+    end
   end
   
   def index
     @cities = City.paginate(page: params[:page])
+    cities = City.all
+    
+    respond_to do |format|
+      format.html #cities.html.erb
+      format.json {render json: cities}
+    end
   end
   
   def create

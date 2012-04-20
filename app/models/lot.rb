@@ -12,7 +12,9 @@
 class Lot < ActiveRecord::Base
   attr_accessible :expiry_date, :number
   
-  has_many :products
+  has_many :products, dependent: :destroy
   validates :expiry_date, presence:true
   validates :number, uniqueness: { case_sensitive: false }
+  
+  default_scope order: 'lots.number ASC'
 end

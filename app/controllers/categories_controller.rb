@@ -18,10 +18,21 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     @products = @category.products.paginate(page: params[:page])
+    
+    respond_to do |format|
+       format.html #show.html.erb
+       format.json {render json: @category}
+     end
   end
 
   def index
     @categories = Category.paginate(page: params[:page])
+    categories = Category.all
+    
+    respond_to do |format|
+       format.html #categories.html.erb
+       format.json {render json: categories}
+     end
   end
 
   def edit

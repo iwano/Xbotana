@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   has_secure_password
   before_save :create_remember_token
   
-  has_many :cart_products
+  has_many :cart_products, dependent: :destroy
   belongs_to :state
   belongs_to :city
   
@@ -43,6 +43,9 @@ class User < ActiveRecord::Base
                       uniqueness: { case_sensitive: false }
                       
   
+  def cart
+    CartProduct.where("user_id = ?", id)
+  end
   private
 
     def create_remember_token

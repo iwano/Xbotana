@@ -12,7 +12,7 @@
 #
 
 class CartProduct < ActiveRecord::Base
-  attr_accessible :product_id, :quantity, :subtotal, :user_id
+  attr_accessible :product_id, :quantity, :subtotal
   
   belongs_to :product
   belongs_to :user

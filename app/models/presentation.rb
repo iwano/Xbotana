@@ -13,4 +13,6 @@ class Presentation < ActiveRecord::Base
   has_many :products
   
   validates :name, presence:true, uniqueness: { case_sensitive: false }
+  
+  default_scope order: 'presentations.name Desc'
 end

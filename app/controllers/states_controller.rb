@@ -8,6 +8,12 @@ class StatesController < ApplicationController
   
   def index 
     @states = State.paginate(page: params[:page])
+    states = State.all
+    
+    respond_to do |format|
+      format.html #states.html.erb
+      format.json {render json: states}
+    end
   end
   
   def create
@@ -23,6 +29,11 @@ class StatesController < ApplicationController
   def show
     @state = State.find(params[:id])
     @cities = @state.cities.paginate(page: params[:page])
+    
+    respond_to do |format|
+      format.html #show.html.erb
+      format.json {render json: @state}
+    end
   end
   
   def destroy

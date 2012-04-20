@@ -19,10 +19,21 @@ class LotsController < ApplicationController
  def show
    @lot = Lot.find(params[:id])
    @products = @lot.products.paginate(page: params[:page])
+   
+   respond_to do |format|
+      format.html #show.html.erb
+      format.json {render json: @lot}
+    end
  end
  
  def index
    @lots = Lot.paginate(page: params[:page])
+   lots = Lot.all
+   
+   respond_to do |format|
+      format.html #lots.html.erb
+      format.json {render json: lots}
+    end
  end
  
  def destroy

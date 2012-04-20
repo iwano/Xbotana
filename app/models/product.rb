@@ -16,11 +16,12 @@
 
 class Product < ActiveRecord::Base
   attr_accessible :name, :description, :price, :lot_id, :category_id, :presentation_id, :quantity
+  default_scope order: 'products.name ASC'
   
   belongs_to :category
   belongs_to :lot
   belongs_to :presentation
-  has_many :cart_product
+  has_many :cart_product, dependent: :destroy
   
    validates :name, presence: true
    validates :description, presence: true
