@@ -6,7 +6,7 @@ class CartProductsController < ApplicationController
     product_id = params[:cart_product][:product_id]
     quantity = params[:cart_product][:quantity]
     price = params[:cart_product][:price]
-    subtotal = quantity.to_i * price.to_i
+    subtotal = quantity.to_i * price.to_f
     @cart_product = current_user.cart_products.build(product_id: product_id, quantity: quantity, subtotal: subtotal)
     if @cart_product.save
       flash[:success] = "The product has been added to your shopping cart."

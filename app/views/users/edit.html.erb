@@ -1,46 +1,47 @@
 <% provide(:title, "Edit user") %> 
 <div class="span9">
-<h1>Update your profile</h1>
+	<h1>Update your profile</h1>
 
-<div class="row">
-  <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
+	<div class="span6 offset2">
+		<%= form_for(@user) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+			<%= f.label :name %>
+			<%= f.text_field :name %>
 
-      <%= f.label :email %>
-      <%= f.text_field :email %>
+			<%= f.label :email %>
+			<%= f.text_field :email %>
 
-	  <%= f.label :phone_number %>
-	  <%= f.text_field :phone_number %>
+			<%= f.label :phone_number %>
+			<%= f.text_field :phone_number %>
 
-	  <%= f.label :mobile_phone %>
-	  <%= f.text_field :mobile_phone %>
+			<%= f.label :mobile_phone %>
+			<%= f.text_field :mobile_phone %>
 	
-	  <%= f.label :address %>
-	  <%= f.text_field :address %>
+			<%= f.label :address %>
+			<%= f.text_field :address %>
 	
-	  <%= f.label :state_id %>
-	  <%= f.collection_select :state_id, State.all, :id , :name %>
+			<%= f.label :state_id %>
+			<%= f.collection_select :state_id, State.all, :id , :name %>
 
-	  <%= f.label :city_id %>
-	  <%= f.collection_select :city_id, City.all, :id , :name %>
+			<%= f.label :city_id %>
+			<%= f.collection_select :city_id, City.all, :id , :name %>
 
-	  <%= f.label :rfc %>
-	  <%= f.text_field :rfc %>
+			<%= f.label :rfc %>
+			<%= f.text_field :rfc %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+			<%= f.label :password %>
+			<%= f.password_field :password %>
 
-      <%= f.label :password_confirmation, "Confirm Password" %>
-      <%= f.password_field :password_confirmation %>
+			<%= f.label :password_confirmation, "Confirm Password" %>
+			<%= f.password_field :password_confirmation %>
+			<div class='span5'>
+				<%= gravatar_for @user %>
+				<a target="_blank" href="http://gravatar.com/emails">change picture</a>
+			</div>
 
-      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-    <% end %>
-
-    <%= gravatar_for @user %>
-    <a target="_blank" href="http://gravatar.com/emails">change</a>
-
-</div>
+			<%= f.submit "Save changes", class: "btn btn-large btn-primary editForm" %>
+			<%= link_to "Cancel", "/", class: "btn editForm" %>
+		<% end %>
+	</div>
 </div>

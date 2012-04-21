@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   before_save :create_remember_token
   
   has_many :cart_products, dependent: :destroy
+  has_many :orders, dependent: :destroy
   belongs_to :state
   belongs_to :city
   

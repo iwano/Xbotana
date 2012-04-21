@@ -70,4 +70,28 @@ module SessionsHelper
         redirect_to(root_path)
       end
     end
+    
+    def get_order_total
+      array = current_user.cart_products
+      total = 0
+      array.length.times do |i|
+        total += array[i-1].subtotal
+      end
+      total
+    end 
+    
+    def get_products_count
+      array = current_user.cart_products
+      count = 0
+      array.length.times do |i|
+        count += array[i-1].quantity
+      end
+      count
+    end  
+    
+    def empty_cart
+      current_user.cart_products.destroy_all
+      flash[:warning] = "Cart emptied."
+     
+    end
 end
