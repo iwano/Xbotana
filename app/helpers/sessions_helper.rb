@@ -92,4 +92,16 @@ module SessionsHelper
     def empty_cart
       current_user.cart_products.destroy_all
     end
+    
+    def combine_repeated_products(product_id, quantity, subtotal)
+      product = CartProduct.where(:user_id=>current_user.id).where(:product_id=>product_id).first
+      if product != nil
+        quantity = quantity.to_i + product.quantity
+        subtotal = subtotal.to_f + product.subtotal
+        product.update_attributes(:quantity => quantity, :subtotal => subtotal)
+        return true
+      else
+        return false
+      end
+    end
 end

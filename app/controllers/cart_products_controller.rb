@@ -7,12 +7,21 @@ class CartProductsController < ApplicationController
     quantity = params[:cart_product][:quantity]
     price = params[:cart_product][:price]
     subtotal = quantity.to_i * price.to_f
-    @cart_product = current_user.cart_products.build(product_id: product_id, quantity: quantity, subtotal: subtotal)
-    if @cart_product.save
+    
+    res = combine_repeated_products(product_id, quantity, subtotal)
+    if res
       flash[:success] = "The product has been added to your shopping cart."
+      redirect_to cart_path
+    else
+      @cart_product = current_user.cart_products.build(product_id: product_id, quantity: quantity, subtotal: subtotal)
+      if @cart_product.save
+        flash[:success] = "The product has been added to your shopping cart."
+        redirect_to cart_path
+      end
     end
+    
     respond_to do |format|
-      format.html { redirect_to "/products/#{product_id}" }
+      format.html { redirect_to cart_path }
       format.js
     end
   end

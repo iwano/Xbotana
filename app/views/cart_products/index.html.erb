@@ -6,6 +6,12 @@
 	<div class="span5 offset1">
 		<h3>Number of products (<%= current_user.cart_products.count %>)</h3>
 		<table class="table-striped table"> 
+			<tr>
+				<td>Product</td>
+				<td>Quantity</td>
+				<td>Subtotal</td>
+				<td></td>
+			</tr>
 			<%= render @cart_products %>
 		</table>
 	</div>
