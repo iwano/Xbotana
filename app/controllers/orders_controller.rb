@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
-  def new
-  end
+  before_filter :signed_in_user, only: [:new, :create, :show, :index, :edit, :update, :destroy]
   
   def create
     number_products = get_products_count
@@ -13,16 +12,11 @@ class OrdersController < ApplicationController
       flash[:failure] = "There was a problem with the database fuck you!."
       redirect_to root_path
     end
-    
   end
   
-  def show
-  end
-  
-  def index
-  end
-  
-  def delete_cart
+  def emptycart
     empty_cart
+    flash[:warning] = "Cart emptied."
+    redirect_to cart_path
   end
 end

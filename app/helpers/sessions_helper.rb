@@ -91,7 +91,5 @@ module SessionsHelper
     
     def empty_cart
       current_user.cart_products.destroy_all
-      flash[:warning] = "Cart emptied."
-     
     end
 end
