@@ -32,26 +32,6 @@ namespace :db do
                   city_id: city,
                   password: password,
                   password_confirmation: password)
-      
-      name  = "Angel David Garcia Rodriguez"
-      email = "angel_antifashion@hotmail.com"
-      password  = "robotcagahelado"
-      phone = "(312) 161 24 29"
-      mobile_phone = "(312) 315 87 63"
-      address = "Alla en la verga por villaescali"
-      rfc = "sepa la chingada"
-      state = "1"
-      city = "3"
-      User.create!(name: name,
-                   email: email,
-                   phone_number: phone,
-                   mobile_phone: mobile_phone,
-                   address: address,
-                   rfc: rfc,
-                   state_id: state,
-                   city_id: city,
-                   password: password,
-                   password_confirmation: password)
                    
       name  = "Jose Artuto Macias Herrera"
       email = "tohafire@hotmail.com"
@@ -76,7 +56,7 @@ namespace :db do
      name  = "Nestor Julian Morales Cardenas"
      email = "caballeroaguila_22@hotmail.com"
      password  = "elenganadosoy"
-     phone = "(312) 131 80 87"
+     phone = "(312) 345 54 54"
      mobile_phone = "(312) 131 80 87"
      address = "Atrasito de la facu"
      rfc = "krjhfo47fo4jebf"
@@ -93,7 +73,7 @@ namespace :db do
                   password: password,
                   password_confirmation: password)
                   
-    name  = "Ricardo Enrique Castañeda Barajas"
+    name  = "Ricardo Enrique Castaneda Barajas"
     email = "ricardoenrique_111@hotmail.com"
     password  = "teamoyana"
     phone = "(312) 131 80 87"

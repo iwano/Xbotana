@@ -19,7 +19,6 @@
 			<td><h4><%= link_to lot.number, lot%></h4></td>	
 			<td><h4><%= lot.expiry_date %></h4></td>
 			<td><%= link_to 'Show', lot, class: 'btn btn-primary' %></td>
-			<td><%= link_to 'Edit', edit_lot_path(lot), class: 'btn btn-warning'%></td>
 			<td><%= link_to 'Delete', lot, method: :delete, confirm: 'Are you sure?', class: 'btn btn-danger'%></td>
 		</tr>
 	 	<% end %>

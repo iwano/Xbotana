@@ -28,10 +28,20 @@ class OrdersController < ApplicationController
     else
       @orders = current_user.orders
     end
+    
+    respond_to do |format|
+      format.html #index.html
+      format.json {render json: @orders}
+    end
   end
   
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
+    
+    respond_to do |format|
+      format.html #show.html
+      format.json {render json: @order}
+    end
   end
 end

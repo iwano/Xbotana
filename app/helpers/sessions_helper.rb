@@ -110,6 +110,8 @@ module SessionsHelper
       products.length.times do |i|
         pr = products[i-1]
         order.order_details.create(product_id: pr.product_id, quantity: pr.quantity, subtotal: pr.subtotal)
+        product_to_update = Product.find(pr.product_id)
+        product_to_update.update_attributes(:quantity => product_to_update.quantity - pr.quantity)
       end
     end
 end
