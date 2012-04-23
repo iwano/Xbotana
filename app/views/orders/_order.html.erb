@@ -1,0 +1,18 @@
+<% if current_user.admin? %>
+	<tr>
+		<td><h4><%= link_to order.created_at.to_formatted_s(:long), order %></h4></td>
+		<td><h4><%= link_to order.user.name, order.user %></h4></td>
+		<td><h4><%= link_to order.user.state.name, order.user.state %></h4></td>
+		<td><h4><%= link_to order.user.city.name, order.user.city %></h4></td>
+		<td><h4><%= order.number_products %></h4></td>
+		<td><h4><%= order.total %></h4></td>
+		<td><h4><%= order.delivered %></h4></td>
+	</tr>
+<%else%>
+	<tr>
+		<td><h4><%= link_to order.created_at.to_formatted_s(:long), order %></h4></td>
+		<td><h4><%= order.number_products %></h4></td>
+		<td><h4><%= order.total %></h4></td>
+		<td><h4><%= order.delivered %></h4></td>
+	</tr>
+<%end%>

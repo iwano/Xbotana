@@ -50,35 +50,36 @@
 	</div>
     </div>
 
-<% if current_user.admin?%>
-	
+	<% if current_user.admin?%>
 		<ul>
 		  	<%= link_to 'Edit', edit_product_path(@product), class: 'btn btn-warning'%>
 		  </ul>
 		<ul>
 		  	<%= link_to 'Delete', @product, method: :delete, confirm: 'Are you sure?', class: 'btn btn-danger'%>
 		</ul>
-
-<%else%>
-	<div class="span3">	
-	<div class="well catalogsSidebar add_form">
-		<%= form_for(@cart_product, remote: true) do |f| %>
-			  <%= f.hidden_field :product_id, :value => @product.id %>
-			  <%= f.hidden_field :price, :value => @product.price %>
-			<ul>
-			  <%= f.label :quantity %>
-			</ul>
-			<ul>
-		      <%= select("cart_product", "quantity", (1..100).step(1).collect {|p| [ "#{p}", p ] }, { include_blank: true }, class: 'cmb_quantity') %>
-			</ul>
-
-		      <%= f.submit '+ Add to cart', class: 'btn btn-success'%>
-		<% end %>		 
-	</div>
-	</div>
-<%end%>
+	<%else%>
+		<div class="span3">	
+			<div class="well catalogsSidebar add_form">
+				<% if @product.quantity == 0%>
+					<%= label :post, :title, 'Sorry there are no more items available in stock :(', class: 'sorryNoStock' %>
+				<%else%>
+					<%= form_for(@cart_product, remote: true) do |f| %>
+						<%= f.hidden_field :product_id, :value => @product.id %>
+			  			<%= f.hidden_field :price, :value => @product.price %>
+						<ul>
+			  				<%= f.label :quantity %>
+						</ul>
+						<ul>
+							<%= select("cart_product", "quantity", (1..@product.quantity).step(1).collect {|p| [ "#{p}", p ] }, { include_blank: true }, class: 'cmb_quantity') %>
+						</ul>
+						<%= f.submit '+ Add to cart', class: 'btn btn-success'%>
+					<% end %>
+				<%end%> 
+			</div>
+		</div>
+	<%end%>
 </div>
-<%= link_to "All products",   products_path %>
+	<%= link_to "All products",   products_path %>
 </div>
 
 

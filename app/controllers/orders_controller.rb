@@ -6,8 +6,10 @@ class OrdersController < ApplicationController
     total = get_order_total
     @order = current_user.orders.build(number_products: number_products, total: total)
     if @order.save
+      record_order_details(@order)
+      empty_cart
       flash[:success] = "The order has been placed."
-      redirect_to root_path
+      redirect_to orders_path
     else
       flash[:failure] = "There was a problem with the database fuck you!."
       redirect_to root_path
@@ -18,5 +20,18 @@ class OrdersController < ApplicationController
     empty_cart
     flash[:warning] = "Cart emptied."
     redirect_to cart_path
+  end
+  
+  def index
+    if current_user.admin?
+      @orders = Order.all
+    else
+      @orders = current_user.orders
+    end
+  end
+  
+  def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
   end
 end

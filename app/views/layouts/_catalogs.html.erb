@@ -23,18 +23,25 @@
     		<%= link_to "Present.", presentations_path %>
   		</li>
 		<li>
+    		<%= link_to "Orders", orders_path %>
+  		</li>
+		<li>
     		<%= link_to "Routes", '#' %>
   		</li>
 	<%else%>
 		<li class="nav-header">
 	    	<h4>Go to</h4>
 	  	</li>  
+		<li>
+    		<%= link_to "Products", products_path %>
+  		</li>
   		<li>
     		<%= link_to "Cart", cart_path %>
   		</li>
 		<li>
-    		<%= link_to "Products", products_path %>
+    		<%= link_to "Orders", orders_path %>
   		</li>
+		
 	<%end%>
 	</ul>
 </div>

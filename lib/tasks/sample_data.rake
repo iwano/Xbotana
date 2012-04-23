@@ -12,6 +12,107 @@ namespace :db do
                  password: "cabron",
                  password_confirmation: "cabron")
      admin.toggle!(:admin)
+     
+     name  = "Angel David Garcia Rodriguez"
+     email = "angel_antifashion@hotmail.com"
+     password  = "robotcagahelado"
+     phone = "(312) 161 24 29"
+     mobile_phone = "(312) 315 87 63"
+     address = "Alla en la verga por villaescali"
+     rfc = "sepa la chingada"
+     state = "1"
+     city = "3"
+     User.create!(name: name,
+                  email: email,
+                  phone_number: phone,
+                  mobile_phone: mobile_phone,
+                  address: address,
+                  rfc: rfc,
+                  state_id: state,
+                  city_id: city,
+                  password: password,
+                  password_confirmation: password)
+      
+      name  = "Angel David Garcia Rodriguez"
+      email = "angel_antifashion@hotmail.com"
+      password  = "robotcagahelado"
+      phone = "(312) 161 24 29"
+      mobile_phone = "(312) 315 87 63"
+      address = "Alla en la verga por villaescali"
+      rfc = "sepa la chingada"
+      state = "1"
+      city = "3"
+      User.create!(name: name,
+                   email: email,
+                   phone_number: phone,
+                   mobile_phone: mobile_phone,
+                   address: address,
+                   rfc: rfc,
+                   state_id: state,
+                   city_id: city,
+                   password: password,
+                   password_confirmation: password)
+                   
+      name  = "Jose Artuto Macias Herrera"
+      email = "tohafire@hotmail.com"
+      password  = "quenomehablo"
+      phone = "(312) 161 24 29"
+      mobile_phone = "(312) 130 41 76"
+      address = "Fatimas"
+      rfc = "rlikryg34o8r"
+      state = "1"
+      city = "3"
+      User.create!(name: name,
+                   email: email,
+                   phone_number: phone,
+                   mobile_phone: mobile_phone,
+                   address: address,
+                   rfc: rfc,
+                   state_id: state,
+                   city_id: city,
+                   password: password,
+                   password_confirmation: password)
+                   
+     name  = "Nestor Julian Morales Cardenas"
+     email = "caballeroaguila_22@hotmail.com"
+     password  = "elenganadosoy"
+     phone = "(312) 131 80 87"
+     mobile_phone = "(312) 131 80 87"
+     address = "Atrasito de la facu"
+     rfc = "krjhfo47fo4jebf"
+     state = "1"
+     city = "1"
+     User.create!(name: name,
+                  email: email,
+                  phone_number: phone,
+                  mobile_phone: mobile_phone,
+                  address: address,
+                  rfc: rfc,
+                  state_id: state,
+                  city_id: city,
+                  password: password,
+                  password_confirmation: password)
+                  
+    name  = "Ricardo Enrique Castañeda Barajas"
+    email = "ricardoenrique_111@hotmail.com"
+    password  = "teamoyana"
+    phone = "(312) 131 80 87"
+    mobile_phone = "(312) 154 61 55"
+    address = "No tengo casa"
+    rfc = "erkjfo47fgrjk"
+    state = "1"
+    city = "4"
+    User.create!(name: name,
+                 email: email,
+                 phone_number: phone,
+                 mobile_phone: mobile_phone,
+                 address: address,
+                 rfc: rfc,
+                 state_id: state,
+                 city_id: city,
+                 password: password,
+                 password_confirmation: password)
+                  
       
     5.times do |n|
       name  = Faker::Name.name

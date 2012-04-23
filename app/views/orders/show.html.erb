@@ -1,0 +1,21 @@
+<% provide(:title, @order.created_at) %>
+<div class="span9">
+	<section>
+		<h1>
+			<%= @order.created_at.to_formatted_s(:long_ordinal) %>
+		</h1>
+	</section>
+	<div class="span4">
+		<h3>Products (<%= @order.number_products %>)</h3>			
+	</div>
+		
+	<table class="table-striped table"> 
+		<tr>
+			<td>Product</td>
+			<td>Quantity</td>
+			<td>Subtotal</td>
+		</tr>
+		<%= render @order_details %>
+	</table>
+<%= link_to "Orders",   orders_path %>
+</div>

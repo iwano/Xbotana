@@ -104,4 +104,12 @@ module SessionsHelper
         return false
       end
     end
+    
+    def record_order_details(order)
+      products = current_user.cart_products
+      products.length.times do |i|
+        pr = products[i-1]
+        order.order_details.create(product_id: pr.product_id, quantity: pr.quantity, subtotal: pr.subtotal)
+      end
+    end
 end

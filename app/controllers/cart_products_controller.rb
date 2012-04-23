@@ -8,8 +8,7 @@ class CartProductsController < ApplicationController
     price = params[:cart_product][:price]
     subtotal = quantity.to_i * price.to_f
     
-    res = combine_repeated_products(product_id, quantity, subtotal)
-    if res
+    if combine_repeated_products(product_id, quantity, subtotal)
       flash[:success] = "The product has been added to your shopping cart."
       redirect_to cart_path
     else
@@ -27,7 +26,7 @@ class CartProductsController < ApplicationController
   end
   
   def index
-    @cart_products = current_user.cart
+    @cart_products = current_user.cart_products
   end
   
   def destroy

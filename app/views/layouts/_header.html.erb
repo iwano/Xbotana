@@ -18,6 +18,11 @@
 							<i class="icon-shopping-cart icon-white"></i>
 							</a>
 						</li>
+						<li>
+							<a href= '/orders' title="Orders">
+							<i class="icon-th-list icon-white"></i>
+							</a>
+						</li>
 					<%else%>
 						<%if signed_in? && current_user.admin?%>
 							<li id="fat-menu" class="dropdown">
@@ -32,6 +37,7 @@
 									<li><%= link_to "Cities", cities_path %></li>
 									<li><%= link_to "Presentations", presentations_path %></li>
 									<li><%= link_to "Lots", lots_path %></li>
+									<li><%= link_to "Orders", orders_path %></li>
 									<li><%= link_to "Routes", '#' %></li>
 								</ul>
 							</li>
