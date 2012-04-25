@@ -6,10 +6,10 @@
 #  user_id         :integer
 #  number_products :integer
 #  total           :decimal(, )
-#  delivered       :boolean         default(FALSE)
 #  created_at      :datetime        not null
 #  updated_at      :datetime        not null
 #  delivered_date  :date
+#  status          :string(255)     default("processing")
 #
 
 require 'spec_helper'

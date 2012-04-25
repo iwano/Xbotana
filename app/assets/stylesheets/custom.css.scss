@@ -77,6 +77,13 @@ h5 {
   font-weight: normal;
   color: $grayLight;
 }
+h6 {
+	font-size: 1.1em;
+	margin-bottom: 10px;
+	font-weight: bold;
+	text-transform:capitalize;
+	color: #4F4F4F;
+}
 
 p {
   font-size: 1.1em;
@@ -108,6 +115,9 @@ footer {
   padding-top: 5px;
   border-top: 1px solid $grayMediumLight;
   color: $grayLight;
+  min-height: 7px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#F0F0F0), to(#fff));
+  background: -moz-linear-gradient(top,  #f0f0f0,  #fff);
   a {
     color: $gray;
     &:hover { 
@@ -255,4 +265,8 @@ select, .uneditable-input{
 
 .sorryNoStock{
 	color: #A60000;
+}
+
+.timestamp {
+  color: $grayLight;
 }

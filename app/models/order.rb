@@ -6,17 +6,17 @@
 #  user_id         :integer
 #  number_products :integer
 #  total           :decimal(, )
-#  delivered       :boolean         default(FALSE)
 #  created_at      :datetime        not null
 #  updated_at      :datetime        not null
 #  delivered_date  :date
+#  status          :string(255)     default("processing")
 #
 
 class Order < ActiveRecord::Base
-  attr_accessible :delivered, :number_products, :total, :delivered_date
+  attr_accessible :status, :number_products, :total, :delivered_date
   belongs_to :user
   has_many :order_details
   
-  validates :number_products, :total, :user_id, presence:true
+  validates :number_products, :total, :user_id, :status, presence:true
   
 end

@@ -1,30 +1,48 @@
 <% provide(:title, 'Home') %>
 
 <% if signed_in? %>
-<div class="span8">
-  <div class="row">
-    <aside class="span4">
-      <section>
-        <%= render 'shared/user_info' %>
-      </section>
-    </aside>
-	<div class="span4">
-	      <h3>Recent Activity</h3>
-	      
-	    </div>
-  </div> 
-</div> 
+	<div class="span8">
+		<div class="row">
+			<aside class="span4">
+				<section>
+					<%= render 'shared/user_info' %>
+				</section>
+			</aside>
+			<div class="span4">
+				<h3>Recent Activity</h3>
+				<ul class="users">
+					<% recent_order = false %>
+					<% if current_user.admin? %>
+							
+					<%else%>
+						<% @orders.each do |order| %>
+							<% if order.created_at.months_since(2) > Time.now %>
+								<% recent_order = true%>
+								<li>
+									 you placed order <%= link_to order.id, order%> -
+									<span class="timestamp">
+										<%= time_ago_in_words(order.created_at) %> ago.
+									</span>
+								</li>
+							<%end%>
+						<% end %>
+					<% end %>
+					
+					<% if recent_order != true %>
+						<li> You have no Recent Activity.</li>
+					<% end %>
+				<ul>
+			</div>
+		</div> 
+	</div> 
 <% else %>
-  <div class="center hero-unit">
-    <h1>Welcome to botanaX</h1>
-
-    <h2>
-	    Do you have a party, event or a store to supply? Get your snacks right here in no time!
-	  </h2>
-
-	  <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+	<div class="center hero-unit">
+		<h1>Welcome to botanaX</h1>
+		<h2>
+			Do you have a party, event or a store to supply? Get your snacks right here in no time!
+		</h2>
+		<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
 	</div>
-
 	<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
 	<%= link_to image_tag("xsoftware_logo.png", alt: "Xtreme Software"), 'http://rubyonrails.org/' %>
 <% end %>

@@ -11,11 +11,26 @@
 		
 	<table class="table-striped table"> 
 		<tr>
-			<td>Product</td>
-			<td>Quantity</td>
-			<td>Subtotal</td>
+			<td><h6>Product</h6></td>
+			<td><h6>Quantity</h6></td>
+			<td><h6>Subtotal</h6></td>
 		</tr>
 		<%= render @order_details %>
+		<tr>
+			<td>-</td>
+			<td><h6>Subtotal</h6></td>
+			<td><h4><%= @order.total %></h4></td>
+		</tr>
+		<tr>
+			<td>-</td>
+			<td><h6>Shipping</h6></td>
+			<td><h4>$150.00</h4></td>
+		</tr>
+		<tr>
+			<td>-</td>
+			<td><h6>Total</h6></td>
+			<td><h4><%= @order.total + 150 %></h4></td>
+		</tr>
 	</table>
 <%= link_to "Orders",   orders_path %>
 </div>
