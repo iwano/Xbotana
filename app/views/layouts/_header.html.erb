@@ -12,19 +12,8 @@
 						<i class="icon-home icon-white"></i>
 						</a>
 					</li>
-					<% if signed_in? && !current_user.admin?%>
-						<li>
-							<a href= '/cart' title="Shopping cart">
-							<i class="icon-shopping-cart icon-white"></i>
-							</a>
-						</li>
-						<li>
-							<a href= '/orders' title="Orders">
-							<i class="icon-th-list icon-white"></i>
-							</a>
-						</li>
-					<%else%>
-						<%if signed_in? && current_user.admin?%>
+					<% if signed_in? %>
+						<% if current_user.admin?%>
 							<li id="fat-menu" class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target=".nav-collapse">
 									<i class="icon-th-list icon-white"></i> <b class="caret"></b>
@@ -41,14 +30,34 @@
 									<li><%= link_to "Routes", '#' %></li>
 								</ul>
 							</li>
+						<%elsif current_user.hos?%>
+							<li>
+								<a href= '/routes' title="Routes">
+								<i class="icon-road icon-white"></i>
+								</a>
+							</li>
+							<li>
+								<a href= '/route_details' title="Route details">
+								<i class="icon-list icon-white"></i>
+								</a>
+							</li>
+						<%else%>
+							<li>
+								<a href= '/cart' title="Shopping cart">
+								<i class="icon-shopping-cart icon-white"></i>
+								</a>
+							</li>
+							<li>
+								<a href= '/orders' title="Orders">
+								<i class="icon-th-list icon-white"></i>
+								</a>
+							</li>
 						<%end%>
-					<%end%>
-					<li>
-						<a href= '/help'  title="Help">
-						<i class="icon-question-sign icon-white"></i>
-						</a>
-					</li>
-					<% if signed_in? %>
+						<li>
+							<a href= '/help'  title="Help">
+							<i class="icon-question-sign icon-white"></i>
+							</a>
+						</li>
 						<li id="fat-menu" class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target=".nav-collapse">
 								Account <b class="caret"></b>
@@ -60,9 +69,15 @@
 								<li><%= link_to raw('<i class="icon-off"></i> Sign out'), signout_path, method: "delete" %></li>
 							</ul>
 						</li>
-					<% else %>
+					<%else%>
+					<li>
+						<a href= '/help'  title="Help">
+						<i class="icon-question-sign icon-white"></i>
+						</a>
+					</li>
 						<li><%= link_to "Sign in", signin_path %></li>
 					<% end %>
+	
 				</ul>
 			</nav>
 		</div>

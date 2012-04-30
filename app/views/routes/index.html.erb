@@ -1,0 +1,17 @@
+<% provide(:title, 'Routes') %>
+<div class='span9'>
+	<h1>Routes</h1>	
+		<h3>Number of routes available (<%= @routes.count %>)</h3>
+		<%= will_paginate %>
+		<table class="table-striped table"> 
+			<tr>
+				<td>Route no.</td>
+				<td>Vendor</td>
+				<td>Status</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<%= render @routes %>
+		</table>
+		<%= will_paginate %>
+</div>

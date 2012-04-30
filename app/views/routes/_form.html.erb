@@ -1,0 +1,9 @@
+<%= form_for(@route) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+	  <%= f.label "Vendor" %>
+	  <%= f.collection_select :user_id, @users, :id , :name %>
+
+      <%= f.submit "Create", class: "btn btn-large btn-primary" %>
+	  <%= link_to "Cancel", routes_path, class: "btn" %>
+<% end %>

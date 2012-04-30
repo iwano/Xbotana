@@ -1,0 +1,7 @@
+<tr>
+	<td><h4><%= route.id %></h4></td>
+	<td><h4><%= link_to route.user.name, route.user %></h4></td>
+	<td><h4>Not delivered</h4></td>
+	<td><%= link_to 'Show', route, class: 'btn btn-primary' %></td>
+	<td><%= link_to 'Delete', route, method: :delete, confirm: 'Are you sure?', class: 'btn btn-danger'%></td>
+</tr>

@@ -57,6 +57,10 @@ module SessionsHelper
       redirect_to(root_path) unless current_user.admin?
     end
     
+    def hos_user
+      redirect_to(root_path) unless current_user.hos?
+    end
+    
     def already_signedin
       if signed_in?
         redirect_to(root_path)

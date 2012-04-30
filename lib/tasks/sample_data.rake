@@ -13,7 +13,7 @@ namespace :db do
                  password_confirmation: "cabron")
      admin.toggle!(:admin)
      
-     name  = "Angel David Garcia Rodriguez"
+     name = "Angel David Garcia Rodriguez"
      email = "angel_antifashion@hotmail.com"
      password  = "robotcagahelado"
      phone = "(312) 161 24 29"
@@ -22,7 +22,7 @@ namespace :db do
      rfc = "sepa la chingada"
      state = "1"
      city = "3"
-     User.create!(name: name,
+     vendor = User.create!(name: name,
                   email: email,
                   phone_number: phone,
                   mobile_phone: mobile_phone,
@@ -32,6 +32,7 @@ namespace :db do
                   city_id: city,
                   password: password,
                   password_confirmation: password)
+      vendor.toggle!(:vendor)
                    
       name  = "Jose Artuto Macias Herrera"
       email = "tohafire@hotmail.com"
@@ -42,7 +43,7 @@ namespace :db do
       rfc = "rlikryg34o8r"
       state = "1"
       city = "3"
-      User.create!(name: name,
+      vendor = User.create!(name: name,
                    email: email,
                    phone_number: phone,
                    mobile_phone: mobile_phone,
@@ -52,6 +53,7 @@ namespace :db do
                    city_id: city,
                    password: password,
                    password_confirmation: password)
+    vendor.toggle!(:vendor)
                    
      name  = "Nestor Julian Morales Cardenas"
      email = "caballeroaguila_22@hotmail.com"
@@ -62,7 +64,7 @@ namespace :db do
      rfc = "krjhfo47fo4jebf"
      state = "1"
      city = "1"
-     User.create!(name: name,
+     hos = User.create!(name: name,
                   email: email,
                   phone_number: phone,
                   mobile_phone: mobile_phone,
@@ -72,6 +74,7 @@ namespace :db do
                   city_id: city,
                   password: password,
                   password_confirmation: password)
+    hos.toggle!(:hos)
                   
     name  = "Ricardo Enrique Castaneda Barajas"
     email = "ricardoenrique_111@hotmail.com"
@@ -451,6 +454,24 @@ namespace :db do
       presentation = "1"
       Product.create!(name:name, category_id:category, lot_id:lot, quantity:quantity, description:description, price:price, presentation_id:presentation)
       
+      name = "Doritos"
+      category = "1"
+      lot = "1"
+      quantity = "250"
+      description = "Crunchy chili cheese nachos"
+      price = "13"
+      presentation = "2"
+      Product.create!(name:name, category_id:category, lot_id:lot, quantity:quantity, description:description, price:price, presentation_id:presentation)
+      
+      name = "Doritos"
+      category = "1"
+      lot = "1"
+      quantity = "550"
+      description = "Crunchy chili cheese nachos"
+      price = "19.50"
+      presentation = "3"
+      Product.create!(name:name, category_id:category, lot_id:lot, quantity:quantity, description:description, price:price, presentation_id:presentation)
+      
       name = "japanese peanuts"
       category = "3"
       lot = "2"
@@ -458,6 +479,24 @@ namespace :db do
       description = "Salty and amazing"
       price = "12.50"
       presentation = "2"
+      Product.create!(name:name, category_id:category, lot_id:lot, quantity:quantity, description:description, price:price, presentation_id:presentation)
+      
+      name = "japanese peanuts"
+      category = "3"
+      lot = "2"
+      quantity = "120"
+      description = "Salty and amazing"
+      price = "7.50"
+      presentation = "1"
+      Product.create!(name:name, category_id:category, lot_id:lot, quantity:quantity, description:description, price:price, presentation_id:presentation)
+      
+      name = "japanese peanuts"
+      category = "3"
+      lot = "2"
+      quantity = "269"
+      description = "Salty and amazing"
+      price = "20"
+      presentation = "3"
       Product.create!(name:name, category_id:category, lot_id:lot, quantity:quantity, description:description, price:price, presentation_id:presentation)
       
       name = "Extra butter popcorn"
@@ -468,5 +507,24 @@ namespace :db do
       price = "10"
       presentation = "3"
       Product.create!(name:name, category_id:category, lot_id:lot, quantity:quantity, description:description, price:price, presentation_id:presentation)
+      
+      name = "Extra butter popcorn"
+      category = "2"
+      lot = "3"
+      quantity = "290"
+      description = "A flavor explosion"
+      price = "7.20"
+      presentation = "2"
+      Product.create!(name:name, category_id:category, lot_id:lot, quantity:quantity, description:description, price:price, presentation_id:presentation)
+      
+      name = "Extra butter popcorn"
+      category = "2"
+      lot = "3"
+      quantity = "500"
+      description = "A flavor explosion"
+      price = "4.80"
+      presentation = "1"
+      Product.create!(name:name, category_id:category, lot_id:lot, quantity:quantity, description:description, price:price, presentation_id:presentation)
+
   end
 end

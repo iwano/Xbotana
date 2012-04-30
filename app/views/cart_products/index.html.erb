@@ -1,5 +1,5 @@
 <% provide(:title, 'Shopping Cart') %>
-<div class='span7'>
+<div class='span7' id='cart'>
 	<%= link_to 'Products', products_path, class: 'btn btn-default', style: 'float:left'%>
 	<h1>Shopping Cart</h1>
 	<% if current_user.cart_products.any? %>	

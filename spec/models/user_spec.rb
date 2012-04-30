@@ -16,6 +16,8 @@
 #  city_id         :integer
 #  mobile_phone    :string(255)
 #  rfc             :string(255)
+#  vendor          :boolean         default(FALSE)
+#  hos             :boolean         default(FALSE)
 #
 
 require 'spec_helper'

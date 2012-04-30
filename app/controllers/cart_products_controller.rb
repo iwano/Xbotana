@@ -32,7 +32,11 @@ class CartProductsController < ApplicationController
   def destroy
     CartProduct.find(params[:id]).destroy
     flash[:warning] = "Item removed"
-    redirect_to cart_path
+    
+    respond_to do |format|  
+      format.html { redirect_to cart_path }  
+      format.js   { render :nothing => true }  
+    end
   end
   
 end

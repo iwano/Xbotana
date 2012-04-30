@@ -1,7 +1,7 @@
 <% provide(:title, 'Home') %>
 
 <% if signed_in? %>
-	<div class="span8">
+	<div class="span9">
 		<div class="row">
 			<aside class="span4">
 				<section>
@@ -11,13 +11,25 @@
 			<div class="span4">
 				<h3>Recent Activity</h3>
 				<ul class="users">
-					<% recent_order = false %>
+					<% recent = false %>
 					<% if current_user.admin? %>
-							
+						<% @static_pages.each do |order| %>
+							<% if order.created_at.months_since(1) > Time.now %>
+								<% recent = true%>
+								<li>
+									 <%= link_to order.user.name, order.user %>, placed order <%= link_to order.id, order%> -
+									<span class="timestamp">
+										<%= time_ago_in_words(order.created_at) %> ago.
+									</span>
+								</li>
+							<%end%>
+						<% end %>	
+						<%= will_paginate %>
+					<%elsif current_user.vendor?%>	
 					<%else%>
 						<% @orders.each do |order| %>
 							<% if order.created_at.months_since(2) > Time.now %>
-								<% recent_order = true%>
+								<% recent = true%>
 								<li>
 									 you placed order <%= link_to order.id, order%> -
 									<span class="timestamp">
@@ -28,7 +40,7 @@
 						<% end %>
 					<% end %>
 					
-					<% if recent_order != true %>
+					<% if recent != true %>
 						<li> You have no Recent Activity.</li>
 					<% end %>
 				<ul>
