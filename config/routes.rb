@@ -1,6 +1,8 @@
 Xbotana::Application.routes.draw do
   get 'orders/emptycart'
   get 'orders/checkout'
+  get 'route_details/deliver'
+  resources :route_details
   resources :routes
   resources :order_details, only: [:create, :index, :show]
   resources :orders, only: [:create, :index, :show, :destroy]

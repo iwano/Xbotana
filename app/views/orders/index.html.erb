@@ -4,10 +4,11 @@
 		<%= link_to 'Products', products_path, class: 'btn btn-default', style: 'float:left'%>
 	<%end%>
 	<h1>Orders</h1>
-	<% if current_user.admin? %>	
+	<% if current_user.admin? || current_user.hos? %>	
 		<h3>Number of orders made (<%= @orders.count %>)</h3>
 		<table class="table-striped table"> 
 			<tr>
+				<td>Id</td>
 				<td>Date</td>
 				<td>User</td>
 				<td>State</td>

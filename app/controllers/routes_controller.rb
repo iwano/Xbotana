@@ -27,4 +27,10 @@ class RoutesController < ApplicationController
     redirect_to routes_path
   end
   
+  def show
+    @route = Route.find(params[:id])
+    @route_details = @route.route_details
+    @route_detail = RouteDetail.new
+  end
+  
 end

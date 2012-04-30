@@ -1,0 +1,10 @@
+<%= form_for(@route_detail) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+	  <%= f.label "Order" %>
+	  <%= f.collection_select :order_id, @orders, :id , :id %>
+	  <%= f.hidden_field :route_id, :value => @route %>
+	  
+      <%= f.submit "Add", class: "btn btn-large btn-primary" %>
+	  <%= link_to "Cancel", "/routes/#{@route}", class: "btn" %>
+<% end %>

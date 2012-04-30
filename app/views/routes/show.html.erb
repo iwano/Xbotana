@@ -1,0 +1,28 @@
+<% provide(:title, @route.user.name) %>
+<div class="span9">
+		<%= link_to "Add stop", {:controller => "route_details", :action => "new", :route_id => @route.id }, class: 'btn btn-success', style: 'float:left'%>
+	<section>
+		<h1>
+			Route <%= @route.id %>
+		</h1>
+	</section>
+	<div class="span4">
+		<h3>Stops (<%= @route.route_details.count %>)</h3>			
+	</div>
+		
+	<table class="table-striped table"> 
+		<tr>
+			<td><h6>Client</h6></td>
+			<td><h6>State</h6></td>
+			<td><h6>City</h6></td>
+			<td><h6>Address</h6></td>
+			<td><h6>NoProd.</h6></td>
+			<td><h6>Total</h6></td>
+			<td></td>
+		</tr>
+		<%= render @route_details %>
+
+	</table>
+
+<%= link_to "Routes",   routes_path %>
+</div>

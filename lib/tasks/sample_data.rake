@@ -9,13 +9,13 @@ namespace :db do
                  rfc: "cavih23bfj4490",
                  state_id: "1",
                  city_id: "1",
-                 password: "cabron",
-                 password_confirmation: "cabron")
+                 password: "botanax",
+                 password_confirmation: "botanax")
      admin.toggle!(:admin)
      
      name = "Angel David Garcia Rodriguez"
      email = "angel_antifashion@hotmail.com"
-     password  = "robotcagahelado"
+     password  = "botanax"
      phone = "(312) 161 24 29"
      mobile_phone = "(312) 315 87 63"
      address = "Alla en la verga por villaescali"
@@ -36,7 +36,7 @@ namespace :db do
                    
       name  = "Jose Artuto Macias Herrera"
       email = "tohafire@hotmail.com"
-      password  = "quenomehablo"
+      password  = "botanax"
       phone = "(312) 161 24 29"
       mobile_phone = "(312) 130 41 76"
       address = "Fatimas"
@@ -57,7 +57,7 @@ namespace :db do
                    
      name  = "Nestor Julian Morales Cardenas"
      email = "caballeroaguila_22@hotmail.com"
-     password  = "elenganadosoy"
+     password  = "botanax"
      phone = "(312) 345 54 54"
      mobile_phone = "(312) 131 80 87"
      address = "Atrasito de la facu"
@@ -78,7 +78,7 @@ namespace :db do
                   
     name  = "Ricardo Enrique Castaneda Barajas"
     email = "ricardoenrique_111@hotmail.com"
-    password  = "teamoyana"
+    password  = "botanax"
     phone = "(312) 131 80 87"
     mobile_phone = "(312) 154 61 55"
     address = "No tengo casa"

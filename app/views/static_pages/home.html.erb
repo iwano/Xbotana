@@ -25,7 +25,19 @@
 							<%end%>
 						<% end %>	
 						<%= will_paginate %>
-					<%elsif current_user.vendor?%>	
+					<%elsif current_user.hos?%>
+						<%if @orders.count != 0%>
+							<% recent = true%>
+						<%end%>
+						<% @orders.each do |order| %>
+							<li>
+								 order <%= link_to order.id, order%> - placed by <%= link_to order.user.name, order.user%>
+								<span class="timestamp">
+									<%= time_ago_in_words(order.created_at) %> ago
+								</span>
+								needs processing
+							</li>
+						<% end %>
 					<%else%>
 						<% @orders.each do |order| %>
 							<% if order.created_at.months_since(2) > Time.now %>
