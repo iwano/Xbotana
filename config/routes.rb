@@ -1,4 +1,5 @@
 Xbotana::Application.routes.draw do
+  get 'static_pages/search'
   get 'orders/emptycart'
   get 'orders/checkout'
   get 'route_details/deliver'

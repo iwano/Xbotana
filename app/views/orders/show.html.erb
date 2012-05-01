@@ -12,29 +12,33 @@
 	<table class="table-striped table"> 
 		<tr>
 			<td><h6>Product</h6></td>
-			<% if current_user.admin? %>
-				<td><h6>User</h6></td>
-			<% end %>
+			<td><h6>Price</h6></td>
 			<td><h6>Quantity</h6></td>
 			<td><h6>Subtotal</h6></td>
 		</tr>
 		<%= render @order_details %>
 		<tr>
 			<td>-</td>
+			<td>-</td>
 			<td><h6>Subtotal</h6></td>
 			<td><h4><%= @order.total %></h4></td>
 		</tr>
 		<tr>
+			<td>-</td>
 			<td>-</td>
 			<td><h6>Shipping</h6></td>
 			<td><h4>$150.00</h4></td>
 		</tr>
 		<tr>
 			<td>-</td>
+			<td>-</td>
 			<td><h6>Total</h6></td>
 			<td><h4>$<%= @order.total + 150 %></h4></td>
 		</tr>
 	</table>
+	<% if current_user.admin? %>
+		<h6>User: <%= link_to @order.user.name, @order.user%></h6>
+	<% end %>
 <h6>Order status: <%= @order.status %></h6>
 <%= link_to "Orders",   orders_path %>
 </div>

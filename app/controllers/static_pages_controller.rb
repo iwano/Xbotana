@@ -1,4 +1,13 @@
 class StaticPagesController < ApplicationController
+  def search
+    if params[:search]
+      @users = User.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"])
+    else
+      @users = User.find(:all)
+    end
+    @searchkey = params[:search]
+  end
+  
   def home
     if signed_in? 
       if current_user.admin?

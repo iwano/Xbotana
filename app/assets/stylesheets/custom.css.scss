@@ -276,3 +276,13 @@ select, .uneditable-input{
 .vip{
 	color: #A60000;
 }
+
+#searchBar{
+	transition:width 1s;
+	-moz-transition:width 1s; /* Firefox 4 */
+	-webkit-transition:width 1s; /* Safari and Chrome */
+	-o-transition:width 1s; /* Opera */
+	&:focus{
+		width:200px;
+	}
+}

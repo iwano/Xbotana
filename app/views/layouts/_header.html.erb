@@ -4,9 +4,10 @@
 			<%= link_to "botanaX", root_path, id: "logo" %>
 			<nav>
 				<ul class="nav pull-right">
-					<form class="navbar-search pull-left" action="">
-						<i class="icon-search icon-white"></i> <input type="text" class="search-query span2" placeholder="Search">
-					</form>
+					
+					<%= form_tag "/static_pages/search", :method => "get", class: "navbar-search pull-left" do %> 
+					    <i class="icon-search icon-white"></i> <%= text_field_tag :search, params[:search], class: "search-query span2", id: "searchBar", placeholder: "Search" %> 
+					<% end %>
 					<li class="active">
 						<a href= '/' title="Home">
 						<i class="icon-home icon-white"></i>
@@ -27,7 +28,7 @@
 									<li><%= link_to "Presentations", presentations_path %></li>
 									<li><%= link_to "Lots", lots_path %></li>
 									<li><%= link_to "Orders", orders_path %></li>
-									<li><%= link_to "Routes", '#' %></li>
+									<li><%= link_to "Routes", routes_path %></li>
 								</ul>
 							</li>
 						<%elsif current_user.hos?%>

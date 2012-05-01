@@ -1,8 +1,6 @@
 <tr>
 	<td><h4><%=link_to order_detail.product.name, order_detail.product %></h4></td>
-	<% if current_user.admin? %>
-		<td><h4><%= link_to order_detail.order.user.name, order_detail.order.user.name %></h4></td>
-	<% end %>
+	<td><h4><%= order_detail.product.price %></h4></td>
 	<td><h4><%= order_detail.quantity %></h4></td>
 	<td><h4><%= order_detail.subtotal %></h4></td>
 </tr>
