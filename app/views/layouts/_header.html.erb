@@ -37,8 +37,14 @@
 								</a>
 							</li>
 							<li>
-								<a href= '/route_details' title="Route details">
+								<a href= '/orders' title="Orders">
 								<i class="icon-list icon-white"></i>
+								</a>
+							</li>
+						<%elsif current_user.vendor?%>
+							<li>
+								<a href= '/routes' title="Routes">
+								<i class="icon-road icon-white"></i>
 								</a>
 							</li>
 						<%else%>

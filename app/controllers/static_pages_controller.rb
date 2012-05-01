@@ -5,6 +5,8 @@ class StaticPagesController < ApplicationController
         @static_pages = Order.paginate(page: params[:page])
       elsif current_user.hos?
         @orders = Order.where(:status=>"processing") 
+      elsif current_user.vendor?
+        @orders = get_vendor_orders
       else
         @orders = current_user.orders
       end

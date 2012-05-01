@@ -1,5 +1,5 @@
 $(document).ready( ->
-$(‘.delete_cart_product’).live(‘ajax:success’, ->
+$(‘.cart_prod’).live(‘ajax:success’, ->
 $(this).closest(‘tr’).fadeOut();
 );
 );

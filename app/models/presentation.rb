@@ -12,7 +12,7 @@ class Presentation < ActiveRecord::Base
   attr_accessible :name
   has_many :products
   
-  validates :name, presence:true, uniqueness: { case_sensitive: false }
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
   
   default_scope order: 'presentations.name Desc'
 end

@@ -117,9 +117,9 @@ footer {
   padding-top: 5px;
   border-top: 1px solid $grayMediumLight;
   color: $grayLight;
-  min-height: 7px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#F0F0F0), to(#fff));
-  background: -moz-linear-gradient(top,  #f0f0f0,  #fff);
+  min-height: 10px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#F7F7F7), to(#fff));
+  background: -moz-linear-gradient(top,  #F7F7F7,  #fff);
   a {
     color: $gray;
     &:hover { 

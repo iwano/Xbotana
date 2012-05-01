@@ -41,6 +41,10 @@
 		<li>
     		<%= link_to "Routes", routes_path %>
   		</li>
+	<%elsif current_user.vendor?%>
+		<li>
+    		<%= link_to "Routes", routes_path %>
+  		</li>
 	<%else%>
 		<li class="nav-header">
 	    	<h4>Go to</h4>

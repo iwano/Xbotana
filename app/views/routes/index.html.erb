@@ -1,6 +1,8 @@
 <% provide(:title, 'Routes') %>
 <div class='span9'>
-	<%= link_to '+ Add', 'routes/new', class: 'btn btn-success', style: 'float:left'%>
+	<% if current_user.hos? %>
+		<%= link_to '+ Add', 'routes/new', class: 'btn btn-success', style: 'float:left'%>
+	<%end%>
 	<h1>Routes</h1>	
 		<h3>Number of routes available (<%= @routes.count %>)</h3>
 		<%= will_paginate %>
@@ -10,7 +12,9 @@
 				<td>Vendor</td>
 				<td>Status</td>
 				<td></td>
-				<td></td>
+				<% if current_user.hos? %>
+					<td></td>
+				<%end%>
 			</tr>
 			<%= render @routes %>
 		</table>

@@ -5,5 +5,11 @@
 	<td><h4><%= route_detail.order.user.address %></h4></td>
 	<td><h4><%= link_to route_detail.order.number_products, route_detail.order %></h4></td>
 	<td><h4><%= route_detail.order.total %></h4></td>
-	<td><%= link_to 'Delete', route_detail, method: :delete, confirm: 'Are you sure?', class: 'btn btn-danger'%></td>
+	<td><h4><%= route_detail.order.status %></h4></td>
+	<td><%= link_to 'Show', route_detail.order, class: 'btn btn-small btn-primary'%></td>
+	<% if current_user.hos? %>
+		<td><%= link_to 'Delete', route_detail, method: :delete, confirm: 'Are you sure?', class: 'btn btn-small btn-danger'%></td>
+	<% elsif current_user.vendor? %>
+		<td><%= link_to "Delivered", {:controller => "route_details", :action => "deliver", :order_id => route_detail.order.id }, class: 'btn btn-success', style: 'float:left'%></td>
+	<%end%>
 </tr>

@@ -3,7 +3,13 @@ class RouteDetailsController < ApplicationController
   before_filter :hos_user, only: [:new, :create, :show, :index, :edit, :update, :destroy]
   
   def deliver
-    
+    @order = Order.find(params[:order_id])
+    @order.update_attributes(:status => "delivered")
+    ordr = @order.route_details
+    id = ordr[0].route.id
+    check_finished_route(id)
+    flash[:success] = "Order delivered :)"
+    redirect_to "/routes/#{id}"
   end
   
   def new
@@ -16,7 +22,8 @@ class RouteDetailsController < ApplicationController
     @route_detail = RouteDetail.new(params[:route_detail])
     r = params[:route_detail][:route_id]
     if @route_detail.save
-      @route_detail.order.update_attributes(:status => "On its way")
+      @route_detail.order.update_attributes(:status => "on its way")
+      Route.find(r).update_attribute(:finished, false)
       flash[:success] = "The stop has been added to the route."
       redirect_to "/routes/#{r}"
     else

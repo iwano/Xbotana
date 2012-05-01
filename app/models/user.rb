@@ -32,9 +32,9 @@ class User < ActiveRecord::Base
   belongs_to :state
   belongs_to :city
   
-  validates :state_id, presence:true
-  validates :city_id, presence:true
-  validates :rfc, presence:true
+  validates :state_id, presence: true
+  validates :city_id, presence: true
+  validates :rfc, presence: true
   validates :password_confirmation, presence: true
   validates :password, length: { minimum: 6 }
   VALID_PHONE_REGEX = /\A[\d+\-.+\()+\s]+\z/

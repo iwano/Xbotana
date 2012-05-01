@@ -1,13 +1,19 @@
 <% provide(:title, @route.user.name) %>
 <div class="span9">
+	<% if current_user.hos? %>
 		<%= link_to "Add stop", {:controller => "route_details", :action => "new", :route_id => @route.id }, class: 'btn btn-success', style: 'float:left'%>
+	<%end%>
 	<section>
 		<h1>
 			Route <%= @route.id %>
 		</h1>
 	</section>
 	<div class="span4">
-		<h3>Stops (<%= @route.route_details.count %>)</h3>			
+		<% if current_user.vendor? %>
+			<h3>Stops left (<%= @route_details.count %>)</h3>	
+		<% else %>
+			<h3>Stops (<%= @route.route_details.count %>)</h3>	
+		<% end %>		
 	</div>
 		
 	<table class="table-striped table"> 
@@ -18,7 +24,11 @@
 			<td><h6>Address</h6></td>
 			<td><h6>NoProd.</h6></td>
 			<td><h6>Total</h6></td>
+			<td><h6>Status</h6></td>
 			<td></td>
+			<% if !current_user.admin? %>
+				<td></td>
+			<%end%>
 		</tr>
 		<%= render @route_details %>
 

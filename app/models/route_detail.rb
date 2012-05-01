@@ -15,5 +15,5 @@ class RouteDetail < ActiveRecord::Base
   belongs_to :route
   belongs_to :order
   
-  validates :route_id, :order_id, presence:true
+  validates :route_id, :order_id, presence: true
 end

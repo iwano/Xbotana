@@ -61,9 +61,23 @@ module SessionsHelper
       redirect_to(root_path) unless current_user.hos?
     end
     
-     def vendor_user
-        redirect_to(root_path) unless current_user.vendor?
+    def vendor_user
+      redirect_to(root_path) unless current_user.vendor?
+    end
+    
+    def client_only
+      redirect_to(root_path) unless !current_user.vendor? && !current_user.admin? && !current_user.hos?
+    end
+    
+    def non_vendor
+      if current_user.vendor?
+        redirect_to(root_path)
       end
+    end
+    
+    def hos_vendor_admin_user
+      redirect_to(root_path) unless current_user.hos? || current_user.vendor? || current_user.admin?
+    end
     
     def already_signedin
       if signed_in?
@@ -74,7 +88,7 @@ module SessionsHelper
     end
     
     def non_admin_user
-      if current_user.admin?
+      if current_user.admin? || current_user.vendor? || current_user.hos?
         redirect_to(root_path)
       end
     end
@@ -121,5 +135,37 @@ module SessionsHelper
         product_to_update = Product.find(pr.product_id)
         product_to_update.update_attributes(:quantity => product_to_update.quantity - pr.quantity)
       end
+    end
+    
+    def get_undelivered_orders(route)
+      routes = route.route_details
+      route_details = []
+      routes.count.times do |i|
+        route_details.push(routes[i-1]) unless routes[i-1].order.status != 'on its way'
+      end
+      route_details
+    end
+    
+    def check_finished_route(id)
+      routes = Route.find(id).route_details
+      x=true
+      routes.count.times do |i|
+        x=false unless routes[i].order.status == 'delivered'
+      end
+      Route.find(id).update_attribute(:finished, true) unless x==false
+    end
+    
+    def get_vendor_orders
+      orders=[]
+      id = current_user.id
+      routes = Route.where(:user_id=>id)
+        routes.count.times do |i|
+          route_details = routes[i-1].route_details
+          route_details.count.times do |j|
+            rd = route_details[j-1].order
+            orders.push(rd) unless rd.status != 'on its way'
+          end
+        end
+      orders
     end
 end
