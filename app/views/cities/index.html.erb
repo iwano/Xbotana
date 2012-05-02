@@ -1,9 +1,8 @@
 <% provide(:title, 'All Cities') %>
-<div class="span7">
+
 <%= link_to '+ Add', 'cities/new', class: 'btn btn-success', style: 'float:left'%>
 <h1>All Cities</h1>
 
 <%= will_paginate %>
     <%= render "cities_index" %>
 <%= will_paginate %>
-</div>

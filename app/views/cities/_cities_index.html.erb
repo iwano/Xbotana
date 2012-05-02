@@ -1,9 +1,10 @@
 <table class='table-striped table'>  
 	 <tr>
 		<th>Name</th>
+	    <th>State</th>
 	    <th></th>
 	    <th></th>
-	    <th></th>
+		<th></th>
 
 	 </tr>
 
@@ -11,6 +12,7 @@
 
 	<tr>
 		<td><h4><%= link_to city.name, city%></h4></td>	
+		<td><h4><%= link_to city.state.name, city.state %></h4></td>
 		<td><%= link_to 'Show', city, class: 'btn btn-small btn-primary' %></td>
 		<td><%= link_to 'Edit', edit_city_path(city), class: 'btn btn-small btn-warning'%></td>
 		<td><%= link_to 'Delete', city, method: :delete, confirm: 'Are you sure?', class: 'btn btn-small btn-danger'%></td>

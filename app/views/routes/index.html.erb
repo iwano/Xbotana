@@ -1,5 +1,4 @@
 <% provide(:title, 'Routes') %>
-<div class='span9'>
 	<% if current_user.hos? %>
 		<%= link_to '+ Add', 'routes/new', class: 'btn btn-success', style: 'float:left'%>
 	<%end%>
@@ -19,4 +18,3 @@
 			<%= render @routes %>
 		</table>
 		<%= will_paginate %>
-</div>

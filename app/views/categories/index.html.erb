@@ -1,11 +1,9 @@
 <% provide(:title, 'All Categories') %>
-<div class='span7'>
 <%= link_to '+ Add', 'categories/new', class: 'btn btn-success', style: 'float:left'%>
 <h1>All Categories</h1>
 
 <%= will_paginate %>
-	<div class='span5'>
+	<div class='span5 offset2'>
     	<%= render "categories" %>
 	</div>
 <%= will_paginate %>
-</div>

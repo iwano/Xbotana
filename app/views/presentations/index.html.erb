@@ -1,31 +1,28 @@
 <% provide(:title, 'All Presentations') %>
-<div class='span7'>
 <%= link_to '+ Add', 'presentations/new', class: 'btn btn-success', style: 'float:left'%>
 <h1>All Presentations</h1>
 
 <%= will_paginate %>
-	<div class='span5'>
 	<table class='table-striped table'>  
 		 <tr>
 			<th>Name</th>
+		    <th>No. products</th>
 		    <th></th>
-		    <th></th>
-			<th></th>   
+			<th></th>  
+			<th></th> 
 		 </tr>
 
 		<% @presentations.each do |presentation| %>
 
 		<tr>
-			<td><h4><%= link_to presentation.name, presentation %></h4></td>	
+			<td><h4><%= link_to presentation.name, presentation %></h4></td>
+			<td><h4><%= presentation.products.count %></h4></td>	
 			<td><%= link_to 'Show', presentation, class: 'btn btn-small btn-primary' %></td>
-			<td><%= link_to 'Edit', edit_presentation_path(presentation), class: 'btn btn-small btn-warning'%></td>
 			<td><%= link_to 'Delete', presentation, method: :delete, confirm: 'Are you sure?', class: 'btn btn-small btn-danger'%></td>
 		</tr>
 	 	<% end %>
 
 	</table>  
-	</div>
 	<br />
 
 <%= will_paginate %>
-</div>

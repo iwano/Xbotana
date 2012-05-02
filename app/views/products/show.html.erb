@@ -1,6 +1,5 @@
 <% provide(:title, @product.name) %>
-<div class="span7">
-<div class="span7">
+<div class="span9">
    
 	<div class="span5">
 		
@@ -51,12 +50,14 @@
     </div>
 
 	<% if current_user.admin?%>
+	<div class="span3">
 		<ul>
 		  	<%= link_to 'Edit', edit_product_path(@product), class: 'btn btn-warning'%>
 		  </ul>
 		<ul>
 		  	<%= link_to 'Delete', @product, method: :delete, confirm: 'Are you sure?', class: 'btn btn-danger'%>
 		</ul>
+	</div>
 	<%else%>
 		<div class="span3">	
 			<div class="well catalogsSidebar add_form">
@@ -80,7 +81,6 @@
 	<%end%>
 </div>
 	<%= link_to "All products",   products_path %>
-</div>
 
 
 

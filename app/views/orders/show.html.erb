@@ -1,5 +1,5 @@
 <% provide(:title, @order.created_at) %>
-<div class="span9">
+
 	<section>
 		<h1>
 			<%= @order.created_at.to_formatted_s(:long_ordinal) %>
@@ -41,4 +41,3 @@
 	<% end %>
 <h6>Order status: <%= @order.status %></h6>
 <%= link_to "Orders",   orders_path %>
-</div>

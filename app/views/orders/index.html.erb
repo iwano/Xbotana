@@ -1,5 +1,5 @@
 <% provide(:title, 'Orders') %>
-<div class='span9'>
+
 	<% if !current_user.admin? %>
 		<%= link_to 'Products', products_path, class: 'btn btn-default', style: 'float:left'%>
 	<%end%>
@@ -35,4 +35,3 @@
 			<h5><p>You haven't made any order.</p></h5>
 		<%end%>
 	<%end%>
-</div>

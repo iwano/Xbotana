@@ -1,5 +1,5 @@
 <% provide(:title, @route.user.name) %>
-<div class="span9">
+
 	<% if current_user.hos? %>
 		<%= link_to "Add stop", {:controller => "route_details", :action => "new", :route_id => @route.id }, class: 'btn btn-success', style: 'float:left'%>
 	<%end%>
@@ -35,4 +35,3 @@
 	</table>
 
 <%= link_to "Routes",   routes_path %>
-</div>

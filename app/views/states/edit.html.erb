@@ -1,8 +1,7 @@
 <% provide(:title, "Edit state") %> 
-<div class="span9">
 <h1>Edit State</h1>
 
-<div class="row offset2">
+<div class="span6 offset2">
   <%= form_for(@state) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
@@ -12,5 +11,4 @@
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
   <% end %>
 
-</div>
 </div>
