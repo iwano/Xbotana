@@ -3,9 +3,21 @@
 
 	<ul class="users">
     	<li>
-			<span class="sorryNoStock"><%= "No results found" unless @users != []%></span>
-			<% @users.each do |user| %>	
-				<li><h4><%= link_to user.name, user%> - <%= user.state.name%>, <%= user.city.name%></h4></li>	
+			<span class="noResultsFound"><%= "No results found" unless @results != []%></span>
+			<% @results.each do |result| %>	
+				<% if result.class.to_s == "User" %>
+					<li><h4><%= link_to result.name, result%>, <%= result.email%> - User</h4></li>	
+				<% elsif result.class.to_s == "Product" %>
+					<li><h4><%= link_to result.name, result%> - Product</h4></li>
+				<% elsif result.class.to_s == "State" %>
+					<li><h4><%= link_to result.name, result%> - State</h4></li>
+				<% elsif result.class.to_s == "City" %>
+					<li><h4><%= link_to result.name, result%> - City</h4></li>
+				<% elsif result.class.to_s == "Category" %>
+					<li><h4><%= link_to result.name, result%> - Category</h4></li>
+				<% else %>
+					<li><h4><%= link_to result.name, result%> - Presentation</h4></li>
+				<%end%>
 			<% end %>
 		</li>
 	</ul>

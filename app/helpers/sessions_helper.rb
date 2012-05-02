@@ -168,4 +168,24 @@ module SessionsHelper
         end
       orders
     end
+    
+    def get_search_results(key)
+      all = []
+      results = []
+      users = User.find(:all, :conditions => ['name LIKE ?', "%#{key}%"])
+      emails = User.find(:all, :conditions => ['email LIKE ?', "%#{key}%"])
+      products = Product.find(:all, :conditions => ['name LIKE ?', "%#{key}%"])
+      states = State.find(:all, :conditions => ['name LIKE ?', "%#{key}%"])
+      cities = City.find(:all, :conditions => ['name LIKE ?', "%#{key}%"])
+      categories = Category.find(:all, :conditions => ['name LIKE ?', "%#{key}%"])
+      presentations = Presentation.find(:all, :conditions => ['name LIKE ?', "%#{key}%"])
+      all<<users<<emails<<products<<states<<cities<<categories<<presentations
+      all.count.times do |i|
+        group = all[i-1]
+        group.count.times do |j|
+          results << group[j-1]
+        end
+      end
+      results
+    end
 end

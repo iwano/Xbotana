@@ -4,7 +4,9 @@
   <aside class="span4">
     <section>
       <h1>
-        <%= @city.name %>
+        <%= @city.name %> <br />
+		- State: 
+		<%= link_to @city.state.name, @city.state %>
       </h1>
     </section>
   </aside>

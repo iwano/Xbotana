@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   def search
     if params[:search]
-      @users = User.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"])
+      @results = get_search_results(params[:search])
     else
       @users = User.find(:all)
     end
