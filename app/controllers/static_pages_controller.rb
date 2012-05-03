@@ -2,6 +2,7 @@ class StaticPagesController < ApplicationController
   def search
     if params[:search]
       @results = get_search_results(params[:search])
+      
     else
       @users = User.find(:all)
     end

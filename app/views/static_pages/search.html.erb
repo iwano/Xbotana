@@ -1,7 +1,7 @@
 <% provide(:title, 'Search') %>
 	<h1>Search results for <span class="timestamp">"<%= @searchkey %>"</span></h1>
 
-	<ul class="users">
+	<ul class="users searchContainer">
     	<li>
 			<span class="noResultsFound"><%= "No results found" unless @results != []%></span>
 			<% @results.each do |result| %>	
