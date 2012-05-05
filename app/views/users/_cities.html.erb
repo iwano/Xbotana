@@ -1,0 +1,6 @@
+<% if !@cities.blank? %>
+      <%= select("post", "city_id", @cities.collect {|p| [ p.name, p.id ] }, { :prompt => "Select a City" }) %>
+
+<% else %>
+      <%= select("post", "city_id", [], { :prompt => "Select a City" }) %>
+<% end %>

@@ -15,11 +15,11 @@
 <%= f.label :mobile_phone %>
 <%= f.text_field :mobile_phone %>
 
-<%= f.label :state_id %>
-<%= f.collection_select :state_id, State.all, :id , :name %>
+	 <%= f.collection_select :state_id, State.find(:all), :id, :name, :prompt => "Select a State" %>
+	<div id="addressCities">
+      <%= render :partial => 'cities'  %>
+    </div>
 
-<%= f.label :city_id %>
-<%= f.collection_select :city_id, City.all, :id , :name %>
 
 <%= f.label :rfc %>
 <%= f.text_field :rfc %>

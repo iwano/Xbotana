@@ -14,3 +14,17 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+
+jQuery(function($) {
+  // when the #country field changes
+  $("#user_state_id").change(function() {
+    // make a POST call and replace the content
+    var state = $('select#user_state_id :selected').val();
+    if(state == "") state="0";
+    jQuery.get('/users/update_city_select/' + state, function(data){
+        $("#addressCities").html(data);
+    })
+    return false;
+  });
+
+})

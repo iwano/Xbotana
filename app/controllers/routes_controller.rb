@@ -20,6 +20,10 @@ class RoutesController < ApplicationController
   def index
     id = current_user.id
     @routes = current_user.vendor ?  Route.where(:user_id=>id).paginate(page: params[:page]) : Route.paginate(page: params[:page])
+     respond_to do |format|
+         format.html #index.html.erb
+         format.json {render json: @routes}
+      end
   end
   
   def destroy
@@ -36,6 +40,10 @@ class RoutesController < ApplicationController
       @route_details = @route.route_details
       @route_detail = RouteDetail.new
     end
+     respond_to do |format|
+         format.html #show.html.erb
+         format.json {render json: @route_details}
+      end
   end
   
 end
