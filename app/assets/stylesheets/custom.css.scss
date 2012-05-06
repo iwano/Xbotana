@@ -133,7 +133,7 @@ footer {
   a {
     color: $gray;
     &:hover { 
-      color: $grayDarker;
+      color: $grayLight;
     }
   }  
   small { 
@@ -145,6 +145,7 @@ footer {
     li {
       float: left;
       margin-left: 10px;
+	  font-weight: bold;
     }
   }
 }

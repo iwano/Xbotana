@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def update_city_select
       @cities = City.where(:state_id=>params[:id]) unless params[:id].blank?
-      render :partial => "cities", :locals => { :cities => @cities }
+      render :partial => "cities", :locals => { :cities => @cities}
   end
   
   def new
@@ -40,6 +40,7 @@ class UsersController < ApplicationController
      else
        @user = User.new(params[:user])
        if @user.save
+         UserMailer.welcome_email(@user).deliver
          sign_in @user
          flash[:success] = "Welcome to Xbotana :)"
          redirect_to @user

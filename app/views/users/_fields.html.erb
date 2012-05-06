@@ -3,9 +3,6 @@
 <%= f.label :name %>
 <%= f.text_field :name %>
 
-<%= f.label :email %>
-<%= f.text_field :email %>
-
 <%= f.label :address %>
 <%= f.text_field :address %>
 
@@ -15,14 +12,18 @@
 <%= f.label :mobile_phone %>
 <%= f.text_field :mobile_phone %>
 
-	 <%= f.collection_select :state_id, State.find(:all), :id, :name, :prompt => "Select a State" %>
-	<div id="addressCities">
-      <%= render :partial => 'cities'  %>
-    </div>
-
-
 <%= f.label :rfc %>
 <%= f.text_field :rfc %>
+
+<%= f.label :state_id %>
+<%= f.collection_select :state_id, State.find(:all), :id, :name, :prompt => "Select a State" %>
+
+<div id="addressCities">
+	<%= render 'cities', f: f %>
+</div>
+
+<%= f.label :email %>
+<%= f.text_field :email %>
 
 <%= f.label :password %>
 <%= f.password_field :password %>
