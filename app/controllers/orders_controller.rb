@@ -7,6 +7,8 @@ class OrdersController < ApplicationController
     total = get_order_total
     @order = current_user.orders.build(number_products: number_products, total: total)
     if @order.save
+      UserMailer.new_order_placed(@order).deliver
+      UserMailer.new_order(@order).deliver
       record_order_details(@order)
       empty_cart
       flash[:success] = "The order has been placed."

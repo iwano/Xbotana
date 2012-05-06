@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <style>
+table{
+  border-collapse:collapse;
+}
+table tr td{
+  border: 1px solid #000;
+ }
+.head{
+  font-weight: bold;
+}
+</style>
+  </head>
+  <body>
+    <h1>Theres a new order that needs to be delivered</h1>
+    <br />
+
+      <table> 
+      <tr>
+        <td class="head">User: </td>
+        <td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <td class="head">State: </td>
+        <td><%= @user.state.name %></td>
+      </tr>
+      <tr>
+        <td class="head">City: </td>
+        <td><%= @user.city.name %></td>
+      </tr>
+      <tr>
+        <td class="head">No. prods: </td>
+        <td><%= @route_detail.order.number_products %></td>
+      </tr>
+      <tr>
+        <td class="head">Total: </td>
+        <td><%= @route_detail.order.total %></td>
+      </tr>
+      <tr>
+        <td class="head">Route no.: </td>
+        <td><%= @route_detail.route.id %></td>
+      </tr>
+    </table>
+
+    <p>
+      To see the order details or your routes, just follow this link: <%= @url %>.
+    </p>
+  </body>
+</html>

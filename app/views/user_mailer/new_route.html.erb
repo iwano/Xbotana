@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <style>
+      .head{
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>A new route has been asigned to you</h1>
+    <br />
+      <p class="head">You've been assigned route number <%= @route.id %></p>
+    <p>
+      To see your new route details, just follow this link: <%= @url %>.
+    </p>
+  </body>
+</html>

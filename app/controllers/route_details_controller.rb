@@ -24,6 +24,8 @@ class RouteDetailsController < ApplicationController
     if @route_detail.save
       @route_detail.order.update_attributes(:status => "on its way")
       Route.find(r).update_attribute(:finished, false)
+      UserMailer.order_processed(@route_detail).deliver
+      UserMailer.order_processed_client(@route_detail).deliver
       flash[:success] = "The stop has been added to the route."
       redirect_to "/routes/#{r}"
     else

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <style>
+table{
+  border-collapse:collapse;
+}
+table tr td{
+  border: 1px solid #000;
+ }
+.head{
+  font-weight: bold;
+}
+</style>
+  </head>
+  <body>
+    <h1>Theres a new order that needs processing</h1>
+    <br />
+
+      <table> 
+      <tr>
+        <td class="head">Order id: </td>
+        <td><%= @order.id %></td>
+      </tr>
+      <tr>
+        <td class="head">User: </td>
+        <td><%= @order.user.name %></td>
+      </tr>
+      <tr>
+        <td class="head">State: </td>
+        <td><%= @order.user.state.name %></td>
+      </tr>
+      <tr>
+        <td class="head">City: </td>
+        <td><%= @order.user.city.name %></td>
+      </tr>
+      <tr>
+        <td class="head">No. prods: </td>
+        <td><%= @order.number_products %></td>
+      </tr>
+      <tr>
+        <td class="head">Total: </td>
+        <td><%= @order.total %></td>
+      </tr>
+    </table>
+
+    <p>
+      To process it, just follow this link: <%= @url %>.
+    </p>
+  </body>
+</html>

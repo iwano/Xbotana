@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <style>
+table{
+  border-collapse:collapse;
+}
+table tr td{
+  border: 1px solid #000;
+ }
+.head{
+  font-weight: bold;
+}
+</style>
+  </head>
+  <body>
+    <h1>Your order has been sent!</h1>
+    <br />
+
+    <h2>Order id: <%= @order.id %></h2>
+    <h2>No. products: <%= @order.number_products %></h2>
+    <table> 
+      <tr>
+        <td class="head">Product: </td>
+        <td class="head">Price: </td>
+        <td class="head">Quantity: </td>
+        <td class="head">Subtotal: </td>
+      </tr>
+
+      <% @order_details.each do |order_detail| %>
+        <tr>
+          <td><%= order_detail.product.name %></td>
+          <td><%= order_detail.product.price %></td>
+          <td><%= order_detail.quantity %></td>
+          <td><%= order_detail.subtotal %></td>
+        </tr>
+      <% end %>
+
+      <tr>
+      <td>-</td>
+      <td>-</td>
+      <td class="head">Subtotal</td>
+      <td><%= @order.total %></td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>-</td>
+      <td class="head">Shipping</td>
+      <td>$150.00</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>-</td>
+      <td class="head">Total</td>
+      <td>$<%= @order.total + 150 %></td>
+    </tr>
+  </table>
+
+    <p>
+      To follow your order, or placed another one just follow this link: <%= @url %>.
+    </p>
+  </body>
+</html>

@@ -10,6 +10,7 @@ class RoutesController < ApplicationController
   def create
     @route = Route.new(params[:route])
     if @route.save
+      UserMailer.new_route(@route).deliver
       flash[:success] = "The route has been added to the database."
       redirect_to routes_path
     else
