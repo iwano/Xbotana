@@ -12,5 +12,12 @@ class OrderDetailsController < ApplicationController
   
   def index
     @order_details = OrderDetail.paginate(page: params[:page])
+    od = OrderDetail.all
+   
+    respond_to do |format|
+      format.html #order_details.html.erb
+      format.json {render json: od}
+      format.xml {render xml: od}
+    end
   end
 end

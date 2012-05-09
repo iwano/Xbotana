@@ -33,7 +33,7 @@ table tr td{
           <td><%= order_detail.product.name %></td>
           <td><%= order_detail.product.price %></td>
           <td><%= order_detail.quantity %></td>
-          <td><%= order_detail.subtotal %></td>
+          <td><%= number_to_currency (order_detail.subtotal) %></td>
         </tr>
       <% end %>
 
@@ -41,7 +41,7 @@ table tr td{
       <td>-</td>
       <td>-</td>
       <td class="head">Subtotal</td>
-      <td><%= @order.total %></td>
+      <td><%= number_to_currency (@order.total) %></td>
     </tr>
     <tr>
       <td>-</td>
@@ -53,7 +53,7 @@ table tr td{
       <td>-</td>
       <td>-</td>
       <td class="head">Total</td>
-      <td>$<%= @order.total + 150 %></td>
+      <td><%= number_to_currency (@order.total + 150) %></td>
     </tr>
   </table>
 

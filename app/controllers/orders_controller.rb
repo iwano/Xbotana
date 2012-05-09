@@ -35,6 +35,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       format.html #index.html
       format.json {render json: @orders}
+      format.xml {render xml: @orders}
     end
   end
   
@@ -45,6 +46,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       format.html #show.html
       format.json {render json: @order}
+      format.xml {render xml: @order}
     end
   end
 end

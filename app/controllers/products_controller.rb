@@ -23,6 +23,7 @@ class ProductsController < ApplicationController
    respond_to do |format|
      format.html #show.html.erb
      format.json {render json: @product}
+     format.xml {render xml: @product}
    end
  end
 
@@ -33,6 +34,7 @@ class ProductsController < ApplicationController
    respond_to do |format|
      format.html #products.html.erb
      format.json {render json: products}
+     format.xml {render xml: products}
    end
  end
 

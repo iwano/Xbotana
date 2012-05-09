@@ -37,7 +37,7 @@ table tr td{
       </tr>
       <tr>
         <td class="head">Total: </td>
-        <td><%= @route_detail.order.total %></td>
+        <td><%= number_to_currency (@route_detail.order.total) %></td>
       </tr>
       <tr>
         <td class="head">Route no.: </td>

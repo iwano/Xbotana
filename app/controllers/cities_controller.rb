@@ -12,6 +12,7 @@ class CitiesController < ApplicationController
     respond_to do |format|
       format.html #show.html.erb
       format.json {render json: @city}
+      format.xml {render xml: @city}
     end
   end
   
@@ -22,6 +23,7 @@ class CitiesController < ApplicationController
     respond_to do |format|
       format.html #cities.html.erb
       format.json {render json: cities}
+      format.xml {render xml: cities}
     end
   end
   

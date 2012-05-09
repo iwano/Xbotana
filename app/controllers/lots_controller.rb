@@ -23,6 +23,7 @@ class LotsController < ApplicationController
    respond_to do |format|
       format.html #show.html.erb
       format.json {render json: @lot}
+      format.xml {render xml: @lot}
     end
  end
  
@@ -33,6 +34,7 @@ class LotsController < ApplicationController
    respond_to do |format|
       format.html #lots.html.erb
       format.json {render json: lots}
+      format.xml {render xml: lots}
     end
  end
  

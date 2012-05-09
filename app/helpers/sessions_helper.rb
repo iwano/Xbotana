@@ -173,7 +173,8 @@ module SessionsHelper
       all = []
       results = []
       users = User.find(:all, :conditions => ['name LIKE ?', "%#{key}%"])
-      emails = User.find(:all, :conditions => ['email LIKE ?', "%#{key}%"])
+      em = User.find(:all, :conditions => ['email LIKE ?', "%#{key}%"])
+      emails = check_users_query_exists(users, em)
       products = Product.find(:all, :conditions => ['name LIKE ?', "%#{key}%"])
       states = State.find(:all, :conditions => ['name LIKE ?', "%#{key}%"])
       cities = City.find(:all, :conditions => ['name LIKE ?', "%#{key}%"])
@@ -187,5 +188,14 @@ module SessionsHelper
         end
       end
       results
+    end
+
+    def check_users_query_exists(users, emails)
+      no_match = []
+      emails.count.times do |i|
+        record = emails[i-1]
+        no_match<<record unless users.include?(record)
+      end
+      no_match
     end
 end

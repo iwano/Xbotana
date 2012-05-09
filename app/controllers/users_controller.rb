@@ -30,6 +30,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html #show.html.erb
       format.json {render json: @user}
+      format.xml {render xml: @user}
     end
   end
 
@@ -69,13 +70,14 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html #index.html
       format.json {render json: @users}
+      format.xml {render xml: @users}
     end
 
   end
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User destroyed."
+    flash[:danger] = "User destroyed."
     redirect_to users_path 
   end
 

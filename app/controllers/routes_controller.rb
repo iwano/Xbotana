@@ -24,6 +24,7 @@ class RoutesController < ApplicationController
      respond_to do |format|
          format.html #index.html.erb
          format.json {render json: @routes}
+         format.xml {render xml: @routes}
       end
   end
   
@@ -44,6 +45,7 @@ class RoutesController < ApplicationController
      respond_to do |format|
          format.html #show.html.erb
          format.json {render json: @route_details}
+         format.xml {render xml: @route_details}
       end
   end
   

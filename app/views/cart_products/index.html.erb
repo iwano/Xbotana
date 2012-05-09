@@ -3,13 +3,13 @@
 	<%= link_to 'Products', products_path, class: 'btn btn-default', style: 'float:left'%>
 	<h1>Shopping Cart</h1>
 	<% if current_user.cart_products.any? %>	
-	<div class="span5 offset1">
+	<div class="span5 offset1 cart">
 		<h3>Number of products (<%= current_user.cart_products.count %>)</h3>
-		<table class="table-striped table"> 
-			<tr>
-				<td>Product</td>
-				<td>Quantity</td>
-				<td>Subtotal</td>
+		<table class="table-striped table" id="cart_prod"> 
+			<tr id="cart_prod_head">
+				<th>Product</th>
+				<th>Quantity</th>
+				<th>Subtotal</th>
 				<td></td>
 			</tr>
 			<%= render @cart_products %>

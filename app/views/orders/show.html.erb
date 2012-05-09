@@ -21,7 +21,7 @@
 			<td>-</td>
 			<td>-</td>
 			<td><h6>Subtotal</h6></td>
-			<td><h4><%= @order.total %></h4></td>
+			<td><h4><%= number_to_currency (@order.total) %></h4></td>
 		</tr>
 		<tr>
 			<td>-</td>
@@ -33,7 +33,7 @@
 			<td>-</td>
 			<td>-</td>
 			<td><h6>Total</h6></td>
-			<td><h4>$<%= @order.total + 150 %></h4></td>
+			<td><h4><%= number_to_currency (@order.total + 150) %></h4></td>
 		</tr>
 	</table>
 	<% if current_user.admin? %>

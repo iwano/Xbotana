@@ -22,6 +22,7 @@ class PresentationsController < ApplicationController
     respond_to do |format|
        format.html #show.html.erb
        format.json {render json: @presentation}
+       format.xml {render xml: @presentation}
      end
   end
 
@@ -32,6 +33,7 @@ class PresentationsController < ApplicationController
     respond_to do |format|
        format.html #presentations.html.erb
        format.json {render json: @presentations}
+       format.xml {render xml: @presentations}
      end
   end
 

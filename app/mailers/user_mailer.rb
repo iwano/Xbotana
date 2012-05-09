@@ -40,7 +40,7 @@ class UserMailer < ActionMailer::Base
   def new_order_placed(order)
     @order = order
     @order_details = order.order_details
-    email_with_name = "#{@user.name} <#{@user.email}>"
+    email_with_name = "#{@order.user.name} <#{@order.user.email}>"
     @url  = "https://botanax.herokuapp.com/orders"
     attachments['xsoftware_logo.png'] = File.read(Rails.root.join('public', 'images', 'xsoftware_logo.png'))
        mail(:to => email_with_name, :subject => "Your new Order")

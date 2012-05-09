@@ -17,7 +17,7 @@
 
 jQuery(function($) {
   // when the #country field changes
-  $("#user_state_id").change(function() {
+  $("select#user_state_id").change(function() {
     // make a POST call and replace the content
     var state = $('select#user_state_id :selected').val();
     if(state == "") state="0";
@@ -28,3 +28,24 @@ jQuery(function($) {
   });
 
 })
+
+$(document).ready(function() {
+  $('td a.remote-delete').click(function() {
+    // we just need to add the key/value pair for the DELETE method
+    // as the second argument to the JQuery $.post() call
+    var answer = confirm('Are you sure?');
+    if (answer===true){
+      $.post(this.href, { _method: 'delete' }, null, "script");
+      $(this).closest("tr").fadeOut(3000);
+      return false; 
+    }else  return false; 
+  });
+});
+
+$(document).ready(function(){
+  $("input#addToCart").click(function(){
+    if ($('div#cart_product_quantity').val() != ''){
+      $("div#flash_notice").html("Product Added").addClass("add_message").fadeOut(4000);
+    }
+  });
+});

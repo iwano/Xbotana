@@ -4,7 +4,7 @@
 	<td><h4><%= link_to route_detail.order.user.city.name, route_detail.order.user.city %></h4></td>
 	<td><h4><%= route_detail.order.user.address %></h4></td>
 	<td><h4><%= link_to route_detail.order.number_products, route_detail.order %></h4></td>
-	<td><h4><%= route_detail.order.total %></h4></td>
+	<td><h4><%= number_to_currency (route_detail.order.total) %></h4></td>
 	<td><h4><%= route_detail.order.status %></h4></td>
 	<td><%= link_to 'Show', route_detail.order, class: 'btn btn-small btn-primary'%></td>
 	<% if current_user.hos? %>

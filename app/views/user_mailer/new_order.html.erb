@@ -41,7 +41,7 @@ table tr td{
       </tr>
       <tr>
         <td class="head">Total: </td>
-        <td><%= @order.total %></td>
+        <td><%= number_to_currency (@order.total) %></td>
       </tr>
     </table>
 
