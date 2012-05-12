@@ -12,19 +12,21 @@
 				<h3>Recent Activity</h3>
 				<ul class="users">
 					<% recent = false %>
+
+		<!-- ************ Admin -->
 					<% if current_user.admin? %>
 						<% @static_pages.each do |order| %>
-							<% if order.created_at.months_since(1) > Time.now %>
-								<% recent = true%>
+								<% recent = true unless @static_pages.count == 0%>
 								<li>
 									 <%= link_to order.user.name, order.user %>, placed order <%= link_to order.id, order%> -
 									<span class="timestamp">
 										<%= time_ago_in_words(order.created_at) %> ago.
 									</span>
 								</li>
-							<%end%>
 						<% end %>	
 						<%= will_paginate %>
+
+		<!-- ********* Head of sales -->
 					<%elsif current_user.hos?%>
 						<% recent = true unless @orders.count == 0%>
 
@@ -37,6 +39,8 @@
 								needs processing
 							</li>
 						<% end %>
+
+		<!-- **********Vendor -->
 					<%elsif current_user.vendor?%>
 						<% recent = true unless @orders.count == 0 %>
 
@@ -49,16 +53,16 @@
 							</li>
 						<% end %>
 					<%else%>
+
+		<!-- ********** Client -->
 						<% @orders.each do |order| %>
-							<% if order.created_at.months_since(2) > Time.now %>
-								<% recent = true%>
+								<% recent = true unless @orders == 0%>
 								<li>
 									 you placed order <%= link_to order.id, order%> -
 									<span class="timestamp">
 										<%= time_ago_in_words(order.created_at) %> ago.
 									</span>
 								</li>
-							<%end%>
 						<% end %>
 					<% end %>
 					
@@ -73,7 +77,7 @@
 	<div class="center hero-unit">
 		<h1>Welcome to botanaX</h1>
 		<h2>
-			Get your snacks right here!
+			Are you throwing a party or have a store to supply? Get your snacks right here!
 		</h2>
 		<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
 	</div>

@@ -2,16 +2,16 @@
       <%= render 'shared/error_messages', object: f.object %>
 
 	  <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, required: true %>
 
 	  <%= f.label :category_id %>
 	  <%= f.collection_select :category_id, Category.all, :id , :name %>
 
 	  <%= f.label :description %>
-      <%= f.text_field :description %>
+      <%= f.text_field :description, required: true %>
 
 	  <%= f.label :price %>
-      <%= f.number_field :price %>
+      <%= f.number_field :price, required: true %>
 
  	  <%= f.label :lot_id %>
       <%= f.collection_select :lot_id, Lot.all, :id , :number %>
@@ -20,7 +20,7 @@
       <%= f.collection_select :presentation_id, Presentation.all, :id , :name %>
 
 	  <%= f.label :quantity %>
-      <%= f.number_field :quantity %>
+      <%= f.number_field :quantity, required: true %>
 
       <%= f.submit "Add", class: "btn btn-large btn-primary" %>
 	  <%= link_to "Cancel", products_path, class: "btn" %>

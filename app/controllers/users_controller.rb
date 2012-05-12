@@ -69,7 +69,7 @@ class UsersController < ApplicationController
     
     respond_to do |format|
       format.html #index.html
-      format.json {render json: @users}
+      format.json {render json: @users.to_json(except:[:created_at, :updated_at, :id, :password_digest])}
       format.xml {render xml: @users}
     end
 

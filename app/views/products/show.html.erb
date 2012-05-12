@@ -71,7 +71,7 @@
 			  				<%= f.label :quantity %>
 						</ul>
 						<ul>
-							<%= select("cart_product", "quantity", (1..@product.quantity).step(1).collect {|p| [ "#{p}", p ] }, { include_blank: true }, class: 'cmb_quantity') %>
+							<%= select("cart_product", "quantity", (1..@product.quantity).step(1).collect {|p| [ "#{p}", p ] }, { include_blank: true }, class: 'cmb_quantity', id: "cart_product_quantity") %>
 						</ul>
 						<%= f.submit '+ Add to cart', class: 'btn btn-success', id: "addToCart"%>
 					<% end %>

@@ -15,7 +15,7 @@ class RouteDetailsController < ApplicationController
   def new
     @route_detail = RouteDetail.new
     @route = params[:route_id]
-    @orders = Order.where(:status=>"processing") 
+    @orders = Order.processing
   end
   
   def create

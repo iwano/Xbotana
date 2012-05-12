@@ -36,7 +36,11 @@ $(document).ready(function() {
     var answer = confirm('Are you sure?');
     if (answer===true){
       $.post(this.href, { _method: 'delete' }, null, "script");
-      $(this).closest("tr").fadeOut(3000);
+      $(this).closest("tr").fadeOut(1000);
+      if ($("tr").length ==2){
+        $("div#cart_controls").fadeOut(1000);
+        $("div#cart").html('<div class="span5 offset1"><h5>Your shopping cart is empty.</h5></div>');
+      }
       return false; 
     }else  return false; 
   });
@@ -44,8 +48,36 @@ $(document).ready(function() {
 
 $(document).ready(function(){
   $("input#addToCart").click(function(){
-    if ($('div#cart_product_quantity').val() != ''){
-      $("div#flash_notice").html("Product Added").addClass("add_message").fadeOut(4000);
+    if ($('select#cart_product_quantity').val() != ''){
+      $("div#flash_notice").html("Product Added").addClass("add_message").show().fadeOut(4000);
+      $("li#cartIcon").css({"background-image":"","background-color": "#BA0000"}).fadeOut().fadeIn().fadeOut(function(){
+      $("li#cartIcon").fadeIn().css({"background-color": "#2C2C2C", "background-image": "-webkit-gradient(linear, 0 0, 0 100%, from(#333333), to(#222222))"});
+      });
     }
   });
 });
+
+jQuery(function($) {
+  function changeTab(e){
+    $("ul.tabs li.active").removeClass("active");
+    $(this).addClass("active");
+  }
+    $("ul.tabs li").click(changeTab);
+});
+
+/* Tooltip
+jQuery(function($) {
+  function showTitle(e){
+    var title = $(this).data("title");
+    $(this).append("<span class='tooltip'>" + title + "</span>");
+  }
+  function hideTitle(e){
+    $("ul.tabs span.tooltip").remove();
+  }
+    $("ul.tabs li a").mouseenter(showTitle);
+    $("ul.tabs li a").mouseleave(hideTitle);
+});*/
+
+
+ 
+

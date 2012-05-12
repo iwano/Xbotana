@@ -1,5 +1,4 @@
-<div class="span7">	
-	<div class="well catalogsSidebar">
+	<div class="span7 well catalogsSidebar" id="cart_controls">
 		<div class='row'>
 			<%= form_for(order = current_user.orders.build) do |f| %>			
 				<%= link_to raw('<i class="icon-trash icon-white"></i> Clear cart'), {:controller => 'orders', :action => 'emptycart'}, confirm: 'Are you sure?', :class => 'btn btn-large btn-warning right' %>
@@ -7,4 +6,3 @@
 			<% end %>
 		</div>
 	</div>
-</div>

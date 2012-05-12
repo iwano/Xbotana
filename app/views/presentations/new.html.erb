@@ -8,7 +8,7 @@
 	      <%= render 'shared/error_messages', object: f.object %>
 
 		  <%= f.label :name %>
-	      <%= f.text_field :name %>
+	      <%= f.text_field :name, required: true %>
 
 	      <%= f.submit "Add", class: "btn btn-large btn-primary" %>
 		  <%= link_to "Cancel", presentations_path, class: "btn" %>

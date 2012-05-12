@@ -1,24 +1,27 @@
 <% provide(:title, 'Shopping Cart') %>
-<div class='span7' id='cart'>
+<div class='span7'>
 	<%= link_to 'Products', products_path, class: 'btn btn-default', style: 'float:left'%>
 	<h1>Shopping Cart</h1>
-	<% if current_user.cart_products.any? %>	
-	<div class="span5 offset1 cart">
-		<h3>Number of products (<%= current_user.cart_products.count %>)</h3>
-		<table class="table-striped table" id="cart_prod"> 
-			<tr id="cart_prod_head">
-				<th>Product</th>
-				<th>Quantity</th>
-				<th>Subtotal</th>
-				<td></td>
-			</tr>
-			<%= render @cart_products %>
-		</table>
-	</div>
-	<%= render 'order_form'%>
-	<%else%>
-	<div class="span5 offset2">
-		<h5><p>Your shopping cart is empty.</p></h5>
-	</div>
-	<%end%>
+		<% if current_user.cart_products.any? %>
+		<div class="span5 offset1" id='cart'>	
+			<h3>Number of products (<%= current_user.cart_products.count %>)</h3>
+			<table class="table-striped table" id="cart_prod"> 
+				<tr id="cart_prod_head">
+					<th>Product</th>
+					<th>Quantity</th>
+					<th>Subtotal</th>
+					<td></td>
+				</tr>
+				<%= render @cart_products %>
+			</table>
+		</div>
+			<%= render 'order_form'%>
+
+		<%else%>
+			<div class="span5 offset1">
+			<div class="span5 offset1">
+				<h5>Your shopping cart is empty.</h5>
+			</div>
+			</div>
+		<%end%>
 </div>

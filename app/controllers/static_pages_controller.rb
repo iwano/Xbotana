@@ -12,13 +12,13 @@ class StaticPagesController < ApplicationController
   def home
     if signed_in? 
       if current_user.admin?
-        @static_pages = Order.paginate(page: params[:page])
+        @static_pages = Order.recent.paginate(page: params[:page])
       elsif current_user.hos?
         @orders = Order.where(:status=>"processing") 
       elsif current_user.vendor?
         @orders = get_vendor_orders
       else
-        @orders = current_user.orders
+        @orders = current_user.orders.recent_client
       end
     end
   end

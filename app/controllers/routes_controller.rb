@@ -4,7 +4,7 @@ class RoutesController < ApplicationController
   
   def new
     @route = Route.new
-    @users = User.where(:vendor=>true)
+    @users = User.vendors
   end
   
   def create

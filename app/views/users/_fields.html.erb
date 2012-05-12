@@ -1,32 +1,32 @@
 <%= render 'shared/error_messages', object: f.object %>
 
 <%= f.label :name %>
-<%= f.text_field :name %>
+<%= f.text_field :name, required: true %>
 
 <%= f.label :address %>
-<%= f.text_field :address %>
+<%= f.text_field :address, required: true %>
 
 <%= f.label :phone_number %>
-<%= f.telephone_field :phone_number %>
+<%= f.telephone_field :phone_number, required: true %>
 
 <%= f.label :mobile_phone %>
-<%= f.telephone_field :mobile_phone %>
+<%= f.telephone_field :mobile_phone, required: true %>
 
 <%= f.label :rfc %>
-<%= f.text_field :rfc %>
+<%= f.text_field :rfc, required: true %>
 
 <%= f.label :state_id %>
-<%= f.collection_select :state_id, State.find(:all), :id, :name, :prompt => "Select a State" %>
+<%= f.collection_select :state_id, State.find(:all), :id, :name, :prompt => "Select a State", required: true %>
 
 <div id="addressCities">
 	<%= render 'cities', f: f %>
 </div>
 
 <%= f.label :email %>
-<%= f.email_field :email %>
+<%= f.email_field :email, placeholder: "e.g. email@example.com", required: true %>
 
 <%= f.label :password %>
-<%= f.password_field :password %>
+<%= f.password_field :password, required: true%>
 
 <%= f.label :password_confirmation, "Confirm Password" %>
-<%= f.password_field :password_confirmation %>
+<%= f.password_field :password_confirmation, required: true %>

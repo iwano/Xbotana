@@ -50,6 +50,11 @@ class User < ActiveRecord::Base
   def cart
     CartProduct.where("user_id = ?", id)
   end
+
+  scope :vendors, where(:vendor=>true)
+  scope :admin, where(:admin=>true)
+  scope :hos, where(:hos=>true)
+
   private
 
     def create_remember_token
