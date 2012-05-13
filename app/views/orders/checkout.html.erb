@@ -1,0 +1,48 @@
+<% provide(:title, 'New Order - Checkout') %>
+
+<section>
+	<h1>Your New Order</h1>
+</section>
+<div class="span4">
+	<h3>Products (<%= @number_products %>)</h3>
+</div>
+<table class="table-striped table">
+	<tr>
+		<td><h6>Product</h6></td>
+		<td><h6>Presentation</h6></td>
+		<td><h6>Price</h6></td>
+		<td><h6>Quantity</h6></td>
+		<td><h6>Subtotal</h6></td>
+	</tr>
+		<%= render "checkout_product" %>
+	<tr>
+		<td>-</td>
+		<td>-</td>
+		<td>-</td>
+		<td><h6>Subtotal</h6></td>
+		<td><h4><%= number_to_currency (@total) %></h4></td>
+	</tr>
+	<tr>
+		<td>-</td>
+		<td>-</td>
+		<td>-</td>
+		<td><h6>Shipping</h6></td>
+		<td><h4>$150.00</h4></td>
+	</tr>
+	<tr>
+		<td>-</td>
+		<td>-</td>
+		<td>-</td>
+		<td><h6>Total</h6></td>
+		<td><h4><%= number_to_currency (@total + 150) %></h4></td>
+	</tr>
+</table>
+
+<div class="span7 well catalogsSidebar" id="cart_controls">
+	<div class='row'>
+		<%= form_for(order = current_user.orders.build) do |f| %>			
+			<%= link_to raw('<i class="icon-remove-circle icon-white"></i> Cancel'), {:controller => 'cart_products', :action => 'index'}, :class => 'btn btn-large btn-warning right' %>
+			<%= f.submit "Order", class: "btn btn-large btn-success" %>
+		<% end %>
+	</div>
+</div>

@@ -1,0 +1,10 @@
+<% @cart_products.each do |cart_product| %>
+	<tr>
+		<td><h4><%=link_to cart_product.product.name, cart_product.product %></h4></td>
+		<td><h4><%=link_to cart_product.product.presentation.name, cart_product.product.presentation %></h4></td>
+		<td><h4><%= cart_product.product.price %></h4></td>
+		<td><h4><%= cart_product.quantity %></h4></td>
+		<td><h4><%= number_to_currency (cart_product.subtotal) %></h4></td>
+	</tr>
+<%end%>
+

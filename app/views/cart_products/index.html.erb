@@ -4,10 +4,11 @@
 	<h1>Shopping Cart</h1>
 		<% if current_user.cart_products.any? %>
 		<div class="span5 offset1" id='cart'>	
-			<h3>Number of products (<%= current_user.cart_products.count %>)</h3>
+			<h3 id="noProducts">Number of products (<span><%= @total %></span>)</h3>
 			<table class="table-striped table" id="cart_prod"> 
 				<tr id="cart_prod_head">
 					<th>Product</th>
+					<th>Presentation</th>
 					<th>Quantity</th>
 					<th>Subtotal</th>
 					<td></td>

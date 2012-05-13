@@ -96,8 +96,8 @@ module SessionsHelper
     def get_order_total
       array = current_user.cart_products
       total = 0
-      array.length.times do |i|
-        total += array[i-1].subtotal
+      array.each do |i|
+        total += i.subtotal
       end
       total
     end 
@@ -105,8 +105,8 @@ module SessionsHelper
     def get_products_count
       array = current_user.cart_products
       count = 0
-      array.length.times do |i|
-        count += array[i-1].quantity
+      array.each do |i|
+        count += i.quantity
       end
       count
     end  
@@ -126,11 +126,18 @@ module SessionsHelper
         return false
       end
     end
+
+    def get_products_total(products)
+      total=0
+      products.each do |prod|
+        total += prod.quantity
+      end
+      total
+    end
     
     def record_order_details(order)
       products = current_user.cart_products
-      products.length.times do |i|
-        pr = products[i-1]
+      products.each do |pr|
         order.order_details.create(product_id: pr.product_id, quantity: pr.quantity, subtotal: pr.subtotal)
         product_to_update = Product.find(pr.product_id)
         product_to_update.update_attributes(:quantity => product_to_update.quantity - pr.quantity)
@@ -140,8 +147,8 @@ module SessionsHelper
     def get_undelivered_orders(route)
       routes = route.route_details
       route_details = []
-      routes.count.times do |i|
-        route_details.push(routes[i-1]) unless routes[i-1].order.status != 'on its way'
+      routes.each do |route|
+        route_details.push(route) unless route.order.status != 'on its way'
       end
       route_details
     end
@@ -149,8 +156,8 @@ module SessionsHelper
     def check_finished_route(id)
       routes = Route.find(id).route_details
       x=true
-      routes.count.times do |i|
-        x=false unless routes[i].order.status == 'delivered'
+      routes.each do |route|
+        x=false unless route.order.status == 'delivered'
       end
       Route.find(id).update_attribute(:finished, true) unless x==false
     end
@@ -159,10 +166,10 @@ module SessionsHelper
       orders=[]
       id = current_user.id
       routes = Route.where(:user_id=>id)
-        routes.count.times do |i|
-          route_details = routes[i-1].route_details
-          route_details.count.times do |j|
-            rd = route_details[j-1].order
+        routes.each do |route|
+          route_details = route.route_details
+          route_details.each do |route_det|
+            rd = route_det.order
             orders.push(rd) unless rd.status != 'on its way'
           end
         end
@@ -181,10 +188,10 @@ module SessionsHelper
       categories = Category.find(:all, :conditions => ['name LIKE ?', "%#{key}%"])
       presentations = Presentation.find(:all, :conditions => ['name LIKE ?', "%#{key}%"])
       all<<users<<emails<<products<<states<<cities<<categories<<presentations
-      all.count.times do |i|
-        group = all[i-1]
-        group.count.times do |j|
-          results << group[j-1]
+      all.each do |i|
+        group = i
+        group.each do |j|
+          results << j
         end
       end
       results
@@ -192,8 +199,7 @@ module SessionsHelper
 
     def check_users_query_exists(users, emails)
       no_match = []
-      emails.count.times do |i|
-        record = emails[i-1]
+      emails.each do |record|
         no_match<<record unless users.include?(record)
       end
       no_match

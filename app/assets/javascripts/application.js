@@ -36,11 +36,17 @@ $(document).ready(function() {
     var answer = confirm('Are you sure?');
     if (answer===true){
       $.post(this.href, { _method: 'delete' }, null, "script");
-      $(this).closest("tr").fadeOut(1000);
-      if ($("tr").length ==2){
-        $("div#cart_controls").fadeOut(1000);
+      var x = parseInt($("h3#noProducts span").text());
+      var ob = $(this).closest("tr");
+      x -= parseInt($("td.prodQuant", ob).text());
+      $("h3#noProducts span").text(x);
+      $(this).closest("tr").fadeOut(600, function(){
+        $(this).closest("tr").remove();
+        if ($("tr").length ==1){
+        $("div#cart_controls").fadeOut(600);
         $("div#cart").html('<div class="span5 offset1"><h5>Your shopping cart is empty.</h5></div>');
       }
+      });
       return false; 
     }else  return false; 
   });

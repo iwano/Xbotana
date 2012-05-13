@@ -1,6 +1,7 @@
 <tr>
 	<td><h4><%= cart_product.product.name %></h4></td>
-	<td><h4><%= cart_product.quantity %></h4></td>
+	<td><h4><%= cart_product.product.presentation.name %></h4></td>
+	<td class="prodQuant"><h4><%= cart_product.quantity %></h4></td>
 	<td><h4><%= number_to_currency (cart_product.subtotal) %></h4></td>
 	<td><%= link_to 'Delete', cart_product_path(cart_product), :class => 'btn btn-danger remote-delete' %></td>
-</tr> 
+</tr>

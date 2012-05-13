@@ -21,6 +21,8 @@
 #
 
 class User < ActiveRecord::Base
+  after_create :welcome_email
+
   attr_accessible :email, :name, :phone_number, :address, :state_id, :city_id,
                   :mobile_phone, :rfc, :password, :password_confirmation
   has_secure_password
@@ -59,5 +61,9 @@ class User < ActiveRecord::Base
 
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
+    end
+
+    def welcome_email
+      UserMailer.welcome_email(self).deliver
     end
 end

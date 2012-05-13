@@ -11,9 +11,7 @@ class CartProductsController < ApplicationController
     if combine_repeated_products(product_id, quantity, subtotal)
     else
       @cart_product = current_user.cart_products.build(product_id: product_id, quantity: quantity, subtotal: subtotal)
-      if @cart_product.save
-  
-      end
+      @cart_product.save
     end
     
     respond_to do |format|
@@ -24,6 +22,7 @@ class CartProductsController < ApplicationController
   
   def index
     @cart_products = current_user.cart_products
+    @total = get_products_total(@cart_products)
   end
   
   def destroy

@@ -41,7 +41,6 @@ class UsersController < ApplicationController
      else
        @user = User.new(params[:user])
        if @user.save
-         UserMailer.welcome_email(@user).deliver
          sign_in @user
          flash[:success] = "Welcome to Xbotana :)"
          redirect_to @user
