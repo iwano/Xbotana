@@ -15,21 +15,21 @@
 //= require bootstrap
 //= require_tree .
 
-jQuery(function($) {
-  // when the #country field changes
-  $("select#user_state_id").change(function() {
-    // make a POST call and replace the content
-    var state = $('select#user_state_id :selected').val();
-    if(state == "") state="0";
-    jQuery.get('/users/update_city_select/' + state, function(data){
-        $("#addressCities").html(data);
-    })
-    return false;
-  });
-
-})
-
 $(document).ready(function() {
+
+  jQuery(function($) {
+  // when the #country field changes
+    $("select#user_state_id").change(function() {
+     // make a POST call and replace the content
+     var state = $('select#user_state_id :selected').val();
+     if(state == "") state="0";
+     jQuery.get('/users/update_city_select/' + state, function(data){
+       $("#addressCities").html(data);
+     })
+     return false;
+    });
+  })
+
   $('td a.remote-delete').click(function() {
     // we just need to add the key/value pair for the DELETE method
     // as the second argument to the JQuery $.post() call
@@ -50,9 +50,7 @@ $(document).ready(function() {
       return false; 
     }else  return false; 
   });
-});
 
-$(document).ready(function(){
   $("input#addToCart").click(function(){
     if ($('select#cart_product_quantity').val() != ''){
       $("div#flash_notice").html("Product Added").addClass("add_message").show().fadeOut(4000);
@@ -61,18 +59,17 @@ $(document).ready(function(){
       });
     }
   });
-});
 
-jQuery(function($) {
-  function changeTab(e){
-    $("ul.tabs li.active").removeClass("active");
-    $(this).addClass("active");
-  }
-    $("ul.tabs li").click(changeTab);
-});
+  jQuery(function($) {
+    function changeTab(e){
+     $("ul.tabs li.active").removeClass("active");
+     $(this).addClass("active");
+    }
+     $("ul.tabs li").click(changeTab);
+    });
+  });
 
 /* Tooltip
-jQuery(function($) {
   function showTitle(e){
     var title = $(this).data("title");
     $(this).append("<span class='tooltip'>" + title + "</span>");
@@ -81,8 +78,7 @@ jQuery(function($) {
     $("ul.tabs span.tooltip").remove();
   }
     $("ul.tabs li a").mouseenter(showTitle);
-    $("ul.tabs li a").mouseleave(hideTitle);
-});*/
+    $("ul.tabs li a").mouseleave(hideTitle);*/
 
 
  

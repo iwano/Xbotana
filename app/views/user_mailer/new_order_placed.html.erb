@@ -45,6 +45,7 @@ table tr td{
     <table> 
       <tr>
         <td class="head">Product: </td>
+        <td class="head">Presentation: </td>
         <td class="head">Price: </td>
         <td class="head">Quantity: </td>
         <td class="head">Subtotal: </td>
@@ -53,6 +54,7 @@ table tr td{
       <% @order_details.each do |order_detail| %>
         <tr>
           <td><%= order_detail.product.name %></td>
+          <td><%= order_detail.product.presentation.name %></td>
           <td><%= order_detail.product.price %></td>
           <td><%= order_detail.quantity %></td>
           <td><%= number_to_currency (order_detail.subtotal) %></td>
@@ -62,16 +64,19 @@ table tr td{
       <tr>
       <td>-</td>
       <td>-</td>
+      <td>-</td>
       <td class="head">Subtotal</td>
       <td><%= number_to_currency (@order.total) %></td>
     </tr>
     <tr>
       <td>-</td>
       <td>-</td>
+      <td>-</td>
       <td class="head">Shipping</td>
       <td>$150.00</td>
     </tr>
     <tr>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td class="head">Total</td>

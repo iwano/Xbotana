@@ -316,13 +316,16 @@ select, .uneditable-input{
 }
 
 #footerX{
-	color: #999;
+	color: rgba(153, 153, 153, .5);
 	font-weight: bold;
+  font-size:20px;
 
  &:hover{
 	text-decoration: none;
 	text-shadow: 1px 1px 1px gray;
-}
+  opacity:1;
+  font-size: 21px;
+  }
 }
 
 .add_message{
@@ -333,4 +336,42 @@ select, .uneditable-input{
   height: 18px;
   padding: 8px 14px;
   border-radius: 4px;
+}
+a#rails-logo img{
+  opacity:.7;
+  &:hover{
+    opacity:1;
+    -webkit-transform:scale(1.05);
+    -moz-transform:scale(1.05);
+    transform:scale(1.05);
+  }
+}
+
+a#xs-logo img{
+  opacity:.7;
+  &:hover{
+    opacity:1;
+    -webkit-transform:scale(1.05);
+    -moz-transform:scale(1.05);
+    transform:scale(1.05);
+  }
+}
+
+span.title{
+  font-size: 20px;
+  display: block;
+  font-weight:bold;
+  color:4F4F4F;
+}
+
+span.value{
+  font-size: 15px;
+  display: inline-block;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+div#productPicture{
+  border: 1px solid #999;
+  height:350px;
 }
