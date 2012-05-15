@@ -6,7 +6,7 @@
 	<div class="span5" id="productPicture">
 		<!-- Product picture here-->
 		<% name = @product.name.delete(' ').downcase + ".png" %>
-		<%= link_to image_tag(name, alt: "@product.name"), "/app/assets/images/#{name}", class: "productPicture" %>
+		<%= link_to image_tag(name, alt: "@product.name"), "/assets/#{name}", class: "productPicture" %>
 	</div>
 
 	<div class="span3">
