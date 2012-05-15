@@ -372,6 +372,23 @@ span.value{
 }
 
 div#productPicture{
-  border: 1px solid #999;
-  height:350px;
+  /*border: 1px solid #999;*/
+  min-height:350px;
+  margin-bottom:20px;
+}
+
+a.productPicture img{
+  margin: 0px;
+  padding: 0px;
+  opacity:.8;
+  &:hover{
+    opacity:1;
+    -webkit-transform:scale(1.03) rotate(-3deg);
+    -moz-transform:scale(1.03) rotate(-3deg);
+    transform:scale(1.03) rotate(-3deg);
+  }
+}
+a.productPictureIndex img{
+  margin: 0px;
+  padding: 0px;
 }

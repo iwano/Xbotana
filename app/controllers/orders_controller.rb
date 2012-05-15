@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
       flash[:success] = "The order has been placed."
       redirect_to orders_path
     else
-      flash[:failure] = "There was a problem with the we are very sorry :("
+      flash[:failure] = "There was a problem with the database we are very sorry :("
       redirect_to root_path
     end
   end
@@ -39,8 +39,9 @@ class OrdersController < ApplicationController
     
     respond_to do |format|
       format.html #index.html
-      format.json {render json: @orders}
-      format.xml {render xml: @orders}
+      format.json {render json: @orders.as_json()}
+      format.xml {render xml: @orders.to_xml({:include => { :user => { :only => :name }}, 
+          except:[:created_at, :updated_at, :id, :user_id] })}
     end
   end
   
@@ -50,8 +51,16 @@ class OrdersController < ApplicationController
     
     respond_to do |format|
       format.html #show.html
-      format.json {render json: @order}
-      format.xml {render xml: @order}
+      format.json {render json: @order_details.as_json()}
+      format.xml {render xml: @order_details.to_xml({:include => {:product => {
+        :include => { :presentation => {
+          :only => :name}, 
+          :category => {
+            :only => :name},
+            :lot => {
+              :only => :number
+        }}, except:[:created_at, :updated_at, :id, :lot_id, :presentation_id, :category_id, :quantity]}},
+        except:[:created_at, :updated_at, :id, :order_id, :product_id] })}
     end
   end
 end

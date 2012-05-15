@@ -21,6 +21,20 @@
 #
 
 class User < ActiveRecord::Base
+  def as_json(options=nil)
+    super(options ||
+          {:include => { :state => { :only => :name }, 
+          :city => { :only => :name}}, 
+          except:[:created_at, :updated_at, :id, :password_digest, :remember_token, :city_id, :state_id] } )
+  end
+
+  def to_xml(options=nil)
+    super(options ||
+          {:include => { :state => { :only => :name }, 
+          :city => { :only => :name}}, 
+          except:[:created_at, :updated_at, :id, :password_digest, :remember_token, :city_id, :state_id] } )
+  end
+
   after_create :welcome_email
 
   attr_accessible :email, :name, :phone_number, :address, :state_id, :city_id,

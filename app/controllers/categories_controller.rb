@@ -22,8 +22,8 @@ class CategoriesController < ApplicationController
     
     respond_to do |format|
        format.html #show.html.erb
-       format.json {render json: @category}
-       format.xml {render xml: @category}
+       format.json {render json: @category.as_json()}
+       format.xml {render xml: @category.to_xml()}
      end
   end
 
@@ -33,8 +33,8 @@ class CategoriesController < ApplicationController
     
     respond_to do |format|
        format.html #categories.html.erb
-       format.json {render json: categories}
-       format.xml {render xml: categories}
+       format.json {render json: categories.as_json()}
+       format.xml {render xml: categories.to_xml({only: :name})}
      end
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120501160933) do
+ActiveRecord::Schema.define(:version => 20120515032617) do
 
   create_table "cart_products", :force => true do |t|
     t.integer  "product_id"
@@ -28,12 +28,16 @@ ActiveRecord::Schema.define(:version => 20120501160933) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "categories", ["name"], :name => "index_categories_on_name"
+
   create_table "cities", :force => true do |t|
     t.integer  "state_id"
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "cities", ["name"], :name => "index_cities_on_name"
 
   create_table "lots", :force => true do |t|
     t.integer  "number"
@@ -79,6 +83,8 @@ ActiveRecord::Schema.define(:version => 20120501160933) do
     t.integer  "lot_id"
   end
 
+  add_index "products", ["name"], :name => "index_products_on_name"
+
   create_table "route_details", :force => true do |t|
     t.integer  "route_id"
     t.datetime "created_at", :null => false
@@ -99,6 +105,8 @@ ActiveRecord::Schema.define(:version => 20120501160933) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "states", ["name"], :name => "index_states_on_name"
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
@@ -118,6 +126,7 @@ ActiveRecord::Schema.define(:version => 20120501160933) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["name"], :name => "index_users_on_name"
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
 end

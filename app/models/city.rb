@@ -10,6 +10,17 @@
 #
 
 class City < ActiveRecord::Base
+  def as_json(options=nil)
+    super(options ||
+          {:include => { :state => { :only => :name }},  
+          only: :name } )
+  end
+  def to_xml(options=nil)
+    super(options ||
+          {:include => { :state => { :only => :name }},  
+          only: :name } )
+  end
+
   attr_accessible :name, :state_id
   belongs_to :state 
   validates :name, :state_id, presence: true

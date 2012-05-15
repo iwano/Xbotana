@@ -9,6 +9,14 @@
 #
 
 class Category < ActiveRecord::Base
+  def as_json(options=nil)
+    super(options ||
+          {only: :name } )
+  end
+  def to_xml(options=nil)
+    super(options ||
+          {only: :name } )
+  end
   attr_accessible :name
   has_many :products, dependent: :destroy
   

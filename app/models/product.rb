@@ -15,6 +15,20 @@
 #
 
 class Product < ActiveRecord::Base
+  def as_json(options=nil)
+    super(options ||
+          {:include => { :category => { :only => :name }, 
+          :presentation => { :only => :name},
+          :lot => { :only => :number}}, 
+          except:[:created_at, :updated_at, :id, :category_id, :lot_id, :presentation_id] } )
+  end
+  def to_xml(options=nil)
+    super(options ||
+          {:include => { :category => { :only => :name }, 
+          :presentation => { :only => :name},
+          :lot => { :only => :number}}, 
+          except:[:created_at, :updated_at, :id, :category_id, :lot_id, :presentation_id] } )
+  end
   attr_accessible :name, :description, :price, :lot_id, :category_id, :presentation_id, :quantity
   
   belongs_to :category

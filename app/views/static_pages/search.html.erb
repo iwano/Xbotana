@@ -8,7 +8,7 @@
 				<% if result.class.to_s == "User" %>
 					<li><h4><%= link_to result.name, result%>, <%= result.email%> - User</h4></li>	
 				<% elsif result.class.to_s == "Product" %>
-					<li><h4><%= link_to result.name, result%> - Product</h4></li>
+					<li><h4><%= link_to result.name, result%>, <%= result.presentation.name%> - Product</h4></li>
 				<% elsif result.class.to_s == "State" %>
 					<li><h4><%= link_to result.name, result%> - State</h4></li>
 				<% elsif result.class.to_s == "City" %>

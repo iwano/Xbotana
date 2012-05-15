@@ -5,7 +5,8 @@
 	</h1>
 	<div class="span5" id="productPicture">
 		<!-- Product picture here-->
-		Product Picture here
+		<% name = @product.name.delete(' ').downcase + ".png" %>
+		<%= link_to image_tag(name, alt: "@product.name"), "/app/assets/images/#{name}", class: "productPicture" %>
 	</div>
 
 	<div class="span3">
@@ -13,6 +14,8 @@
 		<span class="value"><%= link_to @product.category.name, @product.category %></span>
 		<span class="title">Price:</span>
 		<span class="value"><%= number_to_currency (@product.price) %></span>
+		<span class="title">Presentation:</span>
+		<span class="value"><%= number_to_currency (@product.presentation.name) %></span>
 		<span class="title">Lot:</span>
 		<span class="value"><%= link_to @product.lot.number, @product.lot %></span>
 		<span class="title">Quantity:</span>

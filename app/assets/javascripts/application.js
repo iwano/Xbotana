@@ -66,6 +66,19 @@ $(document).ready(function() {
      $(this).addClass("active");
     }
      $("ul.tabs li").click(changeTab);
+  });
+
+  $('a.right').click(function(e) {
+    // we just need to add the key/value pair for the DELETE method
+    // as the second argument to the JQuery $.post() call
+     e.preventDefault();
+     var answer = confirm('Are you sure?');
+      if (answer===true){
+        $.ajax(this.href, null, "script");
+        $("div#cart_controls").fadeOut(600);
+       $("div#cart").html('<div class="span5 offset1"><h5>Your shopping cart is empty.</h5></div>');
+       return false; 
+      }else return false; 
     });
   });
 

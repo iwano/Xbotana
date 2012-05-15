@@ -11,8 +11,8 @@ class CitiesController < ApplicationController
     
     respond_to do |format|
       format.html #show.html.erb
-      format.json {render json: @city}
-      format.xml {render xml: @city}
+      format.json {render json: @city.as_json()}
+      format.xml {render xml: @city.to_xml()}
     end
   end
   
@@ -22,8 +22,9 @@ class CitiesController < ApplicationController
     
     respond_to do |format|
       format.html #cities.html.erb
-      format.json {render json: cities}
-      format.xml {render xml: cities}
+      format.json {render json: cities.as_json()}
+      format.xml {render xml: cities.to_xml(:include => { :state => { :only => :name }},  
+          only: :name)}
     end
   end
   

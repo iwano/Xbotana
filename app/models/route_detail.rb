@@ -10,6 +10,17 @@
 #
 
 class RouteDetail < ActiveRecord::Base
+  def as_json(options=nil)
+    super(options ||
+         {:include => { :order => {
+            :include => { :user => {
+              :only => :name}}, except:[:created_at, :updated_at, :id, :user_id]},
+          :route => {
+            :include => { :user => {
+              :only => :name}}, except:[:created_at, :updated_at, :id, :user_id]}
+              }, except:[:created_at, :updated_at, :id, :order_id, :route_id]})          
+  end
+
   after_create :order_processed_email
 
   attr_accessible :route_id, :order_id

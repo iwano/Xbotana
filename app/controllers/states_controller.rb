@@ -12,8 +12,8 @@ class StatesController < ApplicationController
     
     respond_to do |format|
       format.html #states.html.erb
-      format.json {render json: states}
-      format.xml {render xml: states}
+      format.json {render json: states.as_json()}
+      format.xml {render xml: states.to_xml(only: :name)}
     end
   end
   
@@ -33,8 +33,8 @@ class StatesController < ApplicationController
     
     respond_to do |format|
       format.html #show.html.erb
-      format.json {render json: @state}
-      format.xml {render xml: @state}
+      format.json {render json: @state.as_json()}
+      format.xml {render xml: @state.to_xml()}
     end
   end
   

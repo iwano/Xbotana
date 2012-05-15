@@ -10,6 +10,14 @@
 #
 
 class Lot < ActiveRecord::Base
+  def as_json(options=nil)
+    super(options ||
+          {only: [:number, :expiry_date] } )
+  end
+  def to_xml(options=nil)
+    super(options ||
+          {only: [:number, :expiry_date] } )
+  end
   attr_accessible :expiry_date, :number
   
   has_many :products, dependent: :destroy

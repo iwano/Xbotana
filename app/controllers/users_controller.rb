@@ -29,8 +29,8 @@ class UsersController < ApplicationController
     
     respond_to do |format|
       format.html #show.html.erb
-      format.json {render json: @user}
-      format.xml {render xml: @user}
+      format.json {render json: @user.as_json()}
+      format.xml {render xml: @user.to_xml()}
     end
   end
 
@@ -65,11 +65,13 @@ class UsersController < ApplicationController
 
   def index
     @users = User.paginate(page: params[:page])
-    
+    users = User.all
     respond_to do |format|
       format.html #index.html
-      format.json {render json: @users.to_json(except:[:created_at, :updated_at, :id, :password_digest])}
-      format.xml {render xml: @users}
+      format.json {render json: users.as_json()}
+      format.xml {render xml: users.to_xml({:include => { :state => { :only => :name }, 
+          :city => { :only => :name}}, 
+          except:[:created_at, :updated_at, :id, :password_digest, :remember_token, :city_id, :state_id] })}
     end
 
   end

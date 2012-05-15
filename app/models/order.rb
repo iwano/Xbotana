@@ -13,6 +13,12 @@
 #
 
 class Order < ActiveRecord::Base
+  def as_json(options=nil)
+    super(options ||
+          {:include => { :user => { :only => :name }}, 
+          except:[:created_at, :updated_at, :id, :user_id] } )
+  end
+  
   after_create :new_order_notification
 
   attr_accessible :status, :number_products, :total, :delivered_date

@@ -22,8 +22,8 @@ class LotsController < ApplicationController
    
    respond_to do |format|
       format.html #show.html.erb
-      format.json {render json: @lot}
-      format.xml {render xml: @lot}
+      format.json {render json: @lot.as_json()}
+      format.xml {render xml: @lot.to_xml()}
     end
  end
  
@@ -33,8 +33,8 @@ class LotsController < ApplicationController
    
    respond_to do |format|
       format.html #lots.html.erb
-      format.json {render json: lots}
-      format.xml {render xml: lots}
+      format.json {render json: lots.as_json()}
+      format.xml {render xml: lots.to_xml({only: [:number, :expiry_date] })}
     end
  end
  

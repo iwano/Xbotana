@@ -1,6 +1,6 @@
 class RouteDetailsController < ApplicationController
   before_filter :signed_in_user, only: [:new, :create, :show, :index, :edit, :update, :destroy]
-  before_filter :hos_user, only: [:new, :create, :show, :index, :edit, :update, :destroy]
+  before_filter :hos_user, only: [:new, :create, :show, :edit, :update, :destroy]
   
   def deliver
     @order = Order.find(params[:order_id])
@@ -38,5 +38,22 @@ class RouteDetailsController < ApplicationController
     route.order.update_attributes(:status => "processing")
     flash[:success] = "The stop has been removed from the route."
     redirect_to "/routes/#{path}"
+  end
+
+  def index
+    @route_details = RouteDetail.paginate(page: params[:page])
+    rd = RouteDetail.all
+   
+    respond_to do |format|
+      format.html #order_details.html.erb
+      format.json {render json: rd.as_json()}
+      format.xml {render xml: rd.to_xml({:include => { :order => {
+            :include => { :user => {
+              :only => :name}}, except:[:created_at, :updated_at, :id, :user_id]},
+          :route => {
+            :include => { :user => {
+              :only => :name}}, except:[:created_at, :updated_at, :id, :user_id]}
+              }, except:[:created_at, :updated_at, :id, :order_id, :route_id]})}
+    end
   end
 end

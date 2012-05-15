@@ -22,8 +22,9 @@ class RoutesController < ApplicationController
     @routes = current_user.vendor ?  Route.where(:user_id=>id).paginate(page: params[:page]) : Route.paginate(page: params[:page])
      respond_to do |format|
          format.html #index.html.erb
-         format.json {render json: @routes}
-         format.xml {render xml: @routes}
+         format.json {render json: @routes.as_json()}
+         format.xml {render xml: @routes.to_xml({:include => { :user => { :only => :name }}, 
+          except:[:created_at, :updated_at, :id]})}
       end
   end
   
@@ -43,8 +44,14 @@ class RoutesController < ApplicationController
     end
      respond_to do |format|
          format.html #show.html.erb
-         format.json {render json: @route_details}
-         format.xml {render xml: @route_details}
+         format.json {render json: @route_details.as_json()}
+         format.xml {render xml: @route_details.to_xml({:include => { :order => {
+            :include => { :user => {
+              :only => :name}}, except:[:created_at, :updated_at, :id, :user_id]},
+          :route => {
+            :include => { :user => {
+              :only => :name}}, except:[:created_at, :updated_at, :id, :user_id]}
+              }, except:[:created_at, :updated_at, :id, :order_id, :route_id]})}
       end
   end
   

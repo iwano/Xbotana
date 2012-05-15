@@ -22,8 +22,8 @@ class ProductsController < ApplicationController
    
    respond_to do |format|
      format.html #show.html.erb
-     format.json {render json: @product}
-     format.xml {render xml: @product}
+     format.json {render json: @product.as_json()}
+     format.xml {render xml: @product.to_xml()}
    end
  end
 
@@ -33,8 +33,11 @@ class ProductsController < ApplicationController
    
    respond_to do |format|
      format.html #products.html.erb
-     format.json {render json: products}
-     format.xml {render xml: products}
+     format.json {render json: products.as_json()}
+     format.xml {render xml: products.to_xml({:include => { :category => { :only => :name }, 
+          :presentation => { :only => :name},
+          :lot => { :only => :number}}, 
+          except:[:created_at, :updated_at, :id, :category_id, :lot_id, :presentation_id] })}
    end
  end
 

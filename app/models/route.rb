@@ -10,6 +10,12 @@
 #
 
 class Route < ActiveRecord::Base
+  def as_json(options=nil)
+    super(options ||
+          {:include => { :user => { :only => :name }}, 
+          except:[:created_at, :updated_at, :id]} )
+  end
+
   after_create :new_route_email
 
   attr_accessible :user_id, :finished

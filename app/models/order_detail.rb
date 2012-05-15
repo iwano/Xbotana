@@ -12,6 +12,18 @@
 #
 
 class OrderDetail < ActiveRecord::Base
+  def as_json(options=nil)
+    super(options ||
+    	{:include => {:product => {
+    		:include => { :presentation => {
+    			:only => :name}, 
+    			:category => {
+    				:only => :name},
+    				:lot => {
+    					:only => :number
+    		}}, except:[:created_at, :updated_at, :id, :lot_id, :presentation_id, :category_id, :quantity]}},
+    		except:[:created_at, :updated_at, :id, :order_id, :product_id] })        
+  end
   attr_accessible :product_id, :quantity, :subtotal
   belongs_to :order
   belongs_to :product
