@@ -68,7 +68,7 @@ $(document).ready(function() {
      $("ul.tabs li").click(changeTab);
   });
 
-  $('a.right').click(function(e) {
+  $('a.emptyCartButton').click(function(e) {
     // we just need to add the key/value pair for the DELETE method
     // as the second argument to the JQuery $.post() call
      e.preventDefault();
