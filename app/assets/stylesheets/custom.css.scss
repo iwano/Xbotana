@@ -371,6 +371,18 @@ span.value{
   margin-bottom: 10px;
 }
 
+span.value2{
+  font-size: 18px;
+  display: inline-block;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  color:rgba(153, 153, 153, .7);
+  &:hover{
+    background:#9CDCFF;
+    color:rgba(153, 153, 153, 1);
+  }
+}
+
 div#productPicture{
   /*border: 1px solid #999;*/
   min-height:350px;
@@ -395,4 +407,12 @@ a.productPictureIndex img{
 
 td.productDescription{
   color: $grayLight;
+}
+
+div#userInfo{
+  height:9em;
+}
+
+div.sangria{
+  margin-left:40px;
 }

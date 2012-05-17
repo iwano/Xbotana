@@ -9,7 +9,7 @@
 					    <i class="icon-search icon-white"></i> <%= text_field_tag :search, params[:search], class: "search-query span2", id: "searchBar", placeholder: "Search" %> 
 					<% end %>
 					<li>
-						<a href= '/' title="Home">
+						<a href= '/' rel="tooltip" title="Home">
 						<i class="icon-home icon-white"></i>
 						</a>
 					</li>
@@ -33,35 +33,35 @@
 							</li>
 						<%elsif current_user.hos?%>
 							<li>
-								<a href= '/routes' title="Routes">
+								<a href= '/routes' rel="tooltip" title="Routes">
 								<i class="icon-road icon-white"></i>
 								</a>
 							</li>
 							<li>
-								<a href= '/orders' title="Orders">
+								<a href= '/orders' rel="tooltip" title="Orders">
 								<i class="icon-list icon-white"></i>
 								</a>
 							</li>
 						<%elsif current_user.vendor?%>
 							<li>
-								<a href= '/routes' title="Routes">
+								<a href= '/routes' rel="tooltip" title="Routes">
 								<i class="icon-road icon-white"></i>
 								</a>
 							</li>
 						<%else%>
 							<li id="cartIcon">
-								<a id="cartIcon" href= '/cart' title="Shopping cart">
+								<a id="cartIcon" href= '/cart' rel="tooltip" title="Shopping cart">
 								<i class="icon-shopping-cart icon-white"></i>
 								</a>
 							</li>
 							<li>
-								<a href= '/orders' title="Orders">
+								<a href= '/orders' rel="tooltip" title="Orders">
 								<i class="icon-th-list icon-white"></i>
 								</a>
 							</li>
 						<%end%>
 						<li>
-							<a href= '/help'  title="Help">
+							<a href= '/help' rel="tooltip" title="Help">
 							<i class="icon-question-sign icon-white"></i>
 							</a>
 							<li class="divider-vertical"></li>
@@ -79,7 +79,7 @@
 						</li>
 					<%else%>
 					<li>
-						<a href= '/help'  title="Help">
+						<a href= '/help' rel="tooltip" title="Help">
 						<i class="icon-question-sign icon-white"></i>
 						</a>
 					</li>

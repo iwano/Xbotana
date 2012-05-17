@@ -11,7 +11,7 @@
 	      <%= f.text_field :number, required: true %>
 	
 		  <%= f.label :expiry_date %>
-	      <%= f.text_field :expiry_date, required: true, placeholder: "e.g. 2012-03-21" %>
+	      <%= f.text_field :expiry_date, required: true, "data-behaviour" => 'datepicker' %>
 
 	      <%= f.submit "Add", class: "btn btn-large btn-primary" %>
 		  <%= link_to "Cancel", lots_path, class: "btn" %>

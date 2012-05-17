@@ -1,77 +1,25 @@
 <% provide(:title, @user.name) %>
 <div class="span7">
-<div class="well catalogsSidebar">
-<div class="span7">	
-  <div class="span5">
-    <section>
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-	</section>
-	</div>
-	</div>
-	<div class="row-fluid">
-		<div class="span2">
-			<h2>Email:</h2>
-		</div>
-		<div class="span8">
-			<h3><%= @user.email %></h3>
-		</div>
-	</div>
-	
-	<div class="row-fluid">
-		<div class="span2">
-			<h2>Phone:</h2>
-		</div>
-		<div class="span6">
-			<h3><%= @user.phone_number %></h3>
+	<div class="well catalogsSidebar">
+		<div id="userInfo">
+			<%= gravatar_for @user %>
+        	<h1><%= @user.name %></h1>
+    	</div>
+   		<div class="sangria">
+			<span class="title">Email:</span>
+			<span class="value2"><%= @user.email %></span>
+			<span class="title">Phone:</span>
+			<span class="value2"><%= @user.phone_number %></span>
+			<span class="title">Mobile:</span>
+			<span class="value2"><%= @user.mobile_phone %></span>
+			<span class="title">Address:</span>
+			<span class="value2"><%= @user.address %></span>
+			<span class="title">Rfc:</span>
+			<span class="value2"><%= @user.rfc %></span>
+			<span class="title">State:</span>
+			<span class="value2"><%= @user.state.name %></span>	
+			<span class="title">City:</span>
+			<span class="value2"><%= @user.city.name %></span>
 		</div>
 	</div>
-
-	<div class="row-fluid">
-		<div class="span2">
-			<h2>Mobile:</h2>
-		</div>
-		<div class="span6">
-			<h3><%= @user.mobile_phone %></h3>
-		</div>
-	</div>
-	
-	<div class="row-fluid">
-		<div class="span2">
-			<h2>Address:</h2>
-		</div>
-		<div class="span6">
-			<h3><%= @user.address %></h3>
-		</div>
-	</div>
-	
-	<div class="row-fluid">
-		<div class="span2">
-			<h2>Rfc:</h2>
-		</div>
-		<div class="span6">
-			<h3><%= @user.rfc %></h3>
-		</div>
-	</div>
-	
-	<div class="row-fluid">
-		<div class="span2">
-			<h2>State:</h2>
-		</div>
-		<div class="span6">
-			<h3><%= @user.state.name %></h3>
-		</div>
-	</div>
-	
-	<div class="row-fluid">
-		<div class="span2">
-			<h2>City:</h2>
-		</div>
-		<div class="span6">
-			<h3><%= @user.city.name %></h3>
-		</div>
-	</div>
-</div>
 </div>
