@@ -1,7 +1,13 @@
 class RoutesController < ApplicationController
-  before_filter :signed_in_user, only: [:new, :create, :show, :index, :edit, :update, :destroy]
-  before_filter :hos_vendor_admin_user, only: [:new, :create, :show, :index, :edit, :update, :destroy]
-  
+  #before_filter :signed_in_user, only: [:new, :create, :show, :index, :edit, :update, :destroy]
+  #before_filter :hos_vendor_admin_user, only: [:new, :create, :show, :index, :edit, :update, :destroy]
+  before_filter(only: [:new, :create, :show, :index, :edit, :update, :destroy]) do |controller|
+   controller.send(:signed_in_user) unless controller.request.format.json? || controller.request.format.xml?
+  end
+  before_filter(only: [:new, :create, :show, :index, :edit, :update, :destroy]) do |controller|
+   controller.send(:hos_vendor_admin_user) unless controller.request.format.json? || controller.request.format.xml?
+  end
+
   def new
     @route = Route.new
     @users = User.vendors

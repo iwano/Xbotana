@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
+  #before_filter :signed_in_user, only: [:index, :edit, :update, :destroy, :show]
+ before_filter(only: [:index, :edit, :update, :destroy, :show]) do |controller|
+   controller.send(:signed_in_user) unless controller.request.format.json? || controller.request.format.xml?
+ end
+
   before_filter :correct_user,   only: [:edit, :update]
   before_filter :admin_user,     only: :destroy
 

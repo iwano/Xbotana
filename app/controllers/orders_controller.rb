@@ -1,7 +1,16 @@
 class OrdersController < ApplicationController
-  before_filter :signed_in_user, only: [:new, :create, :show, :index, :edit, :update, :destroy]
-  before_filter :non_vendor, only: [:new, :create, :index, :edit, :update, :destroy]
-  before_filter :client_only, only: [:checkout]
+  #before_filter :signed_in_user, only: [:new, :create, :show, :index, :edit, :update, :destroy]
+  #before_filter :non_vendor, only: [:new, :create, :index, :edit, :update, :destroy]
+  #before_filter :client_only, only: [:checkout]
+  before_filter(only: [:new, :create, :show, :index, :edit, :update, :destroy]) do |controller|
+   controller.send(:signed_in_user) unless controller.request.format.json? || controller.request.format.xml?
+  end
+  before_filter(only: [:new, :create, :index, :edit, :update, :destroy]) do |controller|
+   controller.send(:non_vendor) unless controller.request.format.json? || controller.request.format.xml?
+  end
+  before_filter(only: [:checkout]) do |controller|
+   controller.send(:client) unless controller.request.format.json? || controller.request.format.xml?
+  end
 
   def checkout
     @number_products = get_products_count

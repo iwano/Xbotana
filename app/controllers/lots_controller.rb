@@ -1,7 +1,13 @@
 class LotsController < ApplicationController
- before_filter :signed_in_user, only: [:new, :create, :index, :show, :edit, :update, :destroy]
- before_filter :admin_user,     only: [:new, :create, :index, :edit, :update, :destroy]
-
+ #before_filter :signed_in_user, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+ #before_filter :admin_user,     only: [:new, :create, :index, :edit, :update, :destroy]
+ before_filter(only: [:new, :create, :show, :index, :edit, :update, :destroy]) do |controller|
+   controller.send(:signed_in_user) unless controller.request.format.json? || controller.request.format.xml?
+  end
+  before_filter(only: [:new, :create, :edit, :update, :destroy]) do |controller|
+   controller.send(:admin_user) unless controller.request.format.json? || controller.request.format.xml?
+  end
+  
  def new
    @lot = Lot.new
  end
