@@ -24,7 +24,11 @@ class PresentationsController < ApplicationController
 
   def show
     @presentation = Presentation.find(params[:id])
-    @products = @presentation.products.paginate(page: params[:page])
+    if session[:mobile_param] ==0
+      @products = @presentation.products.paginate(page: params[:page])
+    else
+      @products = @presentation.products
+    end
     
     respond_to do |format|
        format.html #show.html.erb
@@ -34,8 +38,12 @@ class PresentationsController < ApplicationController
   end
 
   def index
-    @presentations = Presentation.paginate(page: params[:page])
     presentations = Presentation.all
+    if session[:mobile_param] ==0
+      @presentations = Presentation.paginate(page: params[:page])
+    else
+      @presentations = presentations
+    end
     
     respond_to do |format|
        format.html #presentations.html.erb

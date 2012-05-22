@@ -25,7 +25,11 @@ class RoutesController < ApplicationController
   
   def index
     id = current_user.id
-    @routes = current_user.vendor ?  Route.where(:user_id=>id).paginate(page: params[:page]) : Route.paginate(page: params[:page])
+    if session[:mobile_param] ==0
+      @routes = current_user.vendor ?  Route.where(:user_id=>id).paginate(page: params[:page]) : Route.paginate(page: params[:page])
+    else
+      @routes = current_user.vendor ?  Route.where(:user_id=>id) : Route.all
+    end
      respond_to do |format|
          format.html #index.html.erb
          format.json {render json: @routes.as_json()}

@@ -5,11 +5,11 @@
 	<% @orders.each do |order| %>
 		<% if current_user.admin? || current_user.hos? %>
 			<li>
-			<%= link_to "#{order.id} - #{order.user.name}", order %>
+			<%= link_to "#{order.id} - #{order.user.name}", order, :data => { :transition => 'slide' } %>
 			<%= order.created_at.to_formatted_s(:long) %></li>
 		<%else%>
 			<li>
-			<%= link_to "#{number_to_currency (order.total)} - #{order.number_products} ", order %>
+			<%= link_to "#{number_to_currency (order.total)} - #{order.number_products} ", order, :data => { :transition => 'slide' } %>
 			Status: <%= order.status %> - 
 			<%= order.created_at.to_formatted_s(:long) %></li>
 		<%end%>

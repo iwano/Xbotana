@@ -68,8 +68,12 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.paginate(page: params[:page])
     users = User.all
+    if session[:mobile_param] ==0
+      @users = User.paginate(page: params[:page]) 
+    else
+       @users = users
+    end
     respond_to do |format|
       format.html #index.html
       format.json {render json: users.as_json()}

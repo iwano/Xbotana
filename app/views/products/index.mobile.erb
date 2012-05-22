@@ -5,7 +5,7 @@
 	<% @products.each do |product| %>
 		<% name = product.name.delete(' ').downcase + "Small.png" %>
 		<li>
-		  <%= link_to image_tag(name, alt: "@product.name"), product %>
+		  <%= link_to image_tag(name, alt: "@product.name"), product, :data => { :transition => 'slide' } %>
 		  <h1><%= product.name%> -
 		  <%= product.presentation.name %></h1>
 		</li>

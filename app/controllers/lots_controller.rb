@@ -24,8 +24,11 @@ class LotsController < ApplicationController
  
  def show
    @lot = Lot.find(params[:id])
-   @products = @lot.products.paginate(page: params[:page])
-   
+   if session[:mobile_param] ==0
+     @products = @lot.products.paginate(page: params[:page])
+   else
+     @products = @lot.products
+   end
    respond_to do |format|
       format.html #show.html.erb
       format.json {render json: @lot.as_json()}
@@ -34,8 +37,12 @@ class LotsController < ApplicationController
  end
  
  def index
-   @lots = Lot.paginate(page: params[:page])
    lots = Lot.all
+   if session[:mobile_param] ==0
+    @lots = Lot.paginate(page: params[:page])
+   else
+    @lots = lots
+   end
    
    respond_to do |format|
       format.html #lots.html.erb

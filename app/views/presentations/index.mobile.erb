@@ -4,7 +4,7 @@
 <li data-role="list-divider"></li>
 	<% @presentations.each do |presentation| %>
 		<li>
-			<%= link_to "#{presentation.name} - #{presentation.products.count}", presentation%>
+			<%= link_to "#{presentation.name} - #{presentation.products.count}", presentation, :data => { :transition => 'slide' }%>
 		</li>
 	<% end %>
 </ul>

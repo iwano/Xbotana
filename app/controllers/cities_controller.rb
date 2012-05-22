@@ -23,8 +23,12 @@ class CitiesController < ApplicationController
   end
   
   def index
-    @cities = City.paginate(page: params[:page])
     cities = City.all
+    if session[:mobile_param] ==0
+      @cities = City.paginate(page: params[:page])
+    else
+      @cities = cities
+    end
     
     respond_to do |format|
       format.html #cities.html.erb

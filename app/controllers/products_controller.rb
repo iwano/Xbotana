@@ -34,9 +34,12 @@ class ProductsController < ApplicationController
  end
 
  def index
-   @products = Product.paginate(page: params[:page])
    products = Product.all
-   
+   if session[:mobile_param] ==0
+     @products = Product.paginate(page: params[:page])
+   else
+    @products = products
+   end
    respond_to do |format|
      format.html #products.html.erb
      format.json {render json: products.as_json()}

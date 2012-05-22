@@ -7,13 +7,13 @@
 		<%= link_to image_tag(name, alt: "@product.name"), "/assets/#{name}", class: "productPicture" %>
 	
 		<li>Category:		
-		<%= link_to @product.category.name, @product.category %></li>
+		<%= link_to @product.category.name, @product.category, :data => { :transition => 'slide' } %></li>
 		<li>Price:
 		<%= number_to_currency (@product.price) %></li>
 		<li>Presentation:
 		<%= number_to_currency (@product.presentation.name) %></li>
 		<li>Lot:
-		<%= link_to @product.lot.number, @product.lot %></li>
+		<%= link_to @product.lot.number, @product.lot, :data => { :transition => 'slide' } %></li>
 		<li>Quantity:
 		<%= @product.quantity %></li>
 		<li>Description:

@@ -5,16 +5,52 @@
     <%= stylesheet_link_tag "http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" %>
     <%= javascript_include_tag "http://code.jquery.com/jquery-1.7.2.min.js", "http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js" %>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <style>
+      .aDeleteBtn {
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        float: right;
+        height: 15px;
+        line-height: 15px;
+        margin: 3px 10px 0 0;
+        padding: 0.6em;
+        position: absolute;
+        right: 0;
+        top: 37px;
+        z-index: 10;
+      }
+    .ui-btn-up-r { border: 1px solid #953403; background: #2567ab; font-weight: bold; color: #fff; cursor: pointer;  text-shadow: 0 -1px 1px #953403; text-decoration: none; background-image: -moz-linear-gradient(top, #ec4a0b, #ad390c); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #ec4a0b),color-stop(1, #ad390c));   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ec4a0b', EndColorStr='#ad390c')"; }
 
+    .ui-btn-up-r a.ui-link-inherit { color: #fff; }
+    .center{
+      text-align:center;
+    }
+    </style>
+    <script>
+      $(function(){
+
+        $('li.swipe').live('swipeleft', function(event){
+            var $li = $(this);
+            $('.aDeleteBtn').remove();
+            var $deleteBtn = $('<a>Delivered</a>').attr({
+            'class': 'aDeleteBtn ui-btn-up-r',
+            'href': '/'});
+            $li.prepend($deleteBtn);
+          
+        });
+        $('li.swipe').live('swiperight', function(event){
+            $('.aDeleteBtn').remove();
+        });
+      });
+    </script>
     <%= yield(:head) %>
   </head>
   <body>
     <div data-role="page" data-theme="b" data-content-theme="b">
-
       <div data-role="header">
         <h1>botanaX</h1>
         <%if !current_page? "/"%>
-        <%= link_to "home", "/"%>
+        <a href="/" data-role="button" data-icon="home" data-iconpos="left">Home</a>
         <%end%>
       </div><!-- /header -->
 
@@ -25,7 +61,10 @@
     <br />
 
   <%if !current_page? "/sessions/exitsession"%>
-   <%= link_to "Settings", "/sessions/exitsession", :data => { :role => "button", :theme=>"e", :rel=>"dialog", :transition=>"slidedown" } %>
+   <%= link_to "Settings", "/sessions/exitsession", :data => { :role => "button", :theme=>"e", :rel=>"dialog", :transition=>"slidedown", :icon=>"gear" } %>
+   <% if signed_in?%>
+    <h4 class="center"><%="#{current_user.name} - #{current_user.email}"%></h4>
+    <%end%>
   <%end%>
 </div><!-- /page -->
     

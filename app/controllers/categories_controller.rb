@@ -24,7 +24,11 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @products = @category.products.paginate(page: params[:page])
+    if session[:mobile_param] ==0
+      @products = @category.products.paginate(page: params[:page])
+    else
+      @products = @category.products
+    end
     
     respond_to do |format|
        format.html #show.html.erb
@@ -34,8 +38,12 @@ class CategoriesController < ApplicationController
   end
 
   def index
-    @categories = Category.paginate(page: params[:page])
     categories = Category.all
+    if session[:mobile_param] ==0
+      @categories = Category.paginate(page: params[:page])
+    else
+      @categories = categories
+    end
     
     respond_to do |format|
        format.html #categories.html.erb

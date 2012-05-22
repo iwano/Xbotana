@@ -13,8 +13,12 @@ class StatesController < ApplicationController
   end
   
   def index 
-    @states = State.paginate(page: params[:page])
     states = State.all
+    if session[:mobile_param] ==0
+      @states = State.paginate(page: params[:page])
+    else
+       @states = states
+    end
     
     respond_to do |format|
       format.html #states.html.erb
@@ -35,7 +39,12 @@ class StatesController < ApplicationController
   
   def show
     @state = State.find(params[:id])
-    @cities = @state.cities.paginate(page: params[:page])
+    if session[:mobile_param] ==0
+      @cities = @state.cities.paginate(page: params[:page])
+    else
+      @cities = @state.cities
+    end
+    
     
     respond_to do |format|
       format.html #show.html.erb
