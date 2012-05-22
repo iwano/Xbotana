@@ -1,0 +1,17 @@
+<% provide(:title, 'All Orders') %>
+<h1>All Orders</h1>
+<ul data-role="listview" data-theme="c">
+<li data-role="list-divider"></li>
+	<% @orders.each do |order| %>
+		<% if current_user.admin? || current_user.hos? %>
+			<li>
+			<%= link_to "#{order.id} - #{order.user.name}", order %>
+			<%= order.created_at.to_formatted_s(:long) %></li>
+		<%else%>
+			<li>
+			<%= link_to "#{number_to_currency (order.total)} - #{order.number_products} ", order %>
+			Status: <%= order.status %> - 
+			<%= order.created_at.to_formatted_s(:long) %></li>
+		<%end%>
+	<% end %>
+</ul>

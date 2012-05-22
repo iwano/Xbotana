@@ -1,0 +1,10 @@
+<% provide(:title, 'All States') %>
+<h1>All States</h1>
+<ul data-role="listview" data-theme="c">
+<li data-role="list-divider"></li>
+	<% @states.each do |state| %>
+		<li>
+			<%= link_to state.name, state%>	
+		</li>
+	<% end %>
+</ul>

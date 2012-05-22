@@ -1,0 +1,10 @@
+<% provide(:title, 'All Presentations') %>
+<h1>All Presentations</h1>
+<ul data-role="listview" data-theme="c">
+<li data-role="list-divider"></li>
+	<% @presentations.each do |presentation| %>
+		<li>
+			<%= link_to "#{presentation.name} - #{presentation.products.count}", presentation%>
+		</li>
+	<% end %>
+</ul>

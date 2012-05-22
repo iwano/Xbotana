@@ -1,0 +1,21 @@
+<% provide(:title, @product.name) %>
+	<h1><%= @product.name %></h1>
+	<ul data-role="listview" data-theme="c">
+		<li data-role="list-divider"></li>
+		<!-- Product picture here-->
+		<% name = @product.name.delete(' ').downcase + ".png" %>
+		<%= link_to image_tag(name, alt: "@product.name"), "/assets/#{name}", class: "productPicture" %>
+	
+		<li>Category:		
+		<%= link_to @product.category.name, @product.category %></li>
+		<li>Price:
+		<%= number_to_currency (@product.price) %></li>
+		<li>Presentation:
+		<%= number_to_currency (@product.presentation.name) %></li>
+		<li>Lot:
+		<%= link_to @product.lot.number, @product.lot %></li>
+		<li>Quantity:
+		<%= @product.quantity %></li>
+		<li>Description:
+		<%= @product.description %></li>
+	</ul>

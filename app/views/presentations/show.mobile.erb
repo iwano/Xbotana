@@ -1,0 +1,9 @@
+<% provide(:title, @presentation.name) %>
+	<h1>Lot <%= @presentation.name %></h1>
+	<ul data-role="listview" data-theme="c">
+		<li data-role="list-divider"></li>
+		<% if @presentation.products.any? %>
+			<h2>Products (<%= @presentation.products.count %>)</h2>			
+        		<%= render @products %>
+    	<% end %>
+	</ul>

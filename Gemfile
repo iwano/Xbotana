@@ -8,6 +8,7 @@ gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.5'
 gem "mail", "2.4.4"
 gem 'bootstrap-datepicker-rails'
+gem 'rack-offline', :git => 'git://github.com/wycats/rack-offline.git'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

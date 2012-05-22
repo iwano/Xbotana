@@ -1,0 +1,6 @@
+<% provide(:title, @city.name) %>
+	<h1><%= @city.name %></h1>
+	<ul data-role="listview" data-theme="c">
+		<li data-role="list-divider"></li>
+			<li><%= link_to "#{@city.name} - #{@city.state.name}", @city%></li>	
+	</ul>

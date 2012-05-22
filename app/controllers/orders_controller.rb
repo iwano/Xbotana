@@ -9,8 +9,9 @@ class OrdersController < ApplicationController
    controller.send(:non_vendor) unless controller.request.format.json? || controller.request.format.xml?
   end
   before_filter(only: [:checkout]) do |controller|
-   controller.send(:client) unless controller.request.format.json? || controller.request.format.xml?
+   controller.send(:client_only) unless controller.request.format.json? || controller.request.format.xml?
   end
+  
 
   def checkout
     @number_products = get_products_count

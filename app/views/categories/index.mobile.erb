@@ -1,0 +1,10 @@
+<% provide(:title, 'All Categories') %>
+<h1>All Categories</h1>
+<ul data-role="listview" data-theme="c">
+<li data-role="list-divider"></li>
+	<% @categories.each do |category| %>
+		<li>
+			<%= link_to "#{category.name} - #{category.products.count}", category%>
+		</li>
+	<% end %>
+</ul>

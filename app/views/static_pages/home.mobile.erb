@@ -1,0 +1,41 @@
+<% if signed_in? %>
+	<ul data-role="listview" data-theme="g">
+	<%= form_tag "/static_pages/search", :method => "get", class: "navbar-search pull-left" do %> 
+		<%= text_field_tag :search, params[:search], id: "searchBar", placeholder: "Search", type: "search", name: "search", id: "searc-basic", value: "", :data => { :mini => true } %> 
+	<% end %>
+	<li><%= link_to "Profile", current_user%></li>
+	<% if current_user.admin? %>
+	  
+		<li data-role="list-divider"></li>
+		<li><%= link_to "Users", users_path%></li>
+		<li><%= link_to "Products", products_path%></li>
+		<li><%= link_to "Categories", categories_path%></li>
+		<li><%= link_to "States", states_path%></li>
+		<li><%= link_to "Cities", cities_path%></li>
+		<li><%= link_to "Lots", lots_path%></li>
+		<li><%= link_to "Presentations", presentations_path%></li>
+		<li><%= link_to "Orders", orders_path%></li>
+		<li><%= link_to "Routes", routes_path%></li>
+	<%elsif current_user.hos?%>
+		<li><%= link_to "Orders", orders_path%></li>
+		<li><%= link_to "Routes", routes_path%></li>
+	<%elsif current_user.vendor?%>
+		<li><%= link_to "Routes", routes_path%></li>
+	<%else%>
+		<li><%= link_to "Products", products_path%></li>
+		<li><%= link_to "Cart", cart_path%></li>
+		<li><%= link_to "Orders", orders_path%></li>
+	<%end%>
+	</ul>
+<%else%>
+	<%= form_for(:session, url: sessions_path) do |f| %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, required: true %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, required: true %>
+
+      <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+    <% end %>
+<%end%>

@@ -1,0 +1,20 @@
+<% provide(:title, @user.name) %>
+<ul data-role="listview" data-theme="g">
+	<li><%= gravatar_for @user %>
+    <h1><%= @user.name %></h1><li>
+    <li data-role="list-divider"></li>
+	<li>Phone:
+	<%= @user.phone_number %></li>
+	<li>Mobile:
+	<%= @user.mobile_phone %></li>
+	<li><h1>Email:</h1>
+	<%= @user.email %></li>
+	<li><h1>Address:</h1>
+	<%= @user.address %></li>
+	<li><h1>Rfc:</h1>
+	<%= @user.rfc %></li>
+	<li><h1>State:</h1>
+	<%= @user.state.name %></li>
+	<li><h1>City:</h1>
+	<%= @user.city.name %></li>
+</ul>

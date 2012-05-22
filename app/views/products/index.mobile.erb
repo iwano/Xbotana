@@ -1,0 +1,13 @@
+<% provide(:title, 'All Products') %>
+<h1>All Products</h1>
+<ul data-role="listview" data-theme="g">
+<li data-role="list-divider"></li>
+	<% @products.each do |product| %>
+		<% name = product.name.delete(' ').downcase + "Small.png" %>
+		<li>
+		  <%= link_to image_tag(name, alt: "@product.name"), product %>
+		  <h1><%= product.name%> -
+		  <%= product.presentation.name %></h1>
+		</li>
+	<% end %>
+</ul>

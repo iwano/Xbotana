@@ -1,0 +1,4 @@
+  <%= link_to "Full Site", root_url(:mobile => 0), :rel => "external", :data => { :role => "button", :theme=>"a", } %>
+  <% if signed_in?%>
+    <%= button_to "Log out", signout_path, method: "delete", :data => { :role => "button", :theme=>"e"} %>
+  <%end%>

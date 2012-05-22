@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= stylesheet_link_tag "http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" %>
+    <%= javascript_include_tag "http://code.jquery.com/jquery-1.7.2.min.js", "http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js" %>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <%= yield(:head) %>
+  </head>
+  <body>
+    <div data-role="page" data-theme="b" data-content-theme="b">
+
+      <div data-role="header">
+        <h1>botanaX</h1>
+        <%if !current_page? "/"%>
+        <%= link_to "home", "/"%>
+        <%end%>
+      </div><!-- /header -->
+
+      <div data-role="content"> 
+        <%= yield %>    
+      </div><!-- /content -->
+  
+    <br />
+
+  <%if !current_page? "/sessions/exitsession"%>
+   <%= link_to "Settings", "/sessions/exitsession", :data => { :role => "button", :theme=>"e", :rel=>"dialog", :transition=>"slidedown" } %>
+  <%end%>
+</div><!-- /page -->
+    
+  </body>
+</html>

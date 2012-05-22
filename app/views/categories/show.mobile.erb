@@ -1,0 +1,10 @@
+<% provide(:title, @category.name) %>
+	<h1><%= @category.name %></h1>
+	<ul data-role="listview" data-theme="c">
+		<li data-role="list-divider"></li>
+		<% if @category.products.any? %>
+			<h2>Products (<%= @category.products.count %>)</h2>			
+        		<%= render @products %>
+			</div>		
+    	<% end %>
+	</ul>

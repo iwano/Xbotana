@@ -1,0 +1,22 @@
+<% provide(:title, 'Search') %>
+	<h1>Search results for "<%= @searchkey %>"</h1>
+	<ul data-role="listview" data-theme="g">
+    	<li>
+			<%= "No results found" unless @results != []%>
+			<% @results.each do |result| %>	
+				<% if result.class.to_s == "User" %>
+					<li><%= gravatar_for result, size: 40 %><%= link_to result.name, result%>, <%= result.email%> - User</li>	
+				<% elsif result.class.to_s == "Product" %>
+					<li><%= link_to result.name, result%>, <%= result.presentation.name%> - Product</li>
+				<% elsif result.class.to_s == "State" %>
+					<li><%= link_to result.name, result%> - State</li>
+				<% elsif result.class.to_s == "City" %>
+					<li><%= link_to result.name, result%> - City</li>
+				<% elsif result.class.to_s == "Category" %>
+					<li><%= link_to result.name, result%> - Category</li>
+				<% else %>
+					<li><%= link_to result.name, result%> - Presentation</li>
+				<%end%>
+			<% end %>
+		</li>
+	</ul>

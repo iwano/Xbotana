@@ -1,0 +1,10 @@
+<% provide(:title, @state.name) %>
+	<h1><%= @state.name %></h1>
+	<ul data-role="listview" data-theme="c">
+		<li data-role="list-divider"></li>
+		<% if @state.cities.any? %>
+			<h2>Cities (<%= @state.cities.count %>)</h2>			
+        		<%= render @cities %>
+			</div>		
+    	<% end %>
+	</ul>

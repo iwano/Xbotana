@@ -14,6 +14,7 @@
 		<% flash.each do |key, value| %>
 		        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
 		<% end %>
+
 	<% if signed_in? %>
 		<div class="span9 main">
 			<%= yield %>

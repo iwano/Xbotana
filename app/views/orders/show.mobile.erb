@@ -1,0 +1,27 @@
+<% provide(:title, @order.created_at) %>
+	<h1>Order <%= @order.created_at.to_formatted_s(:long_ordinal)  %></h1>
+	<ul data-role="listview" data-theme="c">
+		<li data-role="list-divider"></li>
+			<h2>Products (<%= @order.order_details.count %>)</h2>
+			<% @order_details.each do |order_detail| %>
+				<li>
+					<%= order_detail.product.name%> <br />
+					<%= order_detail.product.presentation.name%> -
+					<%= order_detail.product.price %><br />
+					<%= order_detail.quantity %> -
+					<%= number_to_currency (order_detail.subtotal) %>
+				</li>
+			<% end %>
+			<li>
+				Subtotal:
+				<%= number_to_currency (@order.total) %>
+			</li>
+			<li>
+				Shipping:
+				$150.00
+			</li>
+			<li>
+				Total:
+				<%= number_to_currency (@order.total + 150) %>
+			</li>
+	</ul>

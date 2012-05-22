@@ -1,0 +1,10 @@
+<% provide(:title, 'All Lots') %>
+<h1>All Lots</h1>
+<ul data-role="listview" data-theme="c">
+<li data-role="list-divider"></li>
+	<% @lots.each do |lot| %>
+		<li>
+			<%= link_to "#{lot.number.to_s} // #{lot.expiry_date} // #{lot.products.count}", lot%>
+		</li>
+	<% end %>
+</ul>
