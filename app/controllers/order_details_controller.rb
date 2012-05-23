@@ -11,8 +11,12 @@ class OrderDetailsController < ApplicationController
   end
   
   def index
-    @order_details = OrderDetail.paginate(page: params[:page])
     od = OrderDetail.all
+    if !session[:mobile_param] || session[:mobile_param] =="0"
+      @order_details = OrderDetail.paginate(page: params[:page])
+    else
+      @order_details = od
+    end
    
     respond_to do |format|
       format.html #order_details.html.erb

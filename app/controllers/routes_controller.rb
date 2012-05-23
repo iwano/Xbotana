@@ -25,7 +25,7 @@ class RoutesController < ApplicationController
   
   def index
     id = current_user.id
-    if session[:mobile_param] =="0"
+    if !session[:mobile_param] || session[:mobile_param] =="0"
       @routes = current_user.vendor ?  Route.where(:user_id=>id).paginate(page: params[:page]) : Route.paginate(page: params[:page])
     else
       @routes = current_user.vendor ?  Route.where(:user_id=>id) : Route.all

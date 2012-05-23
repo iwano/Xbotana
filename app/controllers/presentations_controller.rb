@@ -24,7 +24,7 @@ class PresentationsController < ApplicationController
 
   def show
     @presentation = Presentation.find(params[:id])
-    if session[:mobile_param] =="0"
+    if !session[:mobile_param] || session[:mobile_param] =="0"
       @products = @presentation.products.paginate(page: params[:page])
     else
       @products = @presentation.products
@@ -39,7 +39,7 @@ class PresentationsController < ApplicationController
 
   def index
     presentations = Presentation.all
-    if session[:mobile_param] =="0"
+    if !session[:mobile_param] || session[:mobile_param] =="0"
       @presentations = Presentation.paginate(page: params[:page])
     else
       @presentations = presentations

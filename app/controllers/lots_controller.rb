@@ -24,7 +24,7 @@ class LotsController < ApplicationController
  
  def show
    @lot = Lot.find(params[:id])
-   if session[:mobile_param] =="0"
+   if !session[:mobile_param] || session[:mobile_param] =="0"
      @products = @lot.products.paginate(page: params[:page])
    else
      @products = @lot.products
@@ -38,7 +38,7 @@ class LotsController < ApplicationController
  
  def index
    lots = Lot.all
-   if session[:mobile_param] =="0"
+   if !session[:mobile_param] || session[:mobile_param] =="0"
     @lots = Lot.paginate(page: params[:page])
    else
     @lots = lots

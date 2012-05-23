@@ -14,7 +14,7 @@ class StatesController < ApplicationController
   
   def index 
     states = State.all
-    if session[:mobile_param] =="0"
+    if !session[:mobile_param] || session[:mobile_param] =="0"
       @states = State.paginate(page: params[:page])
     else
        @states = states
@@ -39,7 +39,7 @@ class StatesController < ApplicationController
   
   def show
     @state = State.find(params[:id])
-    if session[:mobile_param] =="0"
+    if !session[:mobile_param] || session[:mobile_param] =="0"
       @cities = @state.cities.paginate(page: params[:page])
     else
       @cities = @state.cities

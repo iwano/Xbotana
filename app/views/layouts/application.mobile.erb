@@ -19,12 +19,12 @@
         top: 37px;
         z-index: 10;
       }
-    .ui-btn-up-r { border: 1px solid #953403; background: #2567ab; font-weight: bold; color: #fff; cursor: pointer;  text-shadow: 0 -1px 1px #953403; text-decoration: none; background-image: -moz-linear-gradient(top, #ec4a0b, #ad390c); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #ec4a0b),color-stop(1, #ad390c));   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ec4a0b', EndColorStr='#ad390c')"; }
+      .ui-btn-up-r { border: 1px solid #953403; background: #2567ab; font-weight: bold; color: #fff; cursor: pointer;  text-shadow: 0 -1px 1px #953403; text-decoration: none; background-image: -moz-linear-gradient(top, #ec4a0b, #ad390c); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #ec4a0b),color-stop(1, #ad390c));   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ec4a0b', EndColorStr='#ad390c')"; }
 
-    .ui-btn-up-r a.ui-link-inherit { color: #fff; }
-    .center{
-      text-align:center;
-    }
+      .ui-btn-up-r a.ui-link-inherit { color: #fff; }
+      .center{
+        text-align:center;
+      }
     </style>
     <script>
       $(function(){
@@ -36,15 +36,19 @@
             var $deleteBtn = $('<a>Delivered</a>').attr({
             'class': 'aDeleteBtn ui-btn-up-r',
             'href': $url});
-            $li.prepend($deleteBtn);
-          
+            $li.prepend($deleteBtn); 
         });
+
+        $('a.aDeleteBtn').live('click', function(event){
+            event.preventDefault();
+            $(this).closest("li").text('Order delivered').css({'font-size':'20px', 'color':'red', 'font-weight':'bold'}).fadeOut(6000);
+        });
+
         $('li.swipe').live('swiperight', function(event){
             $('.aDeleteBtn').remove();
         });
 
       });
-
     </script>
     <%= yield(:head) %>
   </head>
@@ -61,15 +65,13 @@
         <%= yield %>    
       </div><!-- /content -->
   
-    <br />
-
-  <%if !current_page? "/sessions/exitsession"%>
-   <%= link_to "Settings", "/sessions/exitsession", :data => { :role => "button", :theme=>"e", :rel=>"dialog", :transition=>"slidedown", :icon=>"gear" } %>
-   <% if signed_in?%>
-    <h4 class="center"><%="#{current_user.name} - #{current_user.email}"%></h4>
-    <%end%>
-  <%end%>
-</div><!-- /page -->
-    
+      <br /> 
+      <%if !current_page? "/sessions/exitsession"%>
+        <%= link_to "Settings", "/sessions/exitsession", :data => { :role => "button", :theme=>"e", :rel=>"dialog", :transition=>"slidedown", :icon=>"gear" } %>
+        <% if signed_in?%>
+          <h4 class="center"><%="#{current_user.name} - #{current_user.email}"%></h4>
+        <%end%>
+      <%end%>
+    </div><!-- /page --> 
   </body>
 </html>
