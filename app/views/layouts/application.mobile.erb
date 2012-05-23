@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html manifest="/application.manifest">
+<html>
   <head>
     <title><%= full_title(yield(:title)) %></title>
     <%= stylesheet_link_tag "http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" %>
@@ -32,16 +32,19 @@
         $('li.swipe').live('swipeleft', function(event){
             var $li = $(this);
             $('.aDeleteBtn').remove();
+            var $url = '/route_details/deliver?' + $(this).attr('id');
             var $deleteBtn = $('<a>Delivered</a>').attr({
             'class': 'aDeleteBtn ui-btn-up-r',
-            'href': '/'});
+            'href': $url});
             $li.prepend($deleteBtn);
           
         });
         $('li.swipe').live('swiperight', function(event){
             $('.aDeleteBtn').remove();
         });
+
       });
+
     </script>
     <%= yield(:head) %>
   </head>

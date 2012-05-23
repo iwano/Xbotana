@@ -1,6 +1,5 @@
 require File.expand_path('../boot', __FILE__)
 
-ENV["RAILS_ASSET_ID"] = "" # disable timestamps at end of asset files for offline browsing
 # Pick the frameworks you want:
 require "active_record/railtie"
 require "action_controller/railtie"

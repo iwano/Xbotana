@@ -4,13 +4,13 @@
 		<li data-role="list-divider"></li>
 		<h2>Stops (<%= @route.route_details.count %>)</h2>
 		<% @route_details.each do |route_detail| %>
-			<li class="swipe">
+			<li class="swipe" id="order_id=<%= route_detail.order.id%>">
 				<%= link_to(route_detail.order, :data => { :transition => 'slide' }) do %>
 					<%= route_detail.order.user.name %><br />
 					<%= "#{route_detail.order.user.state.name} - #{route_detail.order.user.city.name}"%><br />
 					<%= route_detail.order.user.address %><br />
 					<%= "#{route_detail.order.number_products} - #{number_to_currency (route_detail.order.total)}" %><br />
-					<%= route_detail.order.status%>
+					<%= route_detail.order.status%> <%=hidden_field 'id', route_detail.order.id, class: "route_id", value: route_detail.route.id%>
 				<% end %>		
 			</li>
 		<% end %>
