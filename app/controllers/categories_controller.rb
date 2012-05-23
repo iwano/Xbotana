@@ -24,7 +24,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    if session[:mobile_param] ==0
+    if session[:mobile_param] =="0"
       @products = @category.products.paginate(page: params[:page])
     else
       @products = @category.products
@@ -39,7 +39,7 @@ class CategoriesController < ApplicationController
 
   def index
     categories = Category.all
-    if session[:mobile_param] ==0
+    if session[:mobile_param] =="0"
       @categories = Category.paginate(page: params[:page])
     else
       @categories = categories

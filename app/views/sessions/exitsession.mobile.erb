@@ -1,5 +1,5 @@
   <h4 class="center"><%=current_user.email%></h4>
-  <%= link_to "Full Site", root_url(:mobile => 0), :rel => "external", :data => { :role => "button", :theme=>"b" } %>
+  <%= link_to "Full Site", root_url(:mobile => 0), :rel => "external", :data => { :role => "button", :theme=>"b", :transition=>"flip" } %>
   <% if signed_in?%>
     <%= button_to "Log out", signout_path, method: "delete", :data => { :role => "button", :theme=>"e"} %>
   <%end%>

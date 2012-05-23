@@ -1,4 +1,25 @@
 Xbotana::Application.routes.draw do
+  offline = Rack::Offline.configure do
+    cache "assets/application.js"
+    cache "assets/application.css"
+    cache "assets/custom.css.scss"
+    cache "assets/xsoftware_logo.png"
+    files = Dir[
+      "#{root}/**/*.html"]
+    files.each do |file|
+      public_dir = Pathname.new("#{root}/public")
+      cache Pathname.new(file).relative_path_from(public_dir)
+    end
+    files = Dir[
+      "#{root}/assets/**/*.{js,css,jpg,png,gif}"]
+    files.each do |file|
+      cache Pathname.new(file).relative_path_from(root)
+    end
+
+    network "/"
+  end
+  match "/application.manifest" => offline
+
   match 'users/update_city_select/:id', :controller=>'users', :action => 'update_city_select'
   get 'static_pages/search'
   get 'orders/emptycart'

@@ -24,7 +24,7 @@ class CitiesController < ApplicationController
   
   def index
     cities = City.all
-    if session[:mobile_param] ==0
+    if session[:mobile_param] =="0"
       @cities = City.paginate(page: params[:page])
     else
       @cities = cities

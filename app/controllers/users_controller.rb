@@ -69,7 +69,8 @@ class UsersController < ApplicationController
 
   def index
     users = User.all
-    if session[:mobile_param] ==0
+
+    if session[:mobile_param] =="0"
       @users = User.paginate(page: params[:page]) 
     else
        @users = users

@@ -35,7 +35,7 @@ class ProductsController < ApplicationController
 
  def index
    products = Product.all
-   if session[:mobile_param] ==0
+   if session[:mobile_param] =="0"
      @products = Product.paginate(page: params[:page])
    else
     @products = products
