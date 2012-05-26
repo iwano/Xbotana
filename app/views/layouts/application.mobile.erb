@@ -25,6 +25,10 @@
       .center{
         text-align:center;
       }
+
+      span.timestamp{
+        color:#A60000;
+      }
     </style>
     <script>
       $(function(){
@@ -57,7 +61,7 @@
       <div data-role="header">
         <h1>botanaX</h1>
         <%if !current_page? "/"%>
-        <a href="/" data-role="button" data-icon="home" data-iconpos="left">Home</a>
+        <a href="/" data-role="button" data-icon="home" data-iconpos="left" data-transition="flip">Home</a>
         <%end%>
       </div><!-- /header -->
 

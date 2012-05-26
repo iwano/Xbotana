@@ -1,4 +1,5 @@
 Xbotana::Application.routes.draw do
+
   match 'users/update_city_select/:id', :controller=>'users', :action => 'update_city_select'
   get 'static_pages/search'
   get 'orders/emptycart'

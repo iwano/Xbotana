@@ -1,12 +1,83 @@
 <% if signed_in? %>
 	<ul data-role="listview" data-theme="g">
-	<li><%= @username %></li>
 	<%= form_tag "/static_pages/search", :method => "get", class: "navbar-search pull-left" do %> 
 		<%= text_field_tag :search, params[:search], id: "searchBar", placeholder: "Search", type: "search", name: "search", id: "searc-basic", value: "", :data => { :mini => true } %> 
 	<% end %>
+	<div data-role="collapsible-set">
+
+		<div data-role="collapsible" data-collapsed="true">
+			<h3>Recent Activity</h3>
+			<ul data-role="listview" data-theme="g">
+			<% recent = false %>
+
+		<!-- ************ Admin -->
+					<% if current_user.admin? %>
+						<% @static_pages.each do |order| %>
+							<% recent = true unless @static_pages.count == 0%>
+								<li>
+									<%= link_to(order, :data => { :transition => 'slide' }) do %>
+										<%= order.user.name%>, placed order <%= order.id %> <br />
+										<span class="timestamp">
+										<%= time_ago_in_words(order.created_at) %> ago.
+										</span>
+									<%end%>
+								</li>
+						<% end %>	
+						<%= will_paginate %>
+
+		<!-- ********* Head of sales -->
+					<%elsif current_user.hos?%>
+						<% recent = true unless @orders.count == 0%>
+
+						<% @orders.each do |order| %>
+							<li>
+								<%= link_to(order, :data => { :transition => 'slide' }) do %>
+								 	order <%= order.id %> - placed by <%= order.user.name %> <br />
+								 	<span class="timestamp">
+									<%= time_ago_in_words(order.created_at) %> ago needs processing
+									</span>
+								<%end%>
+							</li>
+						<% end %>
+
+		<!-- **********Vendor -->
+					<%elsif current_user.vendor?%>
+						<% recent = true unless @orders.count == 0 %>
+
+						<% @orders.each do |order| %>
+							<li>
+								<%= link_to(order, :data => { :transition => 'slide' }) do %>
+									* you have order <%= order.id %> left to deliver - placed by <%= order.user.name%><br />
+									<span class="timestamp">
+									<%= time_ago_in_words(order.created_at) %> ago
+									</span>
+								<%end%>
+							</li>
+						<% end %>
+					<%else%>
+
+		<!-- ********** Client -->
+						<% @orders.each do |order| %>
+								<% recent = true unless @orders == 0%>
+								<li>
+									<%= link_to(order, :data => { :transition => 'slide' }) do %>
+										you placed order <%= order.id %> - 
+										<span class="timestamp">
+										<%= time_ago_in_words(order.created_at) %> ago.
+										</span>
+									<%end%>
+								</li>
+						<% end %>
+					<% end %>
+					
+					<% if recent != true %>
+						<li> You have no Recent Activity.</li>
+					<% end %>
+			</ul>
+		</div>
+	</div>
 	<li><%= link_to "Profile", current_user, :data => { :transition => 'slide' }%></li>
 	<% if current_user.admin? %>
-	  
 		<li data-role="list-divider"></li>
 		<li><%= link_to "Users", users_path, :data => { :transition => 'slide' } %></li>
 		<li><%= link_to "Products", products_path, :data => { :transition => 'slide' }%></li>
@@ -18,11 +89,14 @@
 		<li><%= link_to "Orders", orders_path, :data => { :transition => 'slide' }%></li>
 		<li><%= link_to "Routes", routes_path, :data => { :transition => 'slide' }%></li>
 	<%elsif current_user.hos?%>
+		<li data-role="list-divider"></li>
 		<li><%= link_to "Orders", orders_path, :data => { :transition => 'slide' }%></li>
 		<li><%= link_to "Routes", routes_path, :data => { :transition => 'slide' }%></li>
 	<%elsif current_user.vendor?%>
+		<li data-role="list-divider"></li>
 		<li><%= link_to "Routes", routes_path, :data => { :transition => 'slide' }%></li>
 	<%else%>
+		<li data-role="list-divider"></li>
 		<li><%= link_to "Products", products_path, :data => { :transition => 'slide' }%></li>
 		<li><%= link_to "Cart", cart_path, :data => { :transition => 'slide' }%></li>
 		<li><%= link_to "Orders", orders_path, :data => { :transition => 'slide' }%></li>
